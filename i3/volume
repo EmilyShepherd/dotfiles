@@ -1,0 +1,17 @@
+#!/bin/bash
+
+level=$(amixer -D pulse sget Master | grep Left | awk -F'[][]' '/on/ {print $2}' | grep .)
+level=${level:0:-1}
+
+if test "$level" -gt 70
+then
+    icon=
+elif test "$level" -gt 40
+then
+    icon=
+else
+    icon=
+fi
+
+echo "$icon $level%"
+echo "$icon"

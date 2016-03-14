@@ -1,0 +1,31 @@
+#!/bin/bash
+
+level=$(acpi -b | grep 'Battery 0' | awk -F', ' '{print $2}')
+level=${level:0:-1}
+
+color="#00FF00"
+
+if ! acpi -b | grep -q 'Discharging'
+then
+    icon=""
+elif test "$level" -gt 90
+then
+    icon=""
+elif test "$level" -gt 60
+then
+    icon=""
+elif test "$level" -gt 40
+then
+    icon=""
+elif test "$level" -gt 10
+then
+    icon=""
+    color="#FFFF00"
+else
+    icon=""
+    color="#FF0000"
+fi
+
+echo "$icon $level%"
+echo $icon
+echo $color
