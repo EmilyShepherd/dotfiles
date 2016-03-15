@@ -1,19 +1,43 @@
 #!/bin/bash
 
-vol=$(amixer sget 'Master' | awk -F"[][]" '/dB/ {print $2}')
-vol_nice=${vol:0:-1}
+level=$(amixer -D pulse sget Master | grep Left | awk -F'[][]' '/%/ {print $2}' | grep .)
+mode=$(amixer -D pulse sget Master | grep Left | awk -F'[][]' '/%/ {print $4}' | grep .)
+level=${level:0:-1}
 
-if test "$vol_nice" -gt 60
+case $1 in
+    up)
+        level=$(expr $level + 5)
+        amixer -D pulse sset Master on $level%
+        ;;
+    down)
+        level=$(expr $level - 5)
+        amixer -D pulse sset Master on $level%
+        ;;
+    mute)
+        if test "$mode" == "on"
+        then
+            level=0
+            amixer -D pulse sset Master off
+        else
+            amixer -D pulse sset Master on
+        fi
+        ;;
+    default)
+        echo $0 [up|down|mute]
+        exit 1
+esac
+
+if test "$level" -gt 60
 then
-    level=high
-elif test "$vol_nice" -gt 30
+    icon=high
+elif test "$level" -gt 30
 then
-    level=medium
-elif test "$vol_nice" -gt 0
+    icon=medium
+elif test "$level" -gt 0
 then
-    level=low
+    icon=low
 else
-    level=muted
+    icon=muted
 fi
 
-notify-send " " -i audio-volume-$level -h int:value:$vol_nice -h string:synchronous:volume
+notify-send " " -i audio-volume-$icon -h int:value:$level -h string:synchronous:volume
