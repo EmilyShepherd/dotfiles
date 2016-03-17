@@ -1,25 +1,29 @@
 #!/bin/bash
 
-level=$(amixer -D pulse sget Master | grep Left | awk -F'[][]' '/%/ {print $2}' | grep .)
-mode=$(amixer -D pulse sget Master | grep Left | awk -F'[][]' '/%/ {print $4}' | grep .)
+level=$(amixer -D default sget Master | grep Mono | awk -F'[][]' '/%/ {print $2}' | grep .)
+mode=$(amixer -D default sget Master | grep Mono | awk -F'[][]' '/%/ {print $6}' | grep .)
 level=${level:0:-1}
+
+echo $1
 
 case $1 in
     up)
+        echo "a"
         level=$(expr $level + 5)
-        amixer -D pulse sset Master on $level%
+        amixer -D default sset Master on $level%
         ;;
     down)
+        echo "b"
         level=$(expr $level - 5)
-        amixer -D pulse sset Master on $level%
+        amixer -D default sset Master on $level%
         ;;
     mute)
         if test "$mode" == "on"
         then
             level=0
-            amixer -D pulse sset Master off
+            amixer -D default sset Master off
         else
-            amixer -D pulse sset Master on
+            amixer -D default sset Master on
         fi
         ;;
     default)

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-level=$(amixer -D pulse sget Master | grep Left | awk -F'[][]' '/on/ {print $2}' | grep .)
+level=$(amixer -D default sget Master | grep Mono | awk -F'[][]' '/on/ {print $2}' | grep .)
 level=${level:0:-1}
 
 if test "$level" -gt 70
