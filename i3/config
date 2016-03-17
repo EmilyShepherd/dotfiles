@@ -182,10 +182,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 exec_always --no-startup-id feh --bg-scale /home/emily/Pictures/wallpaper.jpg
-
-exec_always --no-startup-id gnome-settings-daemon
-exec_always --no-startup-id  /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
-
+exec_always --no-startup-id /usr/lib/notify-osd/notify-osd
 
 exec thunderbird
 exec chromium-browser
