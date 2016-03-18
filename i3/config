@@ -157,8 +157,8 @@ bindsym $mod+r mode "resize"
 set $power "Power Options: (P)oweroff (R)estart (H)ibernate (S)uspend"
 mode $power {
     bindsym h $lock && systemctl hibernate, mode "default"
-    bindsym p systemctl poweroff, mode "default"
-    bindsym r systemctl reboot, mode "default"
+    bindsym p exec systemctl poweroff, mode "default"
+    bindsym r exec systemctl reboot, mode "default"
     bindsym s $lock && systemctl suspend, mode "default"
 
     bindsym Escape mode "default"
