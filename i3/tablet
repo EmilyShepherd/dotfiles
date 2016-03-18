@@ -1,0 +1,50 @@
+#!/bin/bash
+
+mode=$1
+
+if test -z "$mode"
+then
+    exit 1
+fi
+
+# Actually do the flip of the screen, with a lower case version of the
+# orientation
+xrandr --output eDP1 --rotate $mode
+
+# If we've selected a tablet mode, replace the physical keyboard with an
+# onscreen one
+if  test "$mode" == "normal"
+then
+    xinput enable "AT Translated Set 2 keyboard"
+    killall onboard
+ 
+    xinput set-prop "ELAN Touchscreen" "Coordinate Transformation Matrix" \
+        1 0 0 \
+        0 1 0 \
+        0 0 1
+else
+    xinput disable "AT Translated Set 2 keyboard"
+    onboard &
+
+    case "$mode" in
+        right)
+            xinput set-prop "ELAN Touchscreen" "Coordinate Transformation Matrix" \
+                0 1 0 \
+               -1 0 1 \
+                0 0 1
+            ;;
+        inverted)
+            xinput set-prop "ELAN Touchscreen" "Coordinate Transformation Matrix" \
+               -1 0 1 \
+                0 -1 1 \
+                0 0 1
+            ;;
+        left)
+            xinput set-prop "ELAN Touchscreen" "Coordinate Transformation Matrix" \
+                0 -1 1 \
+                1 0 0 \
+                0 0 1
+            ;;
+    esac
+fi
+
