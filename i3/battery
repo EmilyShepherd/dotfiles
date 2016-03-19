@@ -3,7 +3,7 @@
 level=$(acpi -b | grep 'Battery 0' | awk -F', ' '{print $2}')
 level=${level:0:-1}
 
-color="#00FF00"
+color="#32cd32"
 
 if ! acpi -b | grep -q 'Discharging'
 then
@@ -14,9 +14,11 @@ then
 elif test "$level" -gt 60
 then
     icon=""
+    color="#FFFF00"
 elif test "$level" -gt 40
 then
     icon=""
+    color="#FFFF00"
 elif test "$level" -gt 10
 then
     icon=""
