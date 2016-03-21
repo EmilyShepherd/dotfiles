@@ -3,7 +3,10 @@
 level=$(amixer -D default sget Master | grep Mono | awk -F'[][]' '/on/ {print $2}' | grep .)
 level=${level:0:-1}
 
-if test "$level" -gt 70
+if ! grep -q '0x40: OUT$' "/proc/asound/card0/codec#0"
+then
+    icon=
+elif test "$level" -gt 70
 then
     icon=
 elif test "$level" -gt 40
@@ -13,11 +16,6 @@ else
     icon=
 fi
 
-if grep -q '0x40: OUT$' "/proc/asound/card0/codec#0"
-then
-    echo "$icon $level%"
-    echo "$icon"
-else
-    echo " $icon $level%"
-    echo ""
-fi
+echo "$icon $level%"
+echo "$icon"
+
