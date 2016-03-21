@@ -13,5 +13,11 @@ else
     icon=
 fi
 
-echo "$icon $level%"
-echo "$icon"
+if grep -q '0x40: OUT$' "/proc/asound/card0/codec#0"
+then
+    echo "$icon $level%"
+    echo "$icon"
+else
+    echo " $icon $level%"
+    echo ""
+fi
