@@ -21,7 +21,7 @@ set $ws8 8:
 set $ws9 9:
 set $ws0 10:
 
-set $lock exec i3lock -i ~/Pictures/lock_wall.png
+set $lock exec dm-tool lock
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
