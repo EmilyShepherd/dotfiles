@@ -225,6 +225,7 @@ bindsym XF86AudioPrev exec playerctl previous
 exec_always --no-startup-id feh --bg-scale /home/emily/Pictures/wallpaper.jpg
 exec_always --no-startup-id /usr/lib/notify-osd/notify-osd
 exec_always --no-startup-id compton
+exec_always --no-startup-id syndaemon -t -K
 
 exec thunderbird
 exec chromium-browser
