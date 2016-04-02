@@ -229,5 +229,4 @@ exec_always --no-startup-id compton
 exec_always --no-startup-id syndaemon -t -K
 
 exec thunderbird
-exec chromium-browser
-exec keypass2
+exec chromium
