@@ -223,6 +223,7 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+$lock
 exec_always --no-startup-id feh --bg-scale /home/emily/Pictures/wallpaper.jpg
 exec_always --no-startup-id /usr/lib/notify-osd/notify-osd
 exec_always --no-startup-id compton
