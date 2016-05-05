@@ -1,6 +1,10 @@
 
 . ~/.profile
 
+export EDITOR=/bin/vim
+
+alias c='git commit -S -m'
+
 # Path to your oh-my-zsh installation.
   export ZSH=/home/emily/.oh-my-zsh
 
