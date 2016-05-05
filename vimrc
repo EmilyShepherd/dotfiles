@@ -11,3 +11,5 @@ set shiftwidth=4
 set shiftround
 set expandtab
 set colorcolumn=72
+
+autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
