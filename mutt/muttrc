@@ -1,22 +1,24 @@
+
+# IMAP Settings
+source pass.rc
 set imap_user = emily
-set my_name = "Emily Shepherd"
-set folder=imaps://emilyshepherd.me/
+set my_name   = "Emily Shepherd"
+set folder    = "imaps://emilyshepherd.me/"
 set spoolfile = +INBOX
 set imap_check_subscribed
-set smtp_url = "smtp://emily@emilyshepherd.me:587/"
-unset markers
 
-set mailcap_path    = ~/.mutt/mailcap
+# SMTP Settings
+set from     = "emily@emilyshepherd.me"
+set realname = "Emily Shepherd"
+set smtp_url = "smtp://emily@emilyshepherd.me:587/"
+
+# Visual Items
+unset markers
+set mailcap_path = ~/.mutt/mailcap.rc
 auto_view text/html
 
-set from = "emily@emilyshepherd.me"
-set realname = "Emily Shepherd"
-
-source pass
+# GPG
 source gpg.rc
-
-set pgp_use_gpg_agent = yes
-#set pgp_sign_as = 43A5CE95 
-#set pgp_timeout = 3600
-set crypt_autosign = yes
+set pgp_use_gpg_agent  = yes
+set crypt_autosign     = yes
 set crypt_replyencrypt = yes
