@@ -2,7 +2,6 @@
 # IMAP Settings
 source pass.rc
 set imap_user = emily
-set my_name   = "Emily Shepherd"
 set folder    = "imaps://emilyshepherd.me/"
 set spoolfile = +INBOX
 set imap_check_subscribed
