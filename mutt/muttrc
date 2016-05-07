@@ -21,4 +21,4 @@ auto_view text/html
 source gpg.rc
 set pgp_use_gpg_agent  = yes
 set crypt_autosign     = yes
-set crypt_replyencrypt = yes
+source "encrypt_list.rc"

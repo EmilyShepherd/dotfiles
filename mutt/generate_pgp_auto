@@ -1,0 +1,74 @@
+#! /bin/sh
+# Credit: Tanguy Ortolo
+# https://tanguy.ortolo.eu/blog/article117/mutt-hook-encrypt
+set -e
+
+# Specific hooks set global configuration values for Mutt, which are not
+# reset for new messages, so a default hook is needed to set the default
+# value (do not try encrypting all messages).
+printf "send-hook . unset crypt_autoencrypt\n\n"
+
+cat <<EOF
+# This group contains all known PGP users, and can be used to define
+# hooks, for instance to encrypt all messages sent to PGP users, or to
+# add a specific signature to promote PGP usage to non-PGP users.
+EOF
+
+
+# Generate a machine-readable list of known keys
+gpg2 --batch --with-colons --list-keys \
+    | awk -- '
+        BEGIN {
+            FS = ":"
+            # A flag that indicates whether or not we are in a public
+            # key with usable encryption capability
+            usable = 0
+        }
+
+        # Detect beginning of public keys with usable encryption
+        # capability
+        $1 == "pub" && $12 ~ /E/ { usable = 1 }
+
+        # Detect beginning of public keys without usable encryption
+        # capability
+        $1 == "pub" && $12 !~ /E/ { usable = 0 }
+        
+        # Only consider user IDs from public keys with usable encryption
+        # capability and with regular, marginal, full or ultimate
+        # validity (n, m, f or u in the second field)
+        usable && $1 == "uid" && $2 ~ /[nmfu]/ && $10 ~ /@/ {
+            # Remove everything before and after the email address in
+            # brackets
+            sub(/^[^<]*</, "", $10)
+            sub(/>[^>]*$/, "", $10)
+            # Finally print the email address
+            print $10
+        }' \
+    | sort -u \
+    | {
+        # Group addresses by ten to reduce the number of Mutt commands
+        finished=0
+        while [ $finished -ne 1 ]
+        do
+            addresses=""
+            for i in 0 1 2 3 4 5 6 7 8 9
+            do
+                if read address
+                then
+                    addresses="$addresses $address"
+                else
+                    finished=1
+                    break
+                fi
+            done
+            # Add PGP users' addresses to a pgp-users group
+            printf "group -group pgp-users -addr %s\n" \
+                "$addresses"
+        done
+    }
+
+# Build a hook to try encrypting messages sent to PGP users
+printf "\n# Encrypt all messages sent to known PGP users\n"
+printf "send-hook \"%%C pgp-users\" set crypt_autoencrypt\n" \
+printf "\n# Add a specific signature to promote PGP usage to non-PGP users\n"
+printf "#send-hook \"!%%C pgp-users\" set signature=~/.signature.use-pgp\n"
