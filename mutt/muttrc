@@ -25,3 +25,7 @@ source gpg.rc
 set pgp_use_gpg_agent  = yes
 set crypt_autosign     = yes
 source "encrypt_list.rc"
+
+# View HTML in Chrome
+macro attach 'V' "<pipe-entry>cat >/tmp/mail.html && chromium /tmp/mail.html && rm /tmp/mail.html<enter>"
+macro pager 'V' "v<search>text/html<enter>V"
