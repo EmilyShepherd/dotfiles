@@ -5,6 +5,7 @@ set imap_user = emily
 set folder    = "imaps://emilyshepherd.me/"
 set spoolfile = +INBOX
 set imap_check_subscribed
+mailboxes +INBOX
 
 # SMTP Settings
 set from     = "emily@emilyshepherd.me"
