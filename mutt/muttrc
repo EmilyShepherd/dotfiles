@@ -15,6 +15,10 @@ set smtp_url = "smtp://emily@emilyshepherd.me:587/"
 unset markers
 set mailcap_path = ~/.mutt/mailcap.rc
 auto_view text/html
+color quoted blue black
+
+# Composition
+set text_flowed = yes
 
 # GPG
 source gpg.rc
