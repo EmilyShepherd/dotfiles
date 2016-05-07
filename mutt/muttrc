@@ -4,6 +4,7 @@ set folder=imaps://emilyshepherd.me/
 set spoolfile = +INBOX
 set imap_check_subscribed
 set smtp_url = "smtp://emily@emilyshepherd.me:587/"
+unset markers
 
 set mailcap_path    = ~/.mutt/mailcap
 auto_view text/html
