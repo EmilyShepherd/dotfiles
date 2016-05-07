@@ -1,6 +1,6 @@
 
 # IMAP Settings
-source pass.rc
+source ~/Private/conf/imap
 set imap_user = emily
 set folder    = "imaps://emilyshepherd.me/"
 set spoolfile = +INBOX
@@ -21,10 +21,10 @@ color quoted blue black
 set text_flowed = yes
 
 # GPG
-source gpg.rc
+source ~/.mutt/gpg.rc
 set pgp_use_gpg_agent  = yes
 set crypt_autosign     = yes
-source "encrypt_list.rc"
+source ~/Private/conf/encrypt_list.rc
 
 # View HTML in Chrome
 macro attach 'V' "<pipe-entry>cat >/tmp/mail.html && chromium /tmp/mail.html && rm /tmp/mail.html<enter>"
