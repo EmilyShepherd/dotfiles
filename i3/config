@@ -226,10 +226,12 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 $lock
-exec_always --no-startup-id feh --bg-scale /home/emily/Pictures/wallpaper.jpg
-exec_always --no-startup-id /usr/lib/notify-osd/notify-osd
-exec_always --no-startup-id compton
-exec_always --no-startup-id syndaemon -t -K
+exec --no-startup-id feh --bg-scale /home/emily/Pictures/wallpaper.jpg
+exec --no-startup-id /usr/lib/notify-osd/notify-osd
+exec --no-startup-id compton
+exec --no-startup-id syndaemon -t -K
 
 exec thunderbird
+exec --no-startup-id "i3-msg 'workspace $ws3; append_layout ~/.i3/ws3.json'"
+exec chromium
 exec chromium
