@@ -13,4 +13,4 @@ set expandtab
 set colorcolumn=72
 
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
-autocmd FileType mail set lw=78 fo+=aw
+autocmd FileType mail set tw=72 fo+=taw
