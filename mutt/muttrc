@@ -1,7 +1,7 @@
 
 # Local Folder Settings
 set spoolfile = ~/Private/mail/INBOX
-set folder = ~/Private/mail
+set folder    = ~/Private/mail
 
 # SMTP Settings
 source ~/Private/conf/imap
@@ -11,9 +11,9 @@ set smtp_url = "smtp://emily@emilyshepherd.me:587/"
 
 # Visual Items
 unset markers
-set sort = threads
+set sort         = threads
 set mailcap_path = ~/.mutt/mailcap.rc
-set wait_key = no
+set wait_key     = no
 auto_view text/html
 color quoted blue black
 source ~/.mutt/notmuch-mutt.rc
@@ -25,8 +25,8 @@ set text_flowed = yes
 
 # GPG
 source ~/.mutt/gpg.rc
-set pgp_use_gpg_agent  = yes
-set crypt_autosign     = yes
+set pgp_use_gpg_agent = yes
+set crypt_autosign    = yes
 source ~/Private/conf/encrypt_list.rc
 
 # View HTML in Chrome
