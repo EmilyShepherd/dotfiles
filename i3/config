@@ -123,9 +123,6 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace $ws0
 
-assign [class="(?i)thunderbird"] $ws2
-assign [class="(?i)keepass"] $ws0
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -231,7 +228,6 @@ exec --no-startup-id /usr/lib/notify-osd/notify-osd
 exec --no-startup-id compton
 exec --no-startup-id syndaemon -t -K
 
-exec thunderbird
 exec --no-startup-id "i3-msg 'workspace $ws3; append_layout ~/.i3/ws3.json'"
 exec chromium
 exec chromium
