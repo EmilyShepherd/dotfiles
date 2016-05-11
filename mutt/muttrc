@@ -19,6 +19,8 @@ color quoted blue black
 source ~/.mutt/notmuch-mutt.rc
 
 # Composition
+source ~/Private/conf/aliases
+set alias_file  = ~/Private/conf/aliases
 set text_flowed = yes
 
 # GPG
