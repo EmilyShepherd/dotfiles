@@ -1,0 +1,27 @@
+#!/bin/sh
+
+while true; do
+    pass=$(zenity --password --title="Mount Private")
+
+    if test -z "$pass"
+    then
+        exit 1
+    fi
+
+    printf "%s" "$pass" | \
+        ecryptfs-insert-wrapped-passphrase-into-keyring \
+        ~/.ecryptfs/wrapped-passphrase -
+
+    if test $? -eq 0
+    then
+        mount.ecryptfs_private
+        break;
+    else
+        zenity --error \
+            --text "Incorrect Password" \
+            --title="Mount Private"
+    fi
+done
+
+# Startup the wifi
+sudo netctl start eduroam

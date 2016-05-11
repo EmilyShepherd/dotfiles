@@ -223,6 +223,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 $lock
+exec --no-startup-id ~/.dotfiles/startup/start
 exec --no-startup-id feh --bg-scale /home/emily/Pictures/wallpaper.jpg
 exec --no-startup-id /usr/lib/notify-osd/notify-osd
 exec --no-startup-id compton
