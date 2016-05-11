@@ -1,22 +1,22 @@
 
-# IMAP Settings
-source ~/Private/conf/imap
-set imap_user = emily
-set folder    = "imaps://emilyshepherd.me/"
-set spoolfile = +INBOX
-set imap_check_subscribed
-mailboxes +INBOX
+# Local Folder Settings
+set spoolfile = ~/Private/mail/INBOX
+set folder = ~/Private/mail
 
 # SMTP Settings
+source ~/Private/conf/imap
 set from     = "emily@emilyshepherd.me"
 set realname = "Emily Shepherd"
 set smtp_url = "smtp://emily@emilyshepherd.me:587/"
 
 # Visual Items
 unset markers
+set sort = threads
 set mailcap_path = ~/.mutt/mailcap.rc
+set wait_key = no
 auto_view text/html
 color quoted blue black
+source ~/.mutt/notmuch-mutt.rc
 
 # Composition
 set text_flowed = yes

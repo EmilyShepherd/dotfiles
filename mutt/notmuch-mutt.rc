@@ -1,0 +1,15 @@
+
+macro index <F8> \
+    "<shell-escape>notmuch-mutt -o /tmp/mutt -r -p search<enter>\
+    <change-folder-readonly>/tmp/mutt<enter>" \
+            "notmuch: search mail"
+
+macro index <F9> \
+    "<pipe-message>notmuch-mutt -o /tmp/mutt -r thread<enter>\
+    <change-folder-readonly>/tmp/mutt<enter>" \
+            "notmuch: reconstruct thread"
+
+macro index <F6> \
+    "<pipe-message>notmuch-mutt tag -- -inbox<enter>" \
+            "notmuch: remove message from inbox"
+
