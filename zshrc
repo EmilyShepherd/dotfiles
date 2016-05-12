@@ -4,6 +4,7 @@
 export EDITOR=/bin/vim
 
 alias c='git commit -S -m'
+alias p='ps aux | grep'
 
 # Path to your oh-my-zsh installation.
   export ZSH=/home/emily/.oh-my-zsh
