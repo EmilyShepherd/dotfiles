@@ -40,4 +40,9 @@ else
     icon=
 fi
 
+if test "$level" -gt 100
+then
+    level=100
+fi
+
 notify-send "Volume" -h int:value:$level
