@@ -4,16 +4,12 @@ level=$(amixer -D default sget Master | grep Mono | awk -F'[][]' '/%/ {print $2}
 mode=$(amixer -D default sget Master | grep Mono | awk -F'[][]' '/%/ {print $6}' | grep .)
 level=${level:0:-1}
 
-echo $1
-
 case $1 in
     up)
-        echo "a"
         level=$(expr $level + 5)
         amixer -D default sset Master on $level%
         ;;
     down)
-        echo "b"
         level=$(expr $level - 5)
         amixer -D default sset Master on $level%
         ;;
@@ -31,17 +27,17 @@ case $1 in
         exit 1
 esac
 
-if test "$level" -gt 60
+if ! grep -q '0x40: OUT$' "/proc/asound/card0/codec#0"
 then
-    icon=high
-elif test "$level" -gt 30
+    icon=
+elif test "$level" -gt 70
 then
-    icon=medium
-elif test "$level" -gt 0
+    icon=
+elif test "$level" -gt 40
 then
-    icon=low
+    icon=
 else
-    icon=muted
+    icon=
 fi
 
-notify-send " " -i audio-volume-$icon -h int:value:$level -h string:synchronous:volume
+notify-send "Volume" -h int:value:$level
