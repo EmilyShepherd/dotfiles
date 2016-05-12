@@ -9,6 +9,10 @@ virtual-mailboxes \
     "Sent"      "notmuch://?query=tag:sent" \
     "Junk"      "notmuch://?query=tag:junk"
 
+bind pager,index <S-Up> sidebar-prev
+bind pager,index <S-Down> sidebar-next
+bind pager,index <S-Right> sidebar-open
+
 macro index <F8> \
     "<shell-escape>notmuch-mutt -o /tmp/mutt -r -p search<enter>\
     <change-folder-readonly>/tmp/mutt<enter>" \

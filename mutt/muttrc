@@ -10,9 +10,10 @@ set smtp_url = "smtp://emily@emilyshepherd.me:587/"
 
 # Visual Items
 unset markers
-set sort         = threads
-set mailcap_path = ~/.mutt/mailcap.rc
-set wait_key     = no
+set sort            = threads
+set mailcap_path    = ~/.mutt/mailcap.rc
+set wait_key        = no
+set sidebar_visible = yes
 auto_view text/html
 color quoted blue black
 source ~/.mutt/notmuch-mutt.rc
