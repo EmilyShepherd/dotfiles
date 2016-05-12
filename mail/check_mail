@@ -32,7 +32,6 @@ do
         if test "${spam:0:4}" == "Yes,"
         then
             notmuch tag -new +junk -- id:$msg_id
-            mv -f $file ~/Private/mail/Junk/new/
             continue
         fi
 
@@ -65,8 +64,8 @@ do
             name=${name^}
         fi
 
-        notmuch tag -new +inbox +unread -- id:$msg_id
         notify-send "New Mail From: $name" "$(get_header 'Subject')"
+        notmuch tag -new +inbox +unread -- id:$msg_id
     done
 
     notmuch-mutt -o ~/.cache/notmuch/mutt/inbox search tag:inbox
