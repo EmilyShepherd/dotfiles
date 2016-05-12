@@ -224,6 +224,7 @@ bindsym XF86AudioPrev exec playerctl previous
 
 $lock
 exec --no-startup-id ~/.dotfiles/startup/start
+exec --no-startup-id ~/.dotfiles/check_mail
 exec --no-startup-id feh --bg-scale /home/emily/Pictures/wallpaper.jpg
 exec --no-startup-id dunst
 exec --no-startup-id compton
