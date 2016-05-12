@@ -2,4 +2,4 @@
 from subprocess import check_output
 
 def get_pass():
-    return check_output("pass me/email/emily@emilyshepherd.me", shell=True).splitlines()[0]
+    return check_output("cat ~/Private/conf/email", shell=True).splitlines()[0]
