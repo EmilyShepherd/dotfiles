@@ -1,7 +1,6 @@
 
 # Local Folder Settings
-set folder    = ~/.cache/notmuch/mutt
-set spoolfile = =inbox
+set folder = ~/Private/mail
 
 # SMTP Settings
 source ~/Private/conf/imap

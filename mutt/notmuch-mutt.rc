@@ -1,4 +1,13 @@
 
+set nm_default_uri    = "notmuch:///home/emily/Private/mail"
+set virtual_spoolfile = yes
+virtual-mailboxes \
+    "INBOX"     "notmuch://?query=tag:inbox" \
+    "Unread"    "notmuch://?query=tag:unread" \
+    "Starred"   "notmuch://?query=tag:*" \
+    "Sent"      "notmuch://?query=tag:sent" \
+    "Junk"      "notmuch://?query=tag:junk"
+
 macro index <F8> \
     "<shell-escape>notmuch-mutt -o /tmp/mutt -r -p search<enter>\
     <change-folder-readonly>/tmp/mutt<enter>" \
@@ -9,11 +18,4 @@ macro index <F9> \
     <change-folder-readonly>/tmp/mutt<enter>" \
             "notmuch: reconstruct thread"
 
-macro index T \
-    "<pipe-message>notmuch-mutt tag -- " \
-            "notmuch: Tag"
-
-macro index A "T-inbox<enter>d" "notmuch: Remove from Inbox"
-macro index R "T-unread<enter>" "notmuch: Mark as read"
-
-macro index <Return> "R<display-message>" "display a message"
+macro index A "<modify-labels-then-hide>-inbox<enter>" "Archive Email"

@@ -68,11 +68,6 @@ do
         notmuch tag -new +inbox +unread -- id:$msg_id
     done
 
-    notmuch-mutt -o ~/.cache/notmuch/mutt/inbox search tag:inbox
-    notmuch-mutt -o ~/.cache/notmuch/mutt/junk search tag:junk
-    notmuch-mutt -o ~/.cache/notmuch/mutt/private search tag:private
-    notmuch-mutt -o ~/.cache/notmuch/mutt/deleted search tag:deleted
-
     sleep 5m
 done
 
