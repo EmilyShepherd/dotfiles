@@ -1,0 +1,79 @@
+#!/bin/sh
+
+get_header()
+{
+    echo $(grep -m1 -i "^$1:" $file | cut -f1 -d' ' --complement)
+}
+
+get_email()
+{
+    sed -r 's/.*<(.*)>.*/\1/'
+}
+
+AF=~/Private/conf/aliases
+
+while true
+do
+    offlineimap -q
+    notmuch new
+
+    # Google and Yahoo don't bounce me for no reason, so if I get a bounce
+    # from them I don't need to worry
+    notmuch tag -new +deleted -- from:MAILER-DAEMON@sweeb.net tag:new \(google or yahoo\)
+
+    for file in $(notmuch search --output=files tag:new)
+    do
+        msg_id=$(get_header 'Message-ID' | get_email)
+        spam=$(get_header 'X-Spam-Status')
+        from=$(get_header 'From')
+        from_email=$(echo $from | get_email)
+
+        # Check Junk
+        if test "${spam:0:4}" == "Yes,"
+        then
+            notmuch tag -new +junk -- id:$msg_id
+            mv -f $file ~/Private/mail/Junk/new/
+            continue
+        fi
+
+        name=$(grep -m1 -i "$from_email" $AF)
+
+        # Unknown Sender
+        if test -z "$name"
+        then
+            _name=$(echo $from | sed -r 's/.*"(.*)".*/\1/')
+
+            if ! test -z "$_name"
+            then
+                name=$_name
+            else
+                name=$from
+            fi
+        # Known Sender with a defined nice name
+        elif $(echo $name | grep -q '#')
+        then
+            name=$(echo $name | sed -r 's/^.*# *//')
+
+            if test -z "$name"
+            then
+                notmuch tag -new +private +unread -- id:$msg_id
+                continue
+            fi
+        # Known Sender without a nice name (just use alias)
+        else
+            name=$(echo $name | cut -f2 -d' ')
+            name=${name^}
+        fi
+
+        notmuch tag -new +inbox +unread -- id:$msg_id
+        notify-send "New Mail From: $name" "$(get_header 'Subject')"
+    done
+
+    sleep 5m
+done
+
+notmuch-mutt -o ~/.cache/notmuch/mutt/inbox search tag:inbox
+notmuch-mutt -o ~/.cache/notmuch/mutt/junk search tag:junk
+notmuch-mutt -o ~/.cache/notmuch/mutt/private search tag:private
+notmuch-mutt -o ~/.cache/notmuch/mutt/deleted search tag:deleted
+

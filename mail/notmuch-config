@@ -48,7 +48,7 @@ other_email=ams2g11@ecs.soton.ac.uk;
 #		in the mail store.
 #
 [new]
-tags=unread;inbox;
+tags=new
 ignore=
 
 # Search configuration
