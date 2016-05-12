@@ -9,7 +9,11 @@ macro index <F9> \
     <change-folder-readonly>/tmp/mutt<enter>" \
             "notmuch: reconstruct thread"
 
-macro index <F6> \
-    "<pipe-message>notmuch-mutt tag -- -inbox<enter>" \
-            "notmuch: remove message from inbox"
+macro index T \
+    "<pipe-message>notmuch-mutt tag -- " \
+            "notmuch: Tag"
 
+macro index A "T-inbox<enter>" "notmuch: Remove from Inbox"
+macro index R "T-unread<enter>" "notmuch: Mark as read"
+
+macro index <Return> "R<display-message>" "display a message"
