@@ -69,11 +69,11 @@ do
         notify-send "New Mail From: $name" "$(get_header 'Subject')"
     done
 
+    notmuch-mutt -o ~/.cache/notmuch/mutt/inbox search tag:inbox
+    notmuch-mutt -o ~/.cache/notmuch/mutt/junk search tag:junk
+    notmuch-mutt -o ~/.cache/notmuch/mutt/private search tag:private
+    notmuch-mutt -o ~/.cache/notmuch/mutt/deleted search tag:deleted
+
     sleep 5m
 done
-
-notmuch-mutt -o ~/.cache/notmuch/mutt/inbox search tag:inbox
-notmuch-mutt -o ~/.cache/notmuch/mutt/junk search tag:junk
-notmuch-mutt -o ~/.cache/notmuch/mutt/private search tag:private
-notmuch-mutt -o ~/.cache/notmuch/mutt/deleted search tag:deleted
 
