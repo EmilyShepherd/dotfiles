@@ -65,3 +65,5 @@ do
     notmuch tag -new +inbox +unread -- id:$msg_id
 done
 
+# We're done, refresh the menubar
+pkill -RTMIN+1 i3blocks
