@@ -10,6 +10,8 @@ localrepository = main-local
 remoterepository = main-remote
 # Status cache. Default is plain, which eventually becomes huge and slow.
 status_backend = sqlite
+postsynchook = ~/.dotfiles/mail/check_mail
+autorefresh = 20
 
 [Repository main-local]
 # Currently, offlineimap only supports maildir and IMAP for local repositories.
@@ -24,3 +26,5 @@ remotehost = emilyshepherd.me
 remoteuser = emily
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 remotepasseval = get_pass()
+idlefolders = ['INBOX']
+holdconnectionopen = yes

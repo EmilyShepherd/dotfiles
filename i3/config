@@ -224,9 +224,6 @@ $lock
 # Popup a box asking for my ecryptfs password 
 exec --no-startup-id ~/.dotfiles/startup/start
 
-# Start mail checker daemon
-exec --no-startup-id ~/.dotfiles/check_mail
-
 # Set the background
 exec --no-startup-id feh --bg-scale /home/emily/Pictures/wallpaper.jpg
 
