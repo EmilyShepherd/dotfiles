@@ -15,6 +15,7 @@ set mailcap_path    = ~/.mutt/mailcap.rc
 set wait_key        = no
 set sidebar_visible = yes
 auto_view text/html
+alternative_order text/plain text/enriched text/html
 color quoted blue black
 source ~/.mutt/notmuch-mutt.rc
 
