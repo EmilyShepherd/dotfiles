@@ -1,0 +1,13 @@
+# vim: filetype=muttrc
+
+color normal white black
+set pager_index_lines   = 20    # number of index lines to show
+set pager_context       = 3     # number of context lines to show
+set pager_stop          = yes   # don't go to next message automatically
+set menu_scroll         = yes   # scroll in menus
+set tilde               = yes   # show tildes like in vim
+
+color index brightwhite black ~N
+color body yellow black "^gpg: Good signature"
+color body brightgreen black "^gpg: Good signature.*\[(full|ultimate|marginal)\].*$"
+

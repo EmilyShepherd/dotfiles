@@ -18,6 +18,7 @@ auto_view text/html
 alternative_order text/plain text/enriched text/html
 color quoted blue black
 source ~/.mutt/notmuch-mutt.rc
+source ~/.mutt/colours.rc
 
 # Composition
 source ~/Private/conf/aliases
