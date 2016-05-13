@@ -1,0 +1,11 @@
+###############################################################################
+# Urlview configuration file.
+# man urlview  <Man page>
+#
+
+#REGEXP (((http|https|ftp|gopher)|mailto):(//)?[^ >"\t]*|www\.[-a-z0-9.]+)[^ .,;\t>">\):]
+REGEXP (((http|https|ftp|gopher)|mailto)[.:][^ >"\t]*|www\.[-a-z0-9.]+)[^ .,;\t>">\):]
+
+# Run it through a URL handler
+COMMAND ~/.dotfiles/urlview/url_handler %s
+
