@@ -181,10 +181,10 @@ set $power "Power Options: (P)oweroff (R)estart (H)ibernate (S)uspend"
 bindsym $mod+Shift+p mode $power
 mode $power
 {
-    bindsym h $lock, systemctl hibernate, mode "default"
+    bindsym h $lock && systemctl hibernate, mode "default"
     bindsym p exec systemctl poweroff, mode "default"
     bindsym r exec systemctl reboot, mode "default"
-    bindsym s $lock, systemctl suspend, mode "default"
+    bindsym s $lock && systemctl suspend, mode "default"
 
     bindsym Escape mode "default"
 }
