@@ -1,3 +1,4 @@
+# vim: set syntax=muttrc:
 
 set nm_default_uri    = "notmuch:///home/emily/Private/mail"
 set virtual_spoolfile = yes
