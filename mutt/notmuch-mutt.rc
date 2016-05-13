@@ -7,7 +7,7 @@ virtual-mailboxes \
     "Unread"    "notmuch://?query=tag:unread" \
     "Starred"   "notmuch://?query=tag:*" \
     "Private"   "notmuch://?query=tag:private" \
-    "Sent"      "notmuch://?query=tag:sent" \
+    "Sent"      "notmuch://?query=from:emilyshepherd.me or from:ams2g11@soton.ac.uk or from:ams2g11@ecs.soton.ac.uk" \
     "Junk"      "notmuch://?query=tag:junk"
 
 bind pager,index <S-Up> sidebar-prev

@@ -1,6 +1,7 @@
 
 # Local Folder Settings
 set folder = ~/Private/mail
+set record = +Sent/
 
 # SMTP Settings
 source ~/Private/conf/imap
