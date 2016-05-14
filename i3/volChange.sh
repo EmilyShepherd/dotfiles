@@ -10,10 +10,10 @@ toggle()
     if test $(get $1 $2 6) == "on"
     then
         amixer sset $1 off
-        replace-notification VOL "Volume" "Muted $1"
+        notif VOL "Volume" "Muted $1"
     else
         amixer sset $1 on
-        replace-notification VOL "Volume" "Unmuted $1"
+        notif VOL "Volume" "Unmuted $1"
     fi
 }
 
@@ -38,7 +38,7 @@ change_master()
         msg2=$(eval "printf '\\u2591%.0s' {1..$(expr 50 - $hashes)}")
     fi
     
-    replace-notification VOL -h int:value:$level "Volume" "\n[${msg1}${msg2}]"
+    notif VOL -h int:value:$level "Volume" "\n[${msg1}${msg2}]"
 }
 
 case $1 in
