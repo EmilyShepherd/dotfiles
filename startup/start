@@ -25,3 +25,6 @@ done
 
 # Startup the wifi
 sudo netctl start eduroam
+
+# Start up the mail sync daemon
+offlineimap
