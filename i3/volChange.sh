@@ -20,14 +20,13 @@ toggle()
 change_master()
 {
     local level=$(get Master Mono 2)
-    level=${level:0:-1}
+    level=$(expr ${level:0:-1} $1 5)
 
     if test "$level" -gt 100
     then
         level=100
     fi
 
-    level=$(expr $level $1 5)
     amixer sset Master on $level%
     
     replace-notification VOL -h int:value:$level "Volume"
