@@ -29,13 +29,13 @@ change_master()
 
     amixer sset Master on $level%
 
-    hashes=$(expr $level / 4)
+    hashes=$(expr $level / 2)
 
     msg1=$(eval "printf '\\u2588%.0s' {1..$hashes}")
 
-    if ! test $hashes -eq 25
+    if ! test $hashes -eq 50
     then
-        msg2=$(eval "printf '\\u2591%.0s' {1..$(expr 25 - $hashes)}")
+        msg2=$(eval "printf '\\u2591%.0s' {1..$(expr 50 - $hashes)}")
     fi
     
     replace-notification VOL -h int:value:$level "Volume" "\n[${msg1}${msg2}]"
