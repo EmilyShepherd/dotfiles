@@ -1,54 +1,51 @@
 #!/bin/bash
 
-level=$(amixer -D default sget Master | grep Mono | awk -F'[][]' '/%/ {print $2}' | grep .)
-level=${level:0:-1}
+get()
+{
+    amixer sget $1 | grep -m1 "$2:" | awk -F'[][]' "/%/ {print \$$3}"
+}
 
 toggle()
 {
-    mode=$(amixer -D default sget $1 | grep $2 | awk -F'[][]' '/%/ {print $6}' | head -n1)
-    if test "$mode" == "on"
+    local mode=on
+
+    if test $(get $1 $2 6) == "on"
     then
-        level=0
-        amixer -D default sset $1 off
-    else
-        amixer -D default sset $1 on
+        mode=off
     fi
+
+    amixer sset $1 $mode
+
+    notify-send Toggled $1
+}
+
+change_master()
+{
+    local level=$(get Master Mono 2)
+    level=${level:0:-1}
+
+    if test "$level" -gt 100
+    then
+        level=100
+    fi
+
+    level=$(expr $level $1 5)
+    amixer sset Master on $level%
+    
+    notify-send "Volume" -h int:value:$level
 }
 
 case $1 in
     up)
-        level=$(expr $level + 5)
-        amixer -D default sset Master on $level%
-        ;;
+        change_master + ;;
     down)
-        level=$(expr $level - 5)
-        amixer -D default sset Master on $level%
-        ;;
+        change_master - ;;
     mute)
         toggle Master Mono ;;
     mute-spkr)
-        toggle Speaker Front ;;
+        toggle Speaker Left ;;
     default)
         echo $0 [up|down|mute|mute-spkr]
         exit 1
 esac
 
-if ! grep -q '0x40: OUT$' "/proc/asound/card0/codec#0"
-then
-    icon=
-elif test "$level" -gt 70
-then
-    icon=
-elif test "$level" -gt 40
-then
-    icon=
-else
-    icon=
-fi
-
-if test "$level" -gt 100
-then
-    level=100
-fi
-
-notify-send "Volume" -h int:value:$level
