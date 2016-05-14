@@ -1,8 +1,19 @@
 #!/bin/bash
 
 level=$(amixer -D default sget Master | grep Mono | awk -F'[][]' '/%/ {print $2}' | grep .)
-mode=$(amixer -D default sget Master | grep Mono | awk -F'[][]' '/%/ {print $6}' | grep .)
 level=${level:0:-1}
+
+toggle()
+{
+    mode=$(amixer -D default sget $1 | grep $2 | awk -F'[][]' '/%/ {print $6}' | head -n1)
+    if test "$mode" == "on"
+    then
+        level=0
+        amixer -D default sset $1 off
+    else
+        amixer -D default sset $1 on
+    fi
+}
 
 case $1 in
     up)
@@ -14,16 +25,11 @@ case $1 in
         amixer -D default sset Master on $level%
         ;;
     mute)
-        if test "$mode" == "on"
-        then
-            level=0
-            amixer -D default sset Master off
-        else
-            amixer -D default sset Master on
-        fi
-        ;;
+        toggle Master Mono ;;
+    mute-spkr)
+        toggle Speaker Front ;;
     default)
-        echo $0 [up|down|mute]
+        echo $0 [up|down|mute|mute-spkr]
         exit 1
 esac
 
