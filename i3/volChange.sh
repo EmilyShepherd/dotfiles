@@ -28,8 +28,17 @@ change_master()
     fi
 
     amixer sset Master on $level%
+
+    hashes=$(expr $level / 4)
+
+    msg1=$(eval "printf '\\u2588%.0s' {1..$hashes}")
+
+    if ! test $hashes -eq 25
+    then
+        msg2=$(eval "printf '\\u2591%.0s' {1..$(expr 25 - $hashes)}")
+    fi
     
-    replace-notification VOL -h int:value:$level "Volume"
+    replace-notification VOL -h int:value:$level "Volume" "\n[${msg1}${msg2}]"
 }
 
 case $1 in

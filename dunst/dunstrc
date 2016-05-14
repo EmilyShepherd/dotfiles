@@ -202,7 +202,7 @@
 
 [volume]
     summary = "Volume"
-    format = "<b>%s</b>: %b %p"
+    format = "<b>%s</b>: %p %b"
     urgency = low
 
 # vim: ft=cfg
