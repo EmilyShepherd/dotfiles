@@ -7,16 +7,14 @@ get()
 
 toggle()
 {
-    local mode=on
-
     if test $(get $1 $2 6) == "on"
     then
-        mode=off
+        amixer sset $1 off
+        replace-notification VOL "Volume" "Muted $1"
+    else
+        amixer sset $1 on
+        replace-notification VOL "Volume" "Unmuted $1"
     fi
-
-    amixer sset $1 $mode
-
-    notify-send Toggled $1
 }
 
 change_master()
@@ -32,7 +30,7 @@ change_master()
     level=$(expr $level $1 5)
     amixer sset Master on $level%
     
-    notify-send "Volume" -h int:value:$level
+    replace-notification VOL -h int:value:$level "Volume"
 }
 
 case $1 in
