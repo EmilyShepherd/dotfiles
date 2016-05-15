@@ -31,8 +31,17 @@ set $ws0 10:
 # The lock command
 set $lock exec i3lock -i ~/.dotfiles/wallpaper.png
 
+# Display notification command
+set $notif exec --no-startup-id notif -b i3 -u critical
+
+# The return to default and hide notification command
+set $go_default exec --no-startup-id notif -c i3, mode "default"
+
 # The config command
 set $config -font 'Ubuntu 25' -bg '#232323' -fg '#FFFFFF' -hlbg '#0000FF' -bc 'white' -line-margin 10 -padding 10 -opacity 75
+
+# Volume command
+set $volume exec --no-startup-id ~/.dotfiles/sbin/change_volume
 
 # Allow quick tabbing back and forth
 workspace_auto_back_and_forth yes
@@ -71,10 +80,10 @@ bar
 bindsym $mod+l $lock
 
 # Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.dotfiles/sbin/change_volume up
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/.dotfiles/sbin/change_volume down 
-bindsym XF86AudioMute exec --no-startup-id ~/.dotfiles/sbin/change_volume mute-spkr
-bindsym F6 exec --no-startup-id ~/.dotfiles/sbin/change_volume mute
+bindsym XF86AudioRaiseVolume $volume up
+bindsym XF86AudioLowerVolume $volume down 
+bindsym XF86AudioMute $volume mute-spkr
+bindsym F6 $volume mute
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
@@ -162,7 +171,7 @@ bindsym $mod+Shift+r restart
 
 # Resize windows
 set $resize "Resize Mode: Use arrow keys to adjust size"
-bindsym $mod+r exec --no-startup-id notif -b i3 -u critical 'Resize Mode' $resize, mode $resize
+bindsym $mod+r $notif 'Resize Mode' $resize, mode $resize
 mode $resize
 {
         # Resize Windows
@@ -172,22 +181,22 @@ mode $resize
         bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
-        bindsym Return exec --no-startup-id notif -c i3, mode "default"
-        bindsym Escape exec --no-startup-id notif -c i3, mode "default"
+        bindsym Return $go_default
+        bindsym Escape $go_default
 }
 
 
 # Default power options
 set $power "Power Options: (P)oweroff (R)estart (H)ibernate (S)uspend"
-bindsym $mod+Shift+p exec --no-startup-id notif -b i3 -u critical 'Power Mode' $power, mode $power
+bindsym $mod+Shift+p $notif 'Power Mode' $power, mode $power
 mode $power
 {
-    bindsym h $lock && systemctl hibernate, mode "default"
-    bindsym p exec systemctl poweroff, mode "default"
-    bindsym r exec systemctl reboot, mode "default"
-    bindsym s $lock && systemctl suspend, mode "default"
+    bindsym h $lock && systemctl hibernate, $go_default
+    bindsym p exec systemctl poweroff, $go_default
+    bindsym r exec systemctl reboot, $go_default
+    bindsym s $lock && systemctl suspend, $go_default
 
-    bindsym Escape exec --no-startup-id notif -c i3, mode "default"
+    bindsym Escape $go_default
 }
 
 # Select whether which tablet mode we're in
