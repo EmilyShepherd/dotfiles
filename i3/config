@@ -71,10 +71,10 @@ bar
 bindsym $mod+l $lock
 
 # Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.i3/volChange.sh up
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/.i3/volChange.sh down 
-bindsym XF86AudioMute exec --no-startup-id ~/.i3/volChange.sh mute-spkr
-bindsym F6 exec --no-startup-id ~/.i3/volChange.sh mute
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.dotfiles/sbin/change_volume up
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.dotfiles/sbin/change_volume down 
+bindsym XF86AudioMute exec --no-startup-id ~/.dotfiles/sbin/change_volume mute-spkr
+bindsym F6 exec --no-startup-id ~/.dotfiles/sbin/change_volume mute
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
@@ -223,7 +223,7 @@ mode $tablet_mode
 $lock
 
 # Popup a box asking for my ecryptfs password 
-exec --no-startup-id ~/.dotfiles/startup/start
+exec --no-startup-id ~/.dotfiles/sbin/start
 
 # Set the background
 exec --no-startup-id feh --bg-scale /home/emily/Pictures/wallpaper.jpg

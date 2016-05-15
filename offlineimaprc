@@ -1,7 +1,7 @@
 [general]
 # List of accounts to be synced, separated by a comma.
 accounts = main
-pythonfile = ~/.dotfiles/mail/offlineimap.py
+pythonfile = ~/.dotfiles/sbin/offlineimap.py
 
 [Account main]
 # Identifier for the local repository; e.g. the maildir to be synced via IMAP.
@@ -10,7 +10,7 @@ localrepository = main-local
 remoterepository = main-remote
 # Status cache. Default is plain, which eventually becomes huge and slow.
 status_backend = sqlite
-postsynchook = ~/.dotfiles/mail/check_mail
+postsynchook = ~/.dotfiles/sbin/tag_new_mail
 autorefresh = 20
 
 [Repository main-local]
