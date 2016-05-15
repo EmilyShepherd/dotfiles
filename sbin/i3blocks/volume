@@ -1,9 +1,17 @@
 #!/bin/bash
 
-level=$(amixer -D default sget Master | grep Mono | awk -F'[][]' '/on/ {print $2}' | grep .)
+get()
+{
+    amixer sget $1 | grep -m1 "$2:" | awk -F'[][]' "/%/ {print \$$3}"
+}
+
+level=$(get Master Mono 2)
 level=${level:0:-1}
 
-if ! grep -q '0x40: OUT$' "/proc/asound/card0/codec#0"
+if test "$(get Master Mono 6)" == "off"
+then
+    icon=
+elif test "$(get Speaker Left 6)" == "off"
 then
     icon=
 elif test "$level" -gt 70
