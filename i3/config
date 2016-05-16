@@ -204,10 +204,10 @@ set $tablet "Tablet Options: (L)andscape (P)ortrait (I)nverted (O)dd"
 bindsym $mod+Shift+t mode $tablet
 mode $tablet
 {
-    bindsym l exec ~/.dotfiles/i3/tablet normal, mode "default"
-    bindsym p exec ~/.dotfiles/i3/tablet left, mode $tablet_mode
-    bindsym i exec ~/.dotfiles/i3/tablet inverted, mode $tablet_mode
-    bindsym o exec ~/.dotfiles/i3/tablet right, mode $tablet_mode
+    bindsym l exec ~/.dotfiles/sbin/change_mode normal, mode "default"
+    bindsym p exec ~/.dotfiles/sbin/change_mode left, mode $tablet_mode
+    bindsym i exec ~/.dotfiles/sbin/change_mode inverted, mode $tablet_mode
+    bindsym o exec ~/.dotfiles/sbin/change_mode right, mode $tablet_mode
 
     bindsym Escape mode "default"
 }
