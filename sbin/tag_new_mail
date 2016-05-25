@@ -14,6 +14,9 @@ AF=~/Private/conf/aliases
 
 notmuch new
 
+# Catch all the messages I have sent
+notmuch tag -new +sent -- folder:Sent tag:new
+
 # Google and Yahoo don't bounce me for no reason, so if I get a bounce
 # from them I don't need to worry
 notmuch tag -new +ignored -- from:MAILER-DAEMON@sweeb.net tag:new \(google or yahoo\)
