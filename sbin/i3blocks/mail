@@ -1,4 +1,4 @@
 #!/bin/sh
 
-echo " $(notmuch count tag:unread not:tag:junk)"
-echo " $(notmuch count tag:unread not:tag:junk)"
+echo " $(notmuch count tag:unread tag:inbox)"
+echo " $(notmuch count tag:unread tag:inbox)"
