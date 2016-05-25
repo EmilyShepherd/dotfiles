@@ -24,4 +24,4 @@ macro index <F9> \
     <change-folder-readonly>/tmp/mutt<enter>" \
             "notmuch: reconstruct thread"
 
-macro index A "<modify-labels-then-hide>-inbox<enter>" "Archive Email"
+macro index A "<modify-labels-then-hide>-inbox +archive<enter>" "Archive Email"
