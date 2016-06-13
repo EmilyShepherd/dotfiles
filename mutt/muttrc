@@ -28,8 +28,6 @@ set text_flowed = yes
 
 # GPG
 source ~/.mutt/gpg.rc
-set pgp_use_gpg_agent = yes
-set crypt_autosign    = yes
 source ~/Private/conf/encrypt_list.rc
 
 # View HTML in Chrome
