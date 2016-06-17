@@ -21,6 +21,6 @@ macro pager,index T \
     :push <vfolder-from-query>\`cat /tmp/thread\`\n\n"\
     "Reconstruct Thread"
 
-macro pager,index A
-    "<modify-labels-then-hide>-inbox +archive\n"
+macro pager,index A \
+    "<modify-labels-then-hide>-inbox +archive\n" \
     "Archive Email"
