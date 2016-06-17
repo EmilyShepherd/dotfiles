@@ -16,9 +16,9 @@ bind pager,index <S-Down> sidebar-next
 bind pager,index <S-Right> sidebar-open
 bind pager,index S vfolder-from-query
 
-macro index <F9> \
-    "<pipe-message>notmuch-mutt -o /tmp/mutt -r thread<enter>\
-    <change-folder-readonly>/tmp/mutt<enter>" \
-            "notmuch: reconstruct thread"
+macro pager,index T \
+    "| ~/.dotfiles/sbin/thread_from_mail > /tmp/thread\n\
+    :push <vfolder-from-query>\`cat /tmp/thread\`\n\n"\
+    "Reconstruct Thread"
 
 macro index A "<modify-labels-then-hide>-inbox +archive<enter>" "Archive Email"
