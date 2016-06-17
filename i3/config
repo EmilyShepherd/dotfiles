@@ -37,9 +37,6 @@ set $notif exec --no-startup-id notif -b i3 -u critical
 # The return to default and hide notification command
 set $go_default exec --no-startup-id notif -c i3, mode "default"
 
-# The config command
-set $config -font 'Ubuntu 25' -bg '#232323' -fg '#FFFFFF' -hlbg '#0000FF' -bc 'white' -line-margin 10 -padding 10 -opacity 75
-
 # Volume command
 set $volume exec --no-startup-id ~/.dotfiles/sbin/change_volume
 
@@ -102,8 +99,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # The program and password menus (handled by rofi)
-bindsym $mod+p exec --no-startup-id i3-dmenu-desktop --dmenu="rofi -show run -dmenu $config"
-bindsym $mod+o exec --no-startup-id passmenu $config
+bindsym $mod+p exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -show run -dmenu'
+bindsym $mod+o exec --no-startup-id passmenu
 
 
 # Window Management Key Bindings
