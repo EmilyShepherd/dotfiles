@@ -16,11 +16,6 @@ bind pager,index <S-Down> sidebar-next
 bind pager,index <S-Right> sidebar-open
 bind pager,index S vfolder-from-query
 
-macro pager,index T \
-    "| ~/.dotfiles/sbin/thread_from_mail > /tmp/thread\n\
-    :push <vfolder-from-query>\`cat /tmp/thread\`\n\n"\
-    "Reconstruct Thread"
-
 macro pager,index A \
     "<modify-labels-then-hide>-inbox +archive\n" \
     "Archive Email"
