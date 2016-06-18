@@ -7,7 +7,43 @@ set pager_stop          = yes   # don't go to next message automatically
 set menu_scroll         = yes   # scroll in menus
 set tilde               = yes   # show tildes like in vim
 
-color index brightwhite black ~N
-color body yellow black "^gpg: Good signature"
-color body brightgreen black "^gpg: Good signature.*\[(full|ultimate|marginal)\].*$"
+color normal black white
+color tilde green white
+color prompt black white
+color message brightblack white
+color error brightred white
+color tree black white
+color attachment brightmagenta white
+color quoted blue white
 
+color index brightblack white ~N
+color index cyan white ~D
+color index_tags brightgreen white
+color indicator black yellow
+color body brightblue white "((http|https|ftp|gopher)[.:][^< >\"\t]*|www\.[-a-z0-9.]+)[^ \t.,;>\"<\):]"
+color body brightblue white "[-a-z0-9.+]+@[-a-z0-9.]+"
+
+tag-transforms \
+    "inbox"      "i" \
+    "replied"    "↻" \
+    "attachment" "" \
+    "sent"       "➥" \
+    "spam"       "!" \
+    "private"    ""
+
+tag-formats \
+    "inbox"      "GI" \
+    "sent"       "Gs" \
+    "replied"    "Gr" \
+    "attachment" "Ga"
+
+set nm_hidden_tags = "junk,inbox,unread,draft,flagged,passed,replied,attachment,archive,sent,signed"
+set status_format  = "sh -c \"echo '-%r- %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?] --- %s/%S -%>- %P ---' | replace '$nm_default_uri?query=' 'Search: '\"|"
+set index_format   = "%4C %T%2Ga%2Gr %<[y?%<[m?%<[d?%[%H:%M ]&%[%a %d]>&%[%b %d]>&%[%m/%y ]> %-35.35L  %?g?[%g] ?%s"
+
+ignore *
+unignore from date subject to cc bcc
+hdr_order Date: From: To: Cc: Bcc: Subject:
+color hdrdefault brightblack white
+color header brightwhite green "^Subject:"
+color header brightblue white "^Date:"
