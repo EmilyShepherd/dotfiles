@@ -13,7 +13,7 @@ set smtp_url = "smtp://emily@emilyshepherd.me:587/"
 unset markers
 set sort            = threads
 set mailcap_path    = ~/.mutt/mailcap.rc
-set wait_key        = no
+set wait_key        = no  # Don't need this
 set sidebar_visible = yes
 set sidebar_width   = 20
 set reflow_wrap     = -21 # Account for sidebar width issue
