@@ -1,38 +1,33 @@
+# vim: set syntax=muttrc:
 
-# Local Folder Settings
-set folder = ~/Private/mail
-set record = +Sent/
+# Folder Settings
+# ---------------------------------------------------------------------
 
-# SMTP Settings
-source ~/Private/conf/imap
+# Me
 set from     = "emily@emilyshepherd.me"
 set realname = "Emily Shepherd"
+
+# Local Setup
+set my_conf  = ~/.mutt
+set my_priv  = ~/Private/conf
+set folder   = ~/Private/mail
+set record   = +Sent/
+
+# SMTP
 set smtp_url = "smtp://emily@emilyshepherd.me:587/"
 
-# Visual Items
-unset markers
-set sort            = threads
-set mailcap_path    = ~/.mutt/mailcap.rc
-set wait_key        = no  # Don't need this
-set sidebar_visible = yes
-set sidebar_width   = 20
-set reflow_wrap     = -21 # Account for sidebar width issue
-set wrap            = -1  # Give a slight margin at the edge of screen
-auto_view text/html
-alternative_order text/plain text/enriched text/html
-color quoted blue black
-source ~/.mutt/notmuch-mutt.rc
-source ~/.mutt/colours.rc
+set wait_key        = no
+set text_flowed     = yes
+set alias_file      = $my_priv/aliases
 
-# Composition
-source ~/Private/conf/aliases
-set alias_file  = ~/Private/conf/aliases
-set text_flowed = yes
 
-# GPG
-source ~/.mutt/gpg.rc
-source ~/Private/conf/encrypt_list.rc
+# Source extra files
+# ---------------------------------------------------------------------
+source $my_conf/notmuch.rc
+source $my_conf/key-bindings.rc
+source $my_conf/ui.rc
+source $my_conf/gpg.rc
+source $my_priv/imap
+source $my_priv/encrypt_list.rc
+source $alias_file
 
-# View HTML in Chrome
-macro attach 'V' "<pipe-entry>cat >/tmp/mail.html && chromium /tmp/mail.html && rm /tmp/mail.html<enter>"
-macro pager 'V' "v<search>text/html<enter>V"

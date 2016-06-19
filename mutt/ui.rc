@@ -1,0 +1,64 @@
+# vim: filetype=muttrc
+
+# Mutt
+# ---------------------------------------------------------------------
+set menu_scroll     = yes   # scroll in menus
+set sort            = threads
+set sidebar_visible = yes
+set sidebar_width   = 20
+set status_format   = "/home/emily/.dotfiles/sbin/formats status '%f' '$nm_default_uri?query='|"
+set index_format    = "`/home/emily/.dotfiles/sbin/formats index`"
+
+# General Text Colours
+color normal	 		black		  white
+color status	 		brightwhite   magenta
+color prompt	 		black		  white
+color message	 		brightblack   white
+color error		 		brightred	  white
+color tree 			 	black		  white
+
+# Index Text Colors
+color index      		brightblack   white ~N
+color index      		cyan          white ~D
+color index      		white         cyan  ~T
+color index_tags 		magenta       white
+color indicator  		black         yellow
+
+# Side Bar Colors
+color sidebar_divider 	brightblack   white
+color sidebar_highlight black 	      cyan
+color sidebar_new 		brightblack   white
+
+
+# Email
+# ---------------------------------------------------------------------
+unset markers
+set pager_index_lines = 20  # number of index lines to show
+set pager_context     = 3   # number of context lines to show
+set pager_stop        = yes # don't go to next message automatically
+set tilde             = yes # show tildes like in vim
+set reflow_wrap       = -21 # Account for sidebar width issue
+set wrap              = -1  # Give a slight margin at the edge of screen
+
+color tilde      		green         white
+color attachment 		brightmagenta white
+color quoted     		blue          white
+color signature  		cyan          white
+
+# Links and email address colours
+color body       		brightblue    white "((http|https|ftp|gopher)[.:][^< >\"\t]*|www\.[-a-z0-9.]+)[^ \t.,;>\"<\):]"
+color body      		brightblue    white "[-a-z0-9._+]+@[-a-z0-9._]+"
+
+# Headers
+ignore *
+unignore from date subject to cc bcc
+hdr_order Date: From: To: Cc: Bcc: Subject:
+color hdrdefault 		brightblack   white
+color header    		brightwhite   green "^Subject:"
+color header    		brightblue    white "^Date:"
+
+# File Types
+set mailcap_path    = $my_conf/mailcap.rc
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+

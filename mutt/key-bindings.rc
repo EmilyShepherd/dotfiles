@@ -1,0 +1,18 @@
+# vim: set syntax=muttrc:
+
+# Sidebar
+bind pager,index <S-Up> sidebar-prev
+bind pager,index <S-Down> sidebar-next
+bind pager,index <S-Right> sidebar-open
+
+# Search
+bind pager,index S vfolder-from-query
+
+# Archive
+macro pager,index A \
+    "<modify-labels-then-hide>-inbox +archive\n" \
+    "Archive Email"
+
+# View HTML in Chrome
+macro attach 'V' "<pipe-entry>cat >/tmp/mail.html && chromium /tmp/mail.html && rm /tmp/mail.html<enter>"
+macro pager 'V' "v<search>text/html<enter>V"
