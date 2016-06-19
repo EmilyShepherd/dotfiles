@@ -15,6 +15,9 @@ set sort            = threads
 set mailcap_path    = ~/.mutt/mailcap.rc
 set wait_key        = no
 set sidebar_visible = yes
+set sidebar_width   = 20
+set reflow_wrap     = -21 # Account for sidebar width issue
+set wrap            = -1  # Give a slight margin at the edge of screen
 auto_view text/html
 alternative_order text/plain text/enriched text/html
 color quoted blue black
