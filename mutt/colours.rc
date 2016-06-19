@@ -15,10 +15,17 @@ color error brightred white
 color tree black white
 color attachment brightmagenta white
 color quoted blue white
+color status brightwhite magenta
+color signature cyan white
+
+color sidebar_divider brightblack white
+color sidebar_highlight black cyan
+color sidebar_new brightblack white
 
 color index brightblack white ~N
 color index cyan white ~D
-color index_tags brightgreen white
+color index white cyan ~T
+color index_tags magenta white
 color indicator black yellow
 color body brightblue white "((http|https|ftp|gopher)[.:][^< >\"\t]*|www\.[-a-z0-9.]+)[^ \t.,;>\"<\):]"
 color body brightblue white "[-a-z0-9._+]+@[-a-z0-9._]+"
