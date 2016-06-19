@@ -21,7 +21,7 @@ color index cyan white ~D
 color index_tags brightgreen white
 color indicator black yellow
 color body brightblue white "((http|https|ftp|gopher)[.:][^< >\"\t]*|www\.[-a-z0-9.]+)[^ \t.,;>\"<\):]"
-color body brightblue white "[-a-z0-9.+]+@[-a-z0-9.]+"
+color body brightblue white "[-a-z0-9._+]+@[-a-z0-9._]+"
 
 tag-transforms \
     "inbox"      "i" \
