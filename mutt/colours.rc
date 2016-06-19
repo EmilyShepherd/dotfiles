@@ -32,6 +32,7 @@ color body brightblue white "[-a-z0-9._+]+@[-a-z0-9._]+"
 
 tag-transforms \
     "inbox"      "i" \
+    "unread"     "" \
     "replied"    "↻" \
     "attachment" "" \
     "sent"       "➥" \
@@ -40,13 +41,14 @@ tag-transforms \
 
 tag-formats \
     "inbox"      "GI" \
+    "unread"     "Gu" \
     "sent"       "Gs" \
     "replied"    "Gr" \
     "attachment" "Ga"
 
 set nm_hidden_tags = "junk,inbox,unread,draft,flagged,passed,replied,attachment,archive,sent,signed"
-set status_format  = "sh -c \"echo '-%r- %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?] --- %s/%S -%>- %P ---' | replace '$nm_default_uri?query=' 'Search: '\"|"
-set index_format   = "%4C %T%2Ga%2Gr %<[y?%<[m?%<[d?%[%H:%M ]&%[%a %d]>&%[%b %d]>&%[%m/%y ]> %-35.35L  %?g?[%g] ?%s"
+set status_format  = "/home/emily/.dotfiles/sbin/formats status '%f' '$nm_default_uri?query='|"
+set index_format   = "`/home/emily/.dotfiles/sbin/formats index`"
 
 ignore *
 unignore from date subject to cc bcc

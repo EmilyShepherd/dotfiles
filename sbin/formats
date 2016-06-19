@@ -1,0 +1,27 @@
+#!/bin/sh
+
+case $1 in
+    index)
+        echo -n '%4C %T%2Gu%2Ga%2Gr '         # Number, Flags
+        echo -n '%<[d?%[%H:%M ]&'             # This Today. Eg: 15:30
+        echo -n '%<[m?%[%a %d]&'              # This Month. Eg: Mon 12
+        echo -n '%<[y?%[%b %d]&'              # This Year.  Eg: Mar 23
+        echo -n '%[%m/%y ]>>> '               # Other.      Eg: 12/16
+        echo -n '%-35.35L  %?g?[%g] ?%s'      # Author [tags] Subject
+        ;;
+    status)
+        echo -n ' -%r- '                      # Mailbox flag
+        echo -n "$2 " | replace $3 'Search: ' # Mailbox name / Query
+        echo -n '['
+        echo -n 'Msgs:%?M?%M/?%m%?n? '
+        echo -n 'New:%n?%?o? '
+        echo -n 'Old:%o?%?d? '
+        echo -n 'Del:%d?%?F? '
+        echo -n 'Flag:%F?%?t? '
+        echo -n 'Tag:%t?%?p? '
+        echo -n 'Post:%p?]'
+        echo -n ' --- %s/%S -%>- %P '
+        ;;
+esac
+
+echo "%"
