@@ -2,7 +2,18 @@
 
 case $1 in
     index)
-        echo -n '%4C %T%2Gu%2Ga%2Gr '         # Number, Flags
+        echo -n '%4C '
+
+        case $2 in
+            +) echo -n '' ;;
+            T) echo -n '' ;;
+            C) echo -n '' ;;
+            F) echo -n '' ;;
+            L) echo -n '' ;;
+            *) echo -n ' ' ;;
+        esac
+
+        echo -n ' %2Gu%2Ga%2Gr '              # Number, Flags
         echo -n '%<[d?%[%H:%M ]&'             # This Today. Eg: 15:30
         echo -n '%<[m?%[%a %d]&'              # This Month. Eg: Mon 12
         echo -n '%<[y?%[%b %d]&'              # This Year.  Eg: Mar 23
