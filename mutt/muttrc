@@ -6,6 +6,7 @@
 # Me
 set from     = "emily@emilyshepherd.me"
 set realname = "Emily Shepherd"
+alternates .*@emilyshepherd.me .*@union-southampton.org info@sweeb.net
 
 # Local Setup
 set my_conf  = ~/.mutt
