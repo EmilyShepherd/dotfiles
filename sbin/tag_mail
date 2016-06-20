@@ -5,6 +5,7 @@ ME=~/Private/conf/me
 tag=new
 inbox=y
 run_new=y
+progress=
 
 while test $# != 0
 do
@@ -26,6 +27,10 @@ do
             run_new=y ;;
         --no-run-new)
             run_new= ;;
+        --progress)
+            progress=y ;;
+        --no-progress)
+            progress= ;;
     esac
     shift
 done
@@ -40,6 +45,11 @@ get_email()
     sed -r 's/.*<(.*)>.*/\1/'
 }
 
+progress()
+{
+    echo -ne "Running: [$i / $file_count]\r"
+}
+
 if [[ "$run_new" == y ]]
 then
     notmuch new
@@ -51,6 +61,13 @@ notmuch tag -$tag +sent -- folder:Sent tag:new
 # Google and Yahoo don't bounce me for no reason, so if I get a bounce
 # from them I don't need to worry
 notmuch tag -$tag +ignored -- from:MAILER-DAEMON@sweeb.net tag:new \(google or yahoo or gmail\)
+
+if [[ "$progress" == y ]]
+then
+    file_count=$(notmuch count tag:$tag)
+    i=0
+    progress
+fi
 
 for file in $(notmuch search --output=files tag:$tag)
 do
@@ -139,6 +156,12 @@ do
     then
         notify-send "New Mail From: $name" "$(get_header 'Subject')"
         notmuch tag +inbox -- id:$msg_id
+    fi
+
+    if [[ "$progress" == y ]]
+    then
+        i=$(expr $i + 1)
+        progress
     fi
 done
 
