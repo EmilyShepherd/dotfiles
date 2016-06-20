@@ -3,18 +3,9 @@
 case $1 in
     index)
         echo -n '%4C '
-        echo -n '%2Ga '
+        echo -n '%2Ga %T '
 
-        case $2 in
-            +) echo -n '' ;;
-            T) echo -n '' ;;
-            C) echo -n '' ;;
-            F) echo -n '' ;;
-            L) echo -n '' ;;
-            *) echo -n ' ' ;;
-        esac
-
-        echo -n ' %<Gn?%2Gn&'
+        echo -n '%<Gn?%2Gn&'
         echo -n '%<Gb?%2Gb&'
         echo -n '%2Gc>>'
         echo -n '%<Gu?%3Gu&%3Gr>  '
