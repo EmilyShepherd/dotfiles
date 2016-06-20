@@ -96,7 +96,7 @@ do
 
         if test -z "$name"
         then
-            notmuch tag -new +private +unread -- id:$msg_id
+            notmuch tag -new +private -- id:$msg_id
             continue
         fi
     # Known Sender without a nice name (just use alias)
@@ -106,7 +106,7 @@ do
     fi
 
     notify-send "New Mail From: $name" "$(get_header 'Subject')"
-    notmuch tag -new +inbox +unread -- id:$msg_id
+    notmuch tag -new +inbox -- id:$msg_id
 done
 
 # We're done, refresh the menubar
