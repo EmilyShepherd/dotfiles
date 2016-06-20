@@ -1,5 +1,35 @@
 #!/bin/sh
 
+AF=~/Private/conf/aliases
+ME=~/Private/conf/me
+tag=new
+inbox=y
+run_new=y
+
+while test $# != 0
+do
+    case "$1" in
+        --tag)
+            shift
+            tag=$1
+
+            if test -z "$tag"
+            then
+                exit 1
+            fi
+            ;;
+        --inbox)
+            inbox=y ;;
+        --no-inbox)
+            inbox= ;;
+        --run-new)
+            run_new=y ;;
+        --no-run-new)
+            run_new= ;;
+    esac
+    shift
+done
+
 get_header()
 {
     echo $(grep -m1 -i "^$1:" $file | cut -f1 -d' ' --complement)
@@ -10,19 +40,19 @@ get_email()
     sed -r 's/.*<(.*)>.*/\1/'
 }
 
-AF=~/Private/conf/aliases
-ME=~/Private/conf/me
-
-notmuch new
+if [[ "$run_new" == y ]]
+then
+    notmuch new
+fi
 
 # Catch all the messages I have sent
-notmuch tag -new +sent -- folder:Sent tag:new
+notmuch tag -$tag +sent -- folder:Sent tag:new
 
 # Google and Yahoo don't bounce me for no reason, so if I get a bounce
 # from them I don't need to worry
-notmuch tag -new +ignored -- from:MAILER-DAEMON@sweeb.net tag:new \(google or yahoo or gmail\)
+notmuch tag -$tag +ignored -- from:MAILER-DAEMON@sweeb.net tag:new \(google or yahoo or gmail\)
 
-for file in $(notmuch search --output=files tag:new)
+for file in $(notmuch search --output=files tag:$tag)
 do
     msg_id=$(get_header 'Message-ID' | get_email)
     spam=$(get_header 'X-Spam-Status')
@@ -72,7 +102,7 @@ do
     # Check Junk
     if test "${spam:0:4}" == "Yes,"
     then
-        notmuch tag -new +junk -- id:$msg_id
+        notmuch tag +junk -- id:$msg_id
         continue
     fi
 
@@ -96,7 +126,7 @@ do
 
         if test -z "$name"
         then
-            notmuch tag -new +private -- id:$msg_id
+            notmuch tag +private -- id:$msg_id
             continue
         fi
     # Known Sender without a nice name (just use alias)
@@ -105,9 +135,16 @@ do
         name=${name^}
     fi
 
-    notify-send "New Mail From: $name" "$(get_header 'Subject')"
-    notmuch tag -new +inbox -- id:$msg_id
+    if [[ "$inbox" == y ]]
+    then
+        notify-send "New Mail From: $name" "$(get_header 'Subject')"
+        notmuch tag +inbox -- id:$msg_id
+    fi
 done
 
 # We're done, refresh the menubar
+if [[ "$inbox" == y ]]
+then
+    notmuch tag -$tag -- tag:$tag
+fi
 pkill -RTMIN+1 i3blocks

@@ -10,7 +10,7 @@ localrepository = main-local
 remoterepository = main-remote
 # Status cache. Default is plain, which eventually becomes huge and slow.
 status_backend = sqlite
-postsynchook = ~/.dotfiles/sbin/tag_new_mail
+postsynchook = ~/.dotfiles/sbin/tag_mail
 autorefresh = 20
 
 [Repository main-local]
