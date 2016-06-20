@@ -11,6 +11,7 @@ get_email()
 }
 
 AF=~/Private/conf/aliases
+ME=~/Private/conf/me
 
 notmuch new
 
@@ -27,6 +28,46 @@ do
     spam=$(get_header 'X-Spam-Status')
     from=$(get_header 'From')
     from_email=$(echo $from | get_email)
+    to=$(get_header 'Delivered-To' | get_email)
+    outcome=
+    match=
+
+    while read line
+    do
+        me_regex="$(echo $line | cut -f1 -d' ')"
+        LEN=$(expr $(expr length $me_regex) + 1)
+        ok_regex="${line:$LEN}"
+
+        if test -z $(echo $to | grep -i "^$me_regex\$")
+        then
+            continue
+        fi
+
+        match=y
+
+        if test -z "$ok_regex"
+        then
+            continue
+        fi
+
+        if test -z "$(echo $from_email | grep -i "^$ok_regex\$")"
+        then
+            outcome=fail
+        else
+            notmuch tag +to-closed -- id:$msg_id
+            outcome=pass
+            match=
+            break
+        fi
+    done < $ME
+
+    if [[ "$outcome" == "fail" ]]
+    then
+        notmuch tag +to-closed-bad -- id:$msg_id
+    elif [[ "$match" == "y" ]]
+    then
+        notmuch tag +to-closed-new -- id:$msg_id
+    fi
 
     # Check Junk
     if test "${spam:0:4}" == "Yes,"
