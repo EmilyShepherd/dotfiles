@@ -249,6 +249,9 @@ exec --no-startup-id compton
 # Turn off touchpad during typing
 exec --no-startup-id syndaemon -t -K
 
+# Load the X server defaults
+exec --no-startup-id xrdb ~/.dotfiles/Xresources
+
 # Load up the multi-tilded setup of the main workspace
 exec --no-startup-id "i3-msg 'workspace $ws3; append_layout ~/.i3/ws3.json'"
 exec chromium
