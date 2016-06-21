@@ -20,6 +20,7 @@ set smtp_url = "smtp://emily@emilyshepherd.me:587/"
 set wait_key        = no
 set text_flowed     = yes
 set alias_file      = $my_priv/aliases
+set fast_reply      = yes
 
 
 # Source extra files
