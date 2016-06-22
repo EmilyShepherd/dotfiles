@@ -1,0 +1,28 @@
+#!/bin/sh
+
+msg="Mount Private"
+
+while true; do
+    temp=$(mktemp)
+
+    dialog --passwordbox '$msg' 10 60 2> $temp
+
+    if test $? -eq 1
+    then
+        rm $temp
+        exit 1
+    fi
+
+    cat $temp | ecryptfs-insert-wrapped-passphrase-into-keyring \
+        ~/.ecryptfs/wrapped-passphrase -
+
+    if test $? -eq 0
+    then
+        wipe $temp
+        mount.ecryptfs_private
+        break;
+    else
+        wipe $temp
+        msg="Incorrect Password!\n\nMount Private"
+    fi
+done
