@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Ask the user to mount the private directory
-terminator -T "Mount Private" -e "~/.dotfiles/sbin/ui_mount"
+terminator -f -e "~/.dotfiles/sbin/ui_mount"
 
 # Check that the Private directory has been mounted before continuing
 _path=$(realpath ~)
