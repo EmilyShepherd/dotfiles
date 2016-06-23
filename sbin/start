@@ -10,8 +10,3 @@ then
     exit 1
 fi
 
-# Startup the wifi
-sudo netctl start eduroam
-
-# Start up the mail sync daemon
-offlineimap
