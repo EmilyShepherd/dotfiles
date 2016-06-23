@@ -202,15 +202,15 @@ mode $power
     bindsym Escape $go_default
 }
 
-# Select whether which tablet mode we're in
-set $tablet "Tablet Options: (L)andscape (P)ortrait (I)nverted (O)dd"
-bindsym $mod+Shift+t mode $tablet
-mode $tablet
+# Change Screen Orientation
+set $screen "Change Screen Orientation"
+bindsym $mod+Shift+o mode $screen
+mode $screen
 {
-    bindsym l exec ~/.dotfiles/sbin/change_mode normal, mode "default"
-    bindsym p exec ~/.dotfiles/sbin/change_mode left, mode $tablet_mode
-    bindsym i exec ~/.dotfiles/sbin/change_mode inverted, mode $tablet_mode
-    bindsym o exec ~/.dotfiles/sbin/change_mode right, mode $tablet_mode
+    bindsym Up exec ~/.dotfiles/sbin/rotate_screen up, mode "default"
+    bindsym Left exec ~/.dotfiles/sbin/rotate_screen left, mode "default"
+    bindsym Down exec ~/.dotfiles/sbin/rotate_screen inverted, mode "default"
+    bindsym Right exec ~/.dotfiles/sbin/rotate_screen right, mode "default"
 
     bindsym Escape mode "default"
 }

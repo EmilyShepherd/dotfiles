@@ -7,27 +7,15 @@ then
     exit 1
 fi
 
-# Actually do the flip of the screen, with a lower case version of the
-# orientation
-xrandr --output eDP1 --rotate $mode
-
-# If we've selected a tablet mode, replace the physical keyboard with an
-# onscreen one
-if  test "$mode" == "normal"
+# Rotate the touch screen control
+if test "$mode" == "normal" || test "$mode" == "up"
 then
-    xinput enable "AT Translated Set 2 keyboard"
-    xinput enable "SynPS/2 Synaptics TouchPad"
-    killall onboard
- 
+    mode=normal
     xinput set-prop "ELAN Touchscreen" "Coordinate Transformation Matrix" \
         1 0 0 \
         0 1 0 \
         0 0 1
 else
-    xinput disable "AT Translated Set 2 keyboard"
-    xinput disable "SynPS/2 Synaptics TouchPad"
-    onboard &
-
     case "$mode" in
         right)
             xinput set-prop "ELAN Touchscreen" "Coordinate Transformation Matrix" \
@@ -35,7 +23,8 @@ else
                -1 0 1 \
                 0 0 1
             ;;
-        inverted)
+        inverted|down)
+            mode=inverted
             xinput set-prop "ELAN Touchscreen" "Coordinate Transformation Matrix" \
                -1 0 1 \
                 0 -1 1 \
@@ -49,4 +38,7 @@ else
             ;;
     esac
 fi
+
+# Actually do the flip of the screen
+xrandr --output eDP1 --rotate $mode
 
