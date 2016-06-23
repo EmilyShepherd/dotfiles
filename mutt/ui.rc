@@ -7,8 +7,8 @@ set sort            = threads
 set sidebar_visible = yes
 set sidebar_width   = 20
 set to_chars        = " TGC<L"
-set status_format   = "/home/emily/.dotfiles/sbin/formats status '%f' '$nm_default_uri?query='|"
-set index_format    = "`/home/emily/.dotfiles/sbin/formats index`"
+set status_format   = "/home/emily/.dotfiles/sbin/mail/formats status '%f' '$nm_default_uri?query='|"
+set index_format    = "`/home/emily/.dotfiles/sbin/mail/formats index`"
 
 # General Text Colours
 color normal	 		black		  white

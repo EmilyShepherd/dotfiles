@@ -7,5 +7,5 @@
 REGEXP (((http|https|ftp|gopher)|mailto)[.:][^ >"\t]*|www\.[-a-z0-9.]+)[^ .,;\t>">\):]
 
 # Run it through a URL handler
-COMMAND ~/.dotfiles/sbin/url_handler %s
+COMMAND ~/.dotfiles/sbin/mail/url_handler %s
 
