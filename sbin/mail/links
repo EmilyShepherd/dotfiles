@@ -24,8 +24,8 @@ do
     echo $url >> $list
 done
 
-dialog --inputmenu "Choose Email" \
-    200 200 200 \
+dialog --no-shadow --inputmenu "Choose link to open" \
+    200 250 200 \
     $(sort -u $list | awk '{printf("%010d %s\n", NR, $0)}') 2> $temp
 
 if test $? -eq 1
