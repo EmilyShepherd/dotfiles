@@ -26,7 +26,7 @@ done
 
 dialog --no-shadow --inputmenu "Choose link to open" \
     200 250 200 \
-    $(sort -u $list | awk '{printf("%010d %s\n", NR, $0)}') 2> $temp
+    $(sort -u $list | awk '{printf("%d %s\n", NR, $0)}') 2> $temp
 
 if test $? -eq 1
 then
