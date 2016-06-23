@@ -24,9 +24,13 @@ do
     echo $url >> $list
 done
 
+list2=$(mktemp)
+
+sort -u $list | awk '{printf("%d %s\n", NR, $0)}' > $list2
+
 dialog --no-shadow --inputmenu "Choose link to open" \
     200 250 200 \
-    $(sort -u $list | awk '{printf("%d %s\n", NR, $0)}') 2> $temp
+    $(cat $list2) 2> $temp
 
 if test $? -eq 1
 then
@@ -38,10 +42,10 @@ then
     id=$(cat $temp | cut -f1,2 -d' ' --complement)
 else
     id=$(cat $temp | cut -f1 -d' ')
-    id=$(cat $list | grep "^$id " | cut -f1 -d' ' --complement)
+    id=$(cat $list2 | grep "^$id " | cut -f1 -d' ' --complement)
 fi
 
-rm $temp $list
+rm $temp $list $list2
 
 xdg-open $id
 
