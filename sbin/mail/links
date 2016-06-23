@@ -14,6 +14,11 @@ done
 
 dialog --inputmenu "Choose Email" 200 200 200 $(cat $list) 2> $temp
 
+if test $? -eq 1
+then
+    exit 0
+fi
+
 if test "$(cat $temp | cut -f1 -d' ')" == "RENAMED"
 then
     id=$(cat $temp | cut -f1,2 -d' ' --complement)
