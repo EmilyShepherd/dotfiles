@@ -1,0 +1,28 @@
+#!/bin/sh
+
+regex='((http|https|ftp|gopher|mailto)[.:][^ >"\t]*|www\.[-a-z0-9.]+)[^ .,;\t>">\):]'
+i=0
+list=$(mktemp)
+temp=$(mktemp)
+
+for url in $(grep -oP "$regex")
+do
+    i=$(expr $i + 1)
+
+    echo "$i $url" >> $list
+done
+
+dialog --inputmenu "Choose Email" 200 200 200 $(cat $list) 2> $temp
+
+if test "$(cat $temp | cut -f1 -d' ')" == "RENAMED"
+then
+    id=$(cat $temp | cut -f1,2 -d' ' --complement)
+else
+    id=$(cat $temp | cut -f1 -d' ')
+    id=$(cat $list | grep "^$id " | cut -f1 -d' ' --complement)
+fi
+
+rm $temp $list
+
+xdg-open $id
+

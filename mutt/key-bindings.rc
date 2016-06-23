@@ -18,3 +18,8 @@ macro attach 'V' "<pipe-entry>cat >/tmp/mail.html && chromium /tmp/mail.html && 
 macro pager 'V' "v<search>text/html<enter>V"
 
 macro index,pager = "|cat >/tmp/mail && ~/.dotfiles/sbin/mail/add_rule /tmp/mail && rm /tmp/mail\n<modify-labels>-to-closed-new -to-closed-bad +to-closed\n"
+
+macro index,pager \cb ":set pipe_decode=yes\n\
+    |~/.dotfiles/sbin/mail/links\n\
+    :unset pipe_decode\n" \
+    "View URLs"
