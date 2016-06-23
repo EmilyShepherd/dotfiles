@@ -16,6 +16,7 @@ xrandr --output eDP1 --rotate $mode
 if  test "$mode" == "normal"
 then
     xinput enable "AT Translated Set 2 keyboard"
+    xinput enable "SynPS/2 Synaptics TouchPad"
     killall onboard
  
     xinput set-prop "ELAN Touchscreen" "Coordinate Transformation Matrix" \
@@ -24,6 +25,7 @@ then
         0 0 1
 else
     xinput disable "AT Translated Set 2 keyboard"
+    xinput disable "SynPS/2 Synaptics TouchPad"
     onboard &
 
     case "$mode" in
