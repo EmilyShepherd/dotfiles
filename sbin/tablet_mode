@@ -4,7 +4,9 @@ if test "$1" == "on"
 then
    xinput disable "SynPS/2 Synaptics TouchPad"
    xinput disable "AT Translated Set 2 keyboard"
+   onboard
 else
    xinput enable "SynPS/2 Synaptics TouchPad"
    xinput enable "AT Translated Set 2 keyboard"
+   killall onboard
 fi

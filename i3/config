@@ -216,6 +216,7 @@ mode $screen
 
 # Tablet mode has simplified key bindings
 set $tablet_mode "Tablet Mode"
+bindsym $mod+Shift+t exec ~/.dotfiles/sbin/tablet_mode on, mode $tablet_mode
 mode $tablet_mode
 {
     bindsym $mod+Left move left
@@ -223,7 +224,7 @@ mode $tablet_mode
     bindsym $mod+Up move up
     bindsym $mod+Right move right
 
-    bindsym $mod+t mode $tablet
+    bindsym $mod+t exec ~/.dotfiles/sbin/tablet_mode off, mode "default"
 }
 
 
