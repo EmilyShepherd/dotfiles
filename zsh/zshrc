@@ -31,7 +31,28 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
 
-# The default behavior for delete is weird
+# Dumb functions which zle apparently needs
+function zle-line-init()
+{
+	echoti smkx
+}
+
+function zle-line-finish()
+{
+	echoti rmkx
+}
+
+autoload -U up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+zle -N zle-line-init
+zle -N zle-line-finish
+
+# History that doesn't suck
+bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
+bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
+
+# The default behaviour of delete is weird
 bindkey "${terminfo[kdch1]}" delete-char
 
 
