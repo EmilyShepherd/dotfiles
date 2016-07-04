@@ -13,7 +13,7 @@ alias p='ps aux | grep'
 
 # Oh My Zsh stuff 
 export ZSH=/home/emily/.oh-my-zsh
-ZSH_THEME="agnoster"
+ZSH_THEME="jispwoso"
 CASE_SENSITIVE="true"
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
