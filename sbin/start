@@ -10,3 +10,11 @@ then
     exit 1
 fi
 
+# Mount the connman settings
+# As these contain wifi passwords etc, these are stored in my encrypted
+# ~/Private/ directory rather than in plaintext.
+mount /var/lib/connman
+
+# Now that connman has its settings, its safe to the daemon
+sudo connmand
+
