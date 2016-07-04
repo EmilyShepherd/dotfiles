@@ -16,3 +16,4 @@ let use_mutt_sidebar=1
 
 autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 autocmd FileType mail set tw=72 fo+=taw
+autocmd FileType html set tabstop=2 softtabstop=2 shiftwidth=2
