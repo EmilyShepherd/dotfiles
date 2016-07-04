@@ -1,0 +1,74 @@
+#!/bin/zsh
+
+# Annoying hack to Start X server because SystemD is a giant pain
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx
+
+# Exports
+# ---------------------------------------------------------------------
+
+export PATH="/bin:/bin/vendor_perl:/bin/core_perl"
+
+export EDITOR=/bin/vim
+export PAGER="less"
+export LESS="-R"
+
+
+# Using ZSH
+# ---------------------------------------------------------------------
+
+# General
+setopt long_list_jobs
+setopt interactivecomments
+setopt multios
+
+# Directory Changing
+setopt auto_cd
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushdminus
+
+# The default behavior for delete is weird
+bindkey "${terminfo[kdch1]}" delete-char
+
+
+# History
+# ---------------------------------------------------------------------
+
+# Setup History
+setopt append_history
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_verify
+
+# I have multiple terminals open at the same time, so sharing those
+# commands is helpful
+setopt share_history
+
+# History variables
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+
+
+# Aliases
+# ---------------------------------------------------------------------
+
+# Handy Shortcuts
+alias c='git commit -S -m'
+alias p='ps aux | grep'
+alias l='ls -lah'
+
+# Run commands with colours by default
+alias grep="grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}"
+alias ls='ls --color=tty'
+
+# Includes
+# ---------------------------------------------------------------------
+source ~/.dotfiles/zsh/completion.zsh
+source ~/.dotfiles/zsh/termsupport.zsh
+source ~/.dotfiles/zsh/prompt.zsh
+
+autoload -U compinit
+compinit -i
