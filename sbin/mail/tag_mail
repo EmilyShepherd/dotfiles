@@ -56,7 +56,7 @@ then
 fi
 
 # Catch all the messages I have sent
-notmuch tag -$tag +sent -- folder:Sent tag:new
+notmuch tag -$tag +sent -- folder:Sent tag:$tag
 
 # Google and Yahoo don't bounce me for no reason, so if I get a bounce
 # from them I don't need to worry
