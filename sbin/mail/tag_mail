@@ -50,6 +50,10 @@ progress()
     echo -ne "Running: [$i / $file_count]\r"
 }
 
+# Create a run file and notify the i3blocks widget that we've started
+touch /tmp/tag_mail_running
+pkill -RTMIN+1 i3blocks
+
 if [[ "$run_new" == y ]]
 then
     notmuch new
@@ -165,9 +169,18 @@ do
     fi
 done
 
-# We're done, refresh the menubar
 if [[ "$inbox" == y ]]
 then
     notmuch tag -$tag -- tag:$tag
 fi
+
+# We're done, refresh the menubar
 pkill -RTMIN+1 i3blocks
+
+# After 5 seconds we can delete the run file and refresh the menu again
+# (We wait for this time so there's a chance a human might actually see
+# it, otherwise the risk is that it'll never be seen)
+sleep 5
+rm /tmp/tag_mail_running
+pkill -RTMIN+1 i3blocks
+

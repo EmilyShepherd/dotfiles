@@ -1,3 +1,17 @@
 #!/bin/sh
 
-echo " $(notmuch count tag:unread and tag:inbox)"
+# If the tag program is running, change the icon.
+# This is useful as offlineimap dies sometimes, so it's nice to have an
+# indicator when it has successfully synced and called the tag_mail
+# script
+if test -e /tmp/tag_mail_running
+then
+    echo -ne ""
+
+# This is the default icon to show
+else
+    echo -ne ""
+fi
+
+# Finally output the unread count of the inbox
+echo " $(notmuch count tag:unread and tag:inbox)"
