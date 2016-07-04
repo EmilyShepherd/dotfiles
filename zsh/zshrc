@@ -6,9 +6,13 @@
 # Exports
 # ---------------------------------------------------------------------
 
+# General Path
 export PATH="/bin:/bin/vendor_perl:/bin/core_perl"
 
+# Vim stuff
 export EDITOR=/bin/vim
+
+# Less stuff
 export PAGER="less"
 export LESS="-R"
 
