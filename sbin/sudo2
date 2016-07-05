@@ -1,0 +1,22 @@
+#!/bin/sh
+
+if ! test $UID -eq 0
+then
+    sudo $0 "$@"
+
+    exit $?
+fi
+
+case $1 in
+    connmand)
+        shift
+        connmand "$@"
+        ;;
+    pkg-db)
+        pacman -Sy ;;
+    mirrorlist)
+        test -e /etc/pacman.d/mirrorlist.new && \
+            sed -r '/# (Worldwide|United Kingdom)/,/^$/s/^#([^#])/\1/' \
+            /etc/pacman.d/mirrorlist.new > /etc/pacman.d/mirrorlist
+        rm /etc/pacman.d/mirrorlist.new
+esac
