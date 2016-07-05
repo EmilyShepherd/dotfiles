@@ -112,6 +112,9 @@ SAVEHIST=10000
 
 # Handy Shortcuts
 alias c='git commit -S -m'
+alias go='git push origin'
+alias gh='git push github'
+alias pp='git push origin && git push github'
 alias p='ps aux | grep'
 alias l='ls -lah'
 
