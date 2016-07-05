@@ -16,5 +16,5 @@ fi
 mount /var/lib/connman
 
 # Now that connman has its settings, its safe to the daemon
-sudo connmand
+sudo2 connmand
 
