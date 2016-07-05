@@ -15,8 +15,9 @@ case $1 in
     pkg-db)
         pacman -Sy ;;
     mirrorlist)
-        test -e /etc/pacman.d/mirrorlist.new && \
-            sed -r '/# (Worldwide|United Kingdom)/,/^$/s/^#([^#])/\1/' \
-            /etc/pacman.d/mirrorlist.new > /etc/pacman.d/mirrorlist
-        rm /etc/pacman.d/mirrorlist.new
+        cd /etc/pacman.d
+        test -e mirrorlist.new && \
+        sed -r '/# (Worldwide|United Kingdom)/,/^$/s/^#([^#])/\1/' \
+            mirrorlist.new > mirrorlist && \
+        rm mirrorlist.new
 esac
