@@ -9,6 +9,9 @@
 # General Path
 export PATH="/bin:/bin/vendor_perl:/bin/core_perl"
 
+# Let i3-sensible-terminal know which emulator we prefer
+export TERMINAL="/bin/xfce4-terminal"
+
 # Vim stuff
 export EDITOR=/bin/vim
 
