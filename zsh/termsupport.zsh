@@ -6,7 +6,7 @@ function title
 # Runs before showing the prompt
 function precmd
 {
-  title $PWD
+  title ${PWD/~/\~}
 }
 
 # Runs before executing the command
