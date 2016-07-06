@@ -26,7 +26,7 @@ fi
 
 
 # Annoying hack to Start X server because SystemD is a giant pain
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && startx
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec xinit /bin/i3 -- /bin/X vt1
 
 
 # Exports
