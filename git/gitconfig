@@ -1,9 +1,13 @@
-# This is Git's per-user configuration file.
+
+# Hi, I'm Emily
 [user]
-# Please adapt and uncomment the following lines:
 	name = Emily Shepherd
 	email = emily@emilyshepherd.me
+
+#
 [push]
 	default = simple
+
+#
 [core]
 	excludesfile = ~/.gitignore

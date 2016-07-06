@@ -17,15 +17,24 @@ set record   = +Sent/
 # SMTP
 set smtp_url = "smtp://emily@emilyshepherd.me:587/"
 
+# Don't wait for the user to press a key after executing an external
+# command
 set wait_key        = no
+
+# This just looks better
 set text_flowed     = yes
-set alias_file      = $my_priv/aliases
+
+# Don't ask me who to send replies to
 set fast_reply      = yes
+
+# General setup
 set editor          = /bin/vim
+set alias_file      = $my_priv/aliases
 
 
 # Source extra files
 # ---------------------------------------------------------------------
+
 source $my_conf/notmuch.rc
 source $my_conf/key-bindings.rc
 source $my_conf/ui.rc

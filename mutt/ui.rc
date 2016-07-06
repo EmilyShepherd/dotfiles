@@ -2,6 +2,7 @@
 
 # Mutt
 # ---------------------------------------------------------------------
+
 set menu_scroll     = yes   # scroll in menus
 set sort            = threads
 set sidebar_visible = yes
@@ -33,6 +34,7 @@ color sidebar_new 		brightblack   white
 
 # Email
 # ---------------------------------------------------------------------
+
 unset markers
 set pager_index_lines = 20  # number of index lines to show
 set pager_context     = 3   # number of context lines to show

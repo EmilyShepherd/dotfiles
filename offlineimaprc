@@ -1,30 +1,50 @@
+
+# General Setup
+# ---------------------------------------------------------------------
 [general]
-# List of accounts to be synced, separated by a comma.
+
 accounts = main
 pythonfile = ~/.dotfiles/sbin/mail/offlineimap.py
 
+
+# Main
+# ---------------------------------------------------------------------
 [Account main]
-# Identifier for the local repository; e.g. the maildir to be synced via IMAP.
+
+# Local and Remote locations
 localrepository = main-local
-# Identifier for the remote repository; i.e. the actual IMAP, usually non-local.
 remoterepository = main-remote
-# Status cache. Default is plain, which eventually becomes huge and slow.
+
+# Lets be quick
 status_backend = sqlite
+
+# Tag messages with notmuch after a sync
 postsynchook = ~/.dotfiles/sbin/mail/tag_mail
+
+# Do a sync of this account every twenty minutes
 autorefresh = 20
 
+
+# Local Settings
+# ---------------------------------------------------------------------
 [Repository main-local]
-# Currently, offlineimap only supports maildir and IMAP for local repositories.
+
+# Storage settings
 type = Maildir
-# Where should the mail be placed?
 localfolders = ~/Private/mail
 
+
+# Remote Settings
+# ---------------------------------------------------------------------
 [Repository main-remote]
-# Remote repos can be IMAP or Gmail, the latter being a preconfigured IMAP.
+
+# Host, username, password, etc...
 type = IMAP
 remotehost = emilyshepherd.me
 remoteuser = emily
-sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 remotepasseval = get_pass()
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+# Setup IDLE so I can get live updates
 idlefolders = ['INBOX']
 holdconnectionopen = yes
