@@ -19,7 +19,7 @@ then
 else
     . ~/.ssh_env > /dev/null
 
-    if ! ps -ef | grep $SSH_AGENT_PID | grep ssh-agent$ > /dev/null
+    if ! ps -ef | grep -q "$SSH_AGENT_PID.*ssh-agent -t 600$"
 	then
         start_agent
 	fi
