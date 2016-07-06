@@ -7,7 +7,7 @@
 # home
 function start_agent
 {
-    ssh-agent > ~/.ssh_env
+    ssh-agent -t 600 > ~/.ssh_env
     chmod 600 ~/.ssh_env
     source ~/.ssh_env > /dev/null
 }
