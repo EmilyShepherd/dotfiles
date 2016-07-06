@@ -10,7 +10,7 @@ set softtabstop=4
 set shiftwidth=4
 set shiftround
 set expandtab
-set colorcolumn=72
+set colorcolumn=73
 
 let use_mutt_sidebar=1
 
