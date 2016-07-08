@@ -9,9 +9,10 @@ bind pager,index <S-Right> sidebar-open
 bind pager,index S vfolder-from-query
 
 # Archive
-macro pager,index A \
-    "<modify-labels-then-hide>-inbox +archive\n" \
+macro index A \
+    ":set delete=no\n<modify-labels-then-hide>-inbox +archive\n<sync-mailbox>:set delete=ask-yes\n" \
     "Archive Email"
+macro pager A "qA" "Archive Mail"
 
 # View HTML in Chrome
 macro attach 'V' "<pipe-entry>cat >/tmp/mail.html && chromium /tmp/mail.html && rm /tmp/mail.html<enter>"
