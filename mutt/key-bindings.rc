@@ -6,16 +6,18 @@ bind pager,index <S-Down> sidebar-next
 bind pager,index <S-Right> sidebar-open
 
 # Ignore Archived messages when scrolling
-macro index,pager <Up> \
+macro index <Up> \
     ":set wrap_search=no\
     \n<search-reverse>!~D !~Y archive\
     \n:set wrap_search=yes\n" \
     "Go Up"
-macro index,pager <Down> \
+macro pager <Up> \ "q<Up><enter>" "Go Up"
+macro index <Down> \
     ":set wrap_search=no\
     \n<search>!~D !~Y archive\
     \n:set wrap_search=yes\n" \
     "Go Down"
+macro pager <Down> \ "q<Down><enter>" "Go Down"
 
 # Search
 bind pager,index S vfolder-from-query
