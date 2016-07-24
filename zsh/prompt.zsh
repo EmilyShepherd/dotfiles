@@ -28,6 +28,6 @@ git_rprompt ()
 autoload -U colors && colors
 setopt prompt_subst
 
-PROMPT=$'%{$fg[green]%}%n: %{$fg[blue]%}%~ $(git_prompt)
+PROMPT=$'%{$fg[green]%}%n@%m: %{$fg[blue]%}%~ $(git_prompt)
 %(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})➜ %{$reset_color%} '
 RPROMPT='$(git_rprompt)'
