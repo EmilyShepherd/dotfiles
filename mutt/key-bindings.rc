@@ -5,25 +5,11 @@ bind pager,index <S-Up> sidebar-prev
 bind pager,index <S-Down> sidebar-next
 bind pager,index <S-Right> sidebar-open
 
-# Ignore Archived messages when scrolling
-macro index <Up> \
-    ":set wrap_search=no\
-    \n<search-reverse>!~D !~Y archive\
-    \n:set wrap_search=yes\n" \
-    "Go Up"
-macro pager <Up> \ "q<Up><enter>" "Go Up"
-macro index <Down> \
-    ":set wrap_search=no\
-    \n<search>!~D !~Y archive\
-    \n:set wrap_search=yes\n" \
-    "Go Down"
-macro pager <Down> \ "q<Down><enter>" "Go Down"
-
 # Search
 bind pager,index S vfolder-from-query
 
 # Archive
-macro index A "<modify-labels>-inbox +archive\n" \
+macro index A "<modify-labels-then-hide>-inbox +archive\n" \
     "Archive Email"
 macro pager A "qA" "Archive Mail"
 
