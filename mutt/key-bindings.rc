@@ -31,3 +31,7 @@ macro index,pager \cb ":set pipe_decode=yes\n\
 |~/.dotfiles/sbin/mail/links\n\
 :unset pipe_decode\n" \
     "View URLs"
+
+# Syncronise mailbox
+macro index,pager "$" "<sync-mailbox>!pkill -RTMIN+1 i3blocks &\n" \
+    "Sync Mailbox"
