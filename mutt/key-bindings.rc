@@ -14,18 +14,20 @@ macro index A "<modify-labels-then-hide>-inbox +archive\n" \
 macro pager A "qA" "Archive Mail"
 
 # View HTML in Chrome
-macro attach 'V' "<pipe-entry>cat >/tmp/mail.html && chromium /tmp/mail.html && rm /tmp/mail.html<enter>"
+macro attach 'V' "|cat >/tmp/mail.html && \
+chromium /tmp/mail.html && \
+rm /tmp/mail.html\n"
 macro pager 'V' "v<search>text/html<enter>V"
 
 # Add sender to list of allowed
 macro index,pager = "|cat >/tmp/mail && \
-    ~/.dotfiles/sbin/mail/add_rule /tmp/mail && \
-    rm /tmp/mail\n\
-    <modify-labels>-to-closed-new -to-closed-bad +to-closed\n" \
+~/.dotfiles/sbin/mail/add_rule /tmp/mail && \
+rm /tmp/mail\n\
+<modify-labels>-to-closed-new -to-closed-bad +to-closed\n" \
     "Allow Email Address"
 
 # Show the URL selection window
 macro index,pager \cb ":set pipe_decode=yes\n\
-    |~/.dotfiles/sbin/mail/links\n\
-    :unset pipe_decode\n" \
+|~/.dotfiles/sbin/mail/links\n\
+:unset pipe_decode\n" \
     "View URLs"
