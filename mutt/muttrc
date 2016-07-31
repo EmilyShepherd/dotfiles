@@ -27,6 +27,9 @@ set text_flowed     = yes
 # Don't ask me who to send replies to
 set fast_reply      = yes
 
+# Let's have a nice signature
+set signature       = $my_conf/signature
+
 # General setup
 set editor          = /bin/vim
 set alias_file      = $my_priv/aliases
