@@ -16,8 +16,8 @@ case $1 in
         pacman -Sy ;;
     mirrorlist)
         cd /etc/pacman.d
-        test -e mirrorlist.new && \
+        test -e mirrorlist.pacnew && \
         sed -r '/# (Worldwide|United Kingdom)/,/^$/s/^#([^#])/\1/' \
-            mirrorlist.new > mirrorlist && \
-        rm mirrorlist.new
+            mirrorlist.pacnew > mirrorlist && \
+        rm mirrorlist.pacnew
 esac
