@@ -5,6 +5,7 @@
 
 set menu_scroll     = yes   # scroll in menus
 set sort            = threads
+set sort_aux        = last-date
 set strict_threads  = yes
 set sidebar_visible = yes
 set sidebar_width   = 20
