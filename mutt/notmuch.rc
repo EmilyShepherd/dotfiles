@@ -1,6 +1,8 @@
 # vim: set syntax=muttrc:
 
 set nm_default_uri    = "notmuch:///home/emily/Private/mail"
+set nm_record         = yes
+set nm_record_tags    = sent
 set virtual_spoolfile = yes
 set nm_hidden_tags    = "junk,inbox,unread,draft,flagged,passed,replied,attachment,sent,signed,to-closed,to-closed-new,to-closed-bad"
 
