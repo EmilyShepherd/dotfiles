@@ -1,0 +1,10 @@
+#!/bin/php
+<?php
+
+foreach (json_decode(file_get_contents('php://stdin')) as $mail)
+{
+    $subject = $mail->subject;
+    $from    = trim(explode('|', $mail->authors)[0]);
+
+    `notify-send "New Mail From: $from" "$subject"`;
+}
