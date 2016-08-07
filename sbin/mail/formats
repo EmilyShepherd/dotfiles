@@ -14,7 +14,8 @@ case $1 in
         echo -n '%<[m?%[%a %d]&'              # This Month. Eg: Mon 12
         echo -n '%<[y?%[%b %d]&'              # This Year.  Eg: Mar 23
         echo -n '%[%m/%y ]>>> '               # Other.      Eg: 12/16
-        echo -n '%-35.35L  %?g?[%g] ?%s'      # Author [tags] Subject
+        echo -n '%-35.35L  %s'                # Author [tags] Subject
+        echo -n '%> %?g?[%g]?'
         ;;
     status)
         echo -n ' -%r- '                      # Mailbox flag
