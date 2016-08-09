@@ -22,7 +22,7 @@ status_backend = sqlite
 postsynchook = ~/.dotfiles/sbin/mail/tag_mail
 
 # Do a sync of this account every twenty minutes
-autorefresh = 20
+autorefresh = 5
 
 
 # Local Settings
@@ -46,5 +46,5 @@ remotepasseval = get_pass()
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 
 # Setup IDLE so I can get live updates
-idlefolders = ['INBOX']
+idlefolders = ['INBOX', 'Notification', 'Private']
 holdconnectionopen = yes
