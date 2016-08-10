@@ -4,15 +4,15 @@ set nm_default_uri    = "notmuch:///home/emily/Private/mail"
 set nm_record         = yes
 set nm_record_tags    = sent
 set virtual_spoolfile = yes
-set nm_hidden_tags    = "junk,inbox,unread,draft,flagged,passed,replied,attachment,sent,signed,to-closed,to-closed-new,to-closed-bad"
+set nm_hidden_tags    = "inbox,unread,draft,flagged,passed,replied,attachment,signed"
 
 virtual-mailboxes \
     "INBOX"     "notmuch://?query=folder:INBOX" \
     "Unread"    "notmuch://?query=tag:unread" \
     "Starred"   "notmuch://?query=tag:*" \
-    "Private"   "notmuch://?query=tag:private" \
-    "Sent"      "notmuch://?query=tag:sent" \
-    "Junk"      "notmuch://?query=tag:junk" \
+    "Private"   "notmuch://?query=folder:Private" \
+    "Sent"      "notmuch://?query=folder:Sent" \
+    "Junk"      "notmuch://?query=folder:Junk" \
     "Archived"  "notmuch://?query=folder:Archive"
 
 # ------

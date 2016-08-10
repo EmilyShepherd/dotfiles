@@ -23,7 +23,7 @@ color tree 			 	black		  white
 
 # Index Text Colors
 color index      		brightblack   white ~N
-color index      		cyan          white '~D|~Y archive'
+color index      		cyan          white ~D
 color index      		white         cyan  ~T
 color index_tags 		magenta       white
 color indicator  		black         yellow
