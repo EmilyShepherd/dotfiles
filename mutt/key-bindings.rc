@@ -6,7 +6,7 @@ bind pager,index <S-Down> sidebar-next
 bind pager,index <S-Right> sidebar-open
 
 # Search
-bind pager,index S vfolder-from-query
+macro pager,index S "<vfolder-from-query>not:tag:private and " "Search"
 
 # Archive
 macro index A "s=Archive\ny" \
