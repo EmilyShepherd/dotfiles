@@ -7,13 +7,13 @@ set virtual_spoolfile = yes
 set nm_hidden_tags    = "junk,inbox,unread,draft,flagged,passed,replied,attachment,sent,signed,to-closed,to-closed-new,to-closed-bad"
 
 virtual-mailboxes \
-    "INBOX"     "notmuch://?query=tag:inbox" \
+    "INBOX"     "notmuch://?query=folder:INBOX" \
     "Unread"    "notmuch://?query=tag:unread" \
     "Starred"   "notmuch://?query=tag:*" \
     "Private"   "notmuch://?query=tag:private" \
     "Sent"      "notmuch://?query=tag:sent" \
     "Junk"      "notmuch://?query=tag:junk" \
-    "Archived"  "notmuch://?query=tag:archive"
+    "Archived"  "notmuch://?query=folder:Archive"
 
 # ------
 

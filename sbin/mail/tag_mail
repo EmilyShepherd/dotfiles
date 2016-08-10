@@ -5,6 +5,7 @@ notmuch tag -new +sent    -- tag:new folder:Sent
 notmuch tag -new +private -- tag:new folder:Private
 notmuch tag -new +junk    -- tag:new folder:Junk
 notmuch tag -new +bounces -- tag:new folder:Bounces
+notmuch tag -inbox +archive -- folder:Archive
 
 notmuch search --format=json tag:new | ~/.dotfiles/sbin/mail/new_popup
 notmuch tag -new +inbox -- tag:new

@@ -9,7 +9,7 @@ bind pager,index <S-Right> sidebar-open
 bind pager,index S vfolder-from-query
 
 # Archive
-macro index A "s=Archive\ny<modify-labels>-inbox +archive\n" \
+macro index A "s=Archive\ny" \
     "Archive Email"
 macro pager A "qA" "Archive Mail"
 
