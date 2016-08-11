@@ -13,7 +13,7 @@ case $1 in
         connmand "$@"
         ;;
     pkg-db)
-        pacman -Syuw ;;
+        yes | pacman -Syuw ;;
     mirrorlist)
         cd /etc/pacman.d
         test -e mirrorlist.pacnew && \
