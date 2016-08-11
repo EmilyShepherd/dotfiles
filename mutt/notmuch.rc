@@ -25,19 +25,12 @@ tag-transforms \
     "unread"        "" \
     "replied"       "↻" \
     "attachment"    "" \
-    "sent"          "➥" \
-    "spam"          "!" \
     "private"       ""
 
 # ------
 
 tag-formats \
-    "inbox"         "GI" \
     "unread"        "Gu" \
-    "sent"          "Gs" \
     "replied"       "Gr" \
-    "attachment"    "Ga" \
-    "to-closed-new" "Gn" \
-    "to-closed-bad" "Gb" \
-    "to-closed"     "Gc"
+    "attachment"    "Ga"
 
