@@ -1,0 +1,16 @@
+#!/bin/sh
+
+sudo2 pkg-db > /dev/null
+
+if ! pacman -Qu > /dev/null
+then
+    echo 0
+else
+    pacman -Qu | wc -l
+    
+    ret=$(dunstify "Updates are availiable" "$(pacman -Qu)" -A y,Update)
+    if test $ret == "y"
+    then
+        xfce4-terminal --drop-down -e "sudo pacman -Su"
+    fi
+fi
