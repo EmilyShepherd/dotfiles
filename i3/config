@@ -156,6 +156,13 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace $ws0
 
+# Make a floating video screen
+bindsym $mod+Shift+v \
+    floating enable, \
+    sticky enable, \
+    resize set 1300 px 1113 px, \
+    move position 2557 px 1000 px
+
 # Argh, here be dragons!
 # Reload the i3 config or the whole environment
 bindsym $mod+Shift+c reload
