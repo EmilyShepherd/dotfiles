@@ -252,4 +252,8 @@ exec --no-startup-id xrdb ~/.dotfiles/Xresources
 # Load up the multi-tilded setup of the main workspace
 exec --no-startup-id "i3-msg 'workspace $ws3; append_layout ~/.i3/ws3.json'"
 exec chromium
-exec chromium
+exec conky -d
+
+# Startup my mail client
+assign [title="Mutt"] workspace $ws2
+exec xfce4-terminal -T Mutt -H -x mutt
