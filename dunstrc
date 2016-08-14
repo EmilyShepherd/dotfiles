@@ -70,7 +70,7 @@
     history            = ctrl+grave
     
     # Context menu.
-    context            = ctrl+shift+period
+    context            = ctrl+period
 
 
 # Urgency Levels
