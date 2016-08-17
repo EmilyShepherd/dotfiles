@@ -14,9 +14,7 @@ macro index A "s=Archive\ny" \
 macro pager A "qA" "Archive Mail"
 
 # View HTML in Chrome
-macro attach 'V' "|cat >/tmp/mail.html && \
-chromium /tmp/mail.html && \
-rm /tmp/mail.html\n"
+macro attach 'V' "|cat >/tmp/mail.html && chromium /tmp/mail.html\n"
 macro pager 'V' "v<search>text/html<enter>V"
 
 # Show the URL selection window
