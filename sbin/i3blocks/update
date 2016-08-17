@@ -11,6 +11,7 @@ else
     ret=$(dunstify "Updates are availiable" "$(pacman -Qu)" -A y,Update)
     if test $ret == "y"
     then
-        xfce4-terminal --drop-down -e "sudo pacman -Su"
+        xfce4-terminal --drop-down -e \
+            "bash -c 'sudo pacman -Su; pkill -RTMIN+3 i3blocks'"
     fi
 fi
