@@ -18,3 +18,4 @@ mount /var/lib/connman
 # Now that connman has its settings, its safe to the daemon
 sudo2 connmand
 
+xfce4-terminal -T Mutt -x mutt

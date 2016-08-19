@@ -263,4 +263,3 @@ exec conky -d
 
 # Startup my mail client
 assign [title="Mutt"] workspace $ws2
-exec xfce4-terminal -T Mutt -H -x mutt
