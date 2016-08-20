@@ -33,9 +33,17 @@ is_ssh()
     fi
 }
 
+is_root()
+{
+    if test "$UID" -eq 0
+    then
+        echo -n "(ROOT) "
+    fi
+}
+
 autoload -U colors && colors
 setopt prompt_subst
 
 PROMPT=$'%{$fg[green]%}%n@%m: %{$fg[blue]%}%~ $(git_prompt)
-%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})$(is_ssh)➜ %{$reset_color%} '
+%(?:%{$fg_bold[green]%}:%{$fg_bold[red]%})$(is_root)$(is_ssh)➜ %{$reset_color%} '
 RPROMPT='$(git_rprompt)'
