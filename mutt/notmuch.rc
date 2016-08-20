@@ -11,7 +11,7 @@ virtual-mailboxes \
     "Unread"    "notmuch://?query=tag:unread" \
     "Starred"   "notmuch://?query=tag:*" \
     "Private"   "notmuch://?query=folder:Private" \
-    "Sent"      "notmuch://?query=folder:Sent" \
+    "Sent"      "notmuch://?query=tag:sent" \
     "Junk"      "notmuch://?query=folder:Junk" \
     "Archived"  "notmuch://?query=folder:Archive"
 
