@@ -121,6 +121,10 @@ alias l='ls -lah'
 alias grep="grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}"
 alias ls='ls --color=tty'
 
+# Shortcut to become root
+alias root='sudo SSH_CLIENT=$SSH_CLIENT su'
+
+
 # Includes
 # ---------------------------------------------------------------------
 source ~/.dotfiles/zsh/completion.zsh
