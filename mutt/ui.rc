@@ -8,7 +8,7 @@ set sort            = threads
 set sort_aux        = last-date
 set strict_threads  = yes
 set sidebar_visible = yes
-set sidebar_width   = 20
+set sidebar_width   = 25
 set to_chars        = " TGC<L"
 set status_format   = "/home/emily/.dotfiles/sbin/mail/formats status '%f' '$nm_default_uri?query='|"
 set index_format    = "`/home/emily/.dotfiles/sbin/mail/formats index`"
@@ -42,7 +42,7 @@ set pager_index_lines = 20  # number of index lines to show
 set pager_context     = 3   # number of context lines to show
 set pager_stop        = yes # don't go to next message automatically
 set tilde             = yes # show tildes like in vim
-set reflow_wrap       = -21 # Account for sidebar width issue
+set reflow_wrap       = -26 # Account for sidebar width issue
 set wrap              = -1  # Give a slight margin at the edge of screen
 
 color tilde      		green         white
