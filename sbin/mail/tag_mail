@@ -3,9 +3,10 @@
 notmuch new
 notmuch tag -new +private -- tag:new folder:Private
 notmuch tag -new +bounces -- tag:new folder:Bounces
+notmuch tag -new +sent    -- tag:new folder:Sent
 
 # Do not pop these up
-notmuch tag -new -- tag:new and \( folder:Sent or folder:Junk \)
+notmuch tag -new -- tag:new and folder:Junk
 
 notmuch search --format=json tag:new | ~/.dotfiles/sbin/mail/new_popup
 notmuch tag -new +inbox -- tag:new
