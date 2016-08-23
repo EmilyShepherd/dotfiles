@@ -1,0 +1,49 @@
+# Mailing list automagic
+# Adapted From https://github.com/hrw/dotfiles-mailfilter
+#
+
+if (/^List-Id:.*<([0-9A-Za-z_\-]+)\.(list[sy]\.)?(.*)>/)
+{
+    LISTNAME=tolower($MATCH1)
+
+    # get rid of /.ML..
+    if ($LISTNAME)
+    {
+        # do not create toplevel folder for each github project
+        if (/^List-Id:.*github.com>/)
+        {
+            LISTDOMAIN="github-com"
+        }
+        else
+        {
+            # convert server name from dots to hyphens
+            foreach ($MATCH3) =~ /[^.]+/
+            { 
+                LISTDOMAIN="${LISTDOMAIN}-${MATCH}"
+            }
+            LISTDOMAIN=substr($LISTDOMAIN, 1)
+        }
+
+        DESTDIR="$DEFAULT/.ML.$LISTDOMAIN.$LISTNAME"
+        DESTDOMAINDIR="$DEFAULT/.ML.$LISTDOMAIN"
+
+        `test -d $DESTDIR`
+        if ($RETURNCODE == 1)
+        {
+            `test -d $DESTDOMAINDIR`
+            if ($RETURNCODE == 1)
+            {
+                `maildirmake -f ML.$LISTDOMAIN  $DEFAULT`
+                `echo ML.$LISTDOMAIN >> $DEFAULT/subscriptions`
+            }
+
+            `maildirmake -f ML.$LISTDOMAIN.$LISTNAME $DEFAULT`
+            `echo ML.$LISTDOMAIN.$LISTNAME >> $DEFAULT/subscriptions`
+            to $DESTDIR
+        }
+        else
+        {
+            to $DESTDIR
+        }
+    }
+}

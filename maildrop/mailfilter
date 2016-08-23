@@ -1,0 +1,27 @@
+
+# First, throw away spam
+if (/^X-Spam-Flag: *YES$/)
+{
+    to $DEFAULT/.Junk/
+}
+
+# Next handle bounces from Spa Staff (I get a bunch)
+if (hasaddr "no-reply@spastaff.com")
+{
+    # If they are from one of my mail servers, they are a bounce that
+    # I'll care about
+    if (/^From:.*@(sendgrid.net|sweeb.net|.*\.authsmtp.com)/)
+    {
+        to $DEFAULT/.Bounces/
+    }
+    # If they are from another server, it's normally an auto reply or
+    # something similarly uninteresting
+    else
+    {
+        to $DEFAULT/.Junk/
+    }
+}
+
+include ~/.dotfiles/mailfilter/ml-automagic
+
+to $DEFAULT
