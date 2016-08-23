@@ -22,6 +22,6 @@ if (hasaddr "no-reply@spastaff.com")
     }
 }
 
-include ~/.dotfiles/mailfilter/ml-automagic
+include ~/.dotfiles/maildrop/ml-automagic
 
 to $DEFAULT
