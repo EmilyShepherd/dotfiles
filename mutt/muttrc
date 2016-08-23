@@ -44,5 +44,6 @@ source $my_conf/ui.rc
 source $my_conf/gpg.rc
 source $my_priv/imap
 source $my_priv/encrypt_list.rc
+source $my_priv/sidebar_list.rc
 source $alias_file
 

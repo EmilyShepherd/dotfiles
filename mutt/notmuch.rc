@@ -6,18 +6,6 @@ set nm_record_tags    = sent
 set virtual_spoolfile = yes
 set nm_hidden_tags    = "inbox,unread,draft,flagged,passed,replied,attachment,signed"
 
-virtual-mailboxes \
-    "INBOX"                   "notmuch://?query=folder:INBOX" \
-    "Starred"                 "notmuch://?query=tag:*" \
-    "Unread"                  "notmuch://?query=tag:unread" \
-    "IETF Announce"           "notmuch://?query=folder:IETF.announce" \
-    "IETF Discussion"         "notmuch://?query=folder:IETF.discussion" \
-    "IETF Internet Drafts"    "notmuch://?query=folder:IETF.ID" \
-    "Private"                 "notmuch://?query=folder:Private" \
-    "Sent"                    "notmuch://?query=tag:sent" \
-    "Junk"                    "notmuch://?query=folder:Junk" \
-    "Archived"                "notmuch://?query=folder:Archive"
-
 # ------
 
 tag-transforms \

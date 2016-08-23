@@ -1,0 +1,29 @@
+#!/bin/sh
+
+cat <<EOF
+virtual-mailboxes \\
+    "INBOX" "notmuch://?query=folder:INBOX" \\
+    "Starred" "notmuch://?query=tag:*" \\
+    "Unread" "notmuch://?query=tag:unread" \\
+EOF
+
+for domain in $(ls ~/Private/mail | grep -P 'ML\.[^.]+$')
+do
+    domainlist=${domain:3}
+    domainlist=${domainlist//-/.}
+
+    echo "\"$domainlist\" \"$domainlist\" \\"
+
+    for list in $(ls ~/Private/mail | grep -P "$domain\.")
+    do
+        name=$(echo $list | sed -r 's/ML\.[^.]+\.//')
+        echo "\"  $name\" \"notmuch://?query=folder:$list\" \\"
+    done
+done
+
+cat <<EOF
+    "Private" "notmuch://?query=folder:Private" \\
+    "Sent" "notmuch://?query=tag:sent" \\
+    "Junk" "notmuch://?query=folder:Junk" \\
+    "Archived" "notmuch://?query=folder:Archive"
+EOF
