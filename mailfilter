@@ -60,12 +60,9 @@ if (/^List-Id:.*<([0-9A-Za-z_\-]+)\.(list[sy]\.)?(.*)>/)
             }
 
             `maildirmake -f ML.$LISTDOMAIN.$LISTNAME $DEFAULT`
-            to $DESTDIR
         }
-        else
-        {
-            to $DESTDIR
-        }
+        
+        to $DESTDIR
     }
 }
 
