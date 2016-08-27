@@ -29,40 +29,36 @@ if (/^List-Id:.*<([0-9A-Za-z_\-]+)\.(list[sy]\.)?(.*)>/)
 {
     LISTNAME=tolower($MATCH1)
 
-    # get rid of /.ML..
-    if ($LISTNAME)
+    # do not create toplevel folder for each github project
+    if (/^List-Id:.*github.com>/)
     {
-        # do not create toplevel folder for each github project
-        if (/^List-Id:.*github.com>/)
-        {
-            LISTDOMAIN="github-com"
+        LISTDOMAIN="github-com"
+    }
+    else
+    {
+        # convert server name from dots to hyphens
+        foreach ($MATCH3) =~ /[^.]+/
+        { 
+            LISTDOMAIN="${LISTDOMAIN}-${MATCH}"
         }
-        else
-        {
-            # convert server name from dots to hyphens
-            foreach ($MATCH3) =~ /[^.]+/
-            { 
-                LISTDOMAIN="${LISTDOMAIN}-${MATCH}"
-            }
-            LISTDOMAIN=substr($LISTDOMAIN, 1)
-        }
+        LISTDOMAIN=substr($LISTDOMAIN, 1)
+    }
 
-        DESTDIR="ML.$LISTDOMAIN.$LISTNAME"
+    DESTDIR="ML.$LISTDOMAIN.$LISTNAME"
 
-        `test -d $DEFAULT/.$DESTDIR`
+    `test -d $DEFAULT/.$DESTDIR`
+    if ($RETURNCODE == 1)
+    {
+        `test -d $DEFAULT/.ML.$LISTDOMAIN`
         if ($RETURNCODE == 1)
         {
-            `test -d $DEFAULT/.ML.$LISTDOMAIN`
-            if ($RETURNCODE == 1)
-            {
-                `maildirmake -f ML.$LISTDOMAIN $DEFAULT`
-            }
-
-            `maildirmake -f $DESTDIR $DEFAULT`
+            `maildirmake -f ML.$LISTDOMAIN $DEFAULT`
         }
-        
-        to "$DEFAULT/.$DESTDIR"
+
+        `maildirmake -f $DESTDIR $DEFAULT`
     }
+    
+    to "$DEFAULT/.$DESTDIR"
 }
 
 to $DEFAULT
