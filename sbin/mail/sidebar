@@ -23,7 +23,7 @@ done
 
 cat <<EOF
     "Private" "notmuch://?query=folder:Private" \\
-    "Sent" "notmuch://?query=tag:sent" \\
+    "Sent" "notmuch://?query=folder:Sent" \\
     "Junk" "notmuch://?query=folder:Junk" \\
     "Archived" "notmuch://?query=folder:Archive"
 EOF
