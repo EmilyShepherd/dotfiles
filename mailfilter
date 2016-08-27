@@ -10,7 +10,7 @@ if (hasaddr "no-reply@spastaff.com")
 {
     # If they are from one of my mail servers, they are a bounce that
     # I'll care about
-    if (/^From:.*@(sendgrid.net|sweeb.net|.*\.authsmtp.com)/)
+    if (/^From:.*@(sendgrid\.net|sweeb\.net|.*\.authsmtp.com)/)
     {
         to $DEFAULT/.Bounces/
     }
