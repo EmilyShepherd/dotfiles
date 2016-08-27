@@ -1,6 +1,8 @@
 #!/bin/sh
 
-notmuch new
+# Run notmuch, ignoring error messages about mbsync's state files
+notmuch new 2>&1 | grep -vP '\.(uid|mbsync)' >&2
+
 notmuch tag -new +private -- tag:new folder:Private
 notmuch tag -new +bounces -- tag:new folder:Bounces
 notmuch tag -new +sent    -- tag:new folder:Sent
