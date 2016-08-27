@@ -7,18 +7,21 @@ virtual-mailboxes \\
     "Unread" "notmuch://?query=tag:unread" \\
 EOF
 
-for domain in $(ls ~/Private/mail | grep -P 'ML\.[^.]+$')
+for list in $(ls ~/Private/mail | grep -P '^ML\.')
 do
-    domainlist=${domain:3}
-    domainlist=${domainlist//-/.}
+    domain=$(echo $list | sed -r 's/\.[^.]+$//')
 
-    echo "\"$domainlist\" \"$domainlist\" \\"
+    if ! test "$domain" == "$last_domain"
+    then
+        domainlist=${domain:3}
+        domainlist=${domainlist//-/.}
+        last_domain=$domain
 
-    for list in $(ls ~/Private/mail | grep -P "$domain\.")
-    do
-        name=$(echo $list | sed -r 's/ML\.[^.]+\.//')
-        echo "\"  $name\" \"notmuch://?query=folder:$list\" \\"
-    done
+        echo "\"$domainlist\" \"$domainlist\" \\"
+    fi
+
+    name=$(echo $list | sed -r 's/ML\.[^.]+\.//')
+    echo "\"  $name\" \"notmuch://?query=folder:$list\" \\"
 done
 
 cat <<EOF
