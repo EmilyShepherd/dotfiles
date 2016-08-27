@@ -38,7 +38,7 @@ if (/^List-Id:.*<([0-9A-Za-z_\-]+)\.(list[sy]\.)?(.*)>/)
     {
         # convert server name from dots to hyphens
         foreach ($MATCH3) =~ /[^.]+/
-        { 
+        {
             LISTDOMAIN="${LISTDOMAIN}-${MATCH}"
         }
         LISTDOMAIN=substr($LISTDOMAIN, 1)
