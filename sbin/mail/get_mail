@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Get my mail!
+mbsync main
+
 # Run notmuch, ignoring error messages about mbsync's state files
 notmuch new 2>&1 | grep -vP '\.(uid|mbsync)' >&2
 
