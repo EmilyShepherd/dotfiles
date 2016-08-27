@@ -57,11 +57,9 @@ if (/^List-Id:.*<([0-9A-Za-z_\-]+)\.(list[sy]\.)?(.*)>/)
             if ($RETURNCODE == 1)
             {
                 `maildirmake -f ML.$LISTDOMAIN  $DEFAULT`
-                `echo ML.$LISTDOMAIN >> $DEFAULT/subscriptions`
             }
 
             `maildirmake -f ML.$LISTDOMAIN.$LISTNAME $DEFAULT`
-            `echo ML.$LISTDOMAIN.$LISTNAME >> $DEFAULT/subscriptions`
             to $DESTDIR
         }
         else
