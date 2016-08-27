@@ -1,0 +1,24 @@
+IMAPAccount linode
+# Address to connect to
+Host emilyshepherd.me
+User emily
+PassCmd "cat ~/Private/conf/email"
+# Use SSL
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore personal
+Account linode
+
+MaildirStore local
+Path ~/Private/mail/
+Inbox ~/Private/mail/INBOX
+Flatten .
+
+Channel main
+Master :personal:
+Slave :local:
+Patterns % ML/*/* !ML
+Create Both
+SyncState *
+Expunge Both
