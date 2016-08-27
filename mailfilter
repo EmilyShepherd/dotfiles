@@ -47,22 +47,21 @@ if (/^List-Id:.*<([0-9A-Za-z_\-]+)\.(list[sy]\.)?(.*)>/)
             LISTDOMAIN=substr($LISTDOMAIN, 1)
         }
 
-        DESTDIR="$DEFAULT/.ML.$LISTDOMAIN.$LISTNAME"
-        DESTDOMAINDIR="$DEFAULT/.ML.$LISTDOMAIN"
+        DESTDIR="ML.$LISTDOMAIN.$LISTNAME"
 
-        `test -d $DESTDIR`
+        `test -d $DEFAULT/.$DESTDIR`
         if ($RETURNCODE == 1)
         {
-            `test -d $DESTDOMAINDIR`
+            `test -d $DEFAULT/.ML.$LISTDOMAIN`
             if ($RETURNCODE == 1)
             {
-                `maildirmake -f ML.$LISTDOMAIN  $DEFAULT`
+                `maildirmake -f ML.$LISTDOMAIN $DEFAULT`
             }
 
-            `maildirmake -f ML.$LISTDOMAIN.$LISTNAME $DEFAULT`
+            `maildirmake -f $DESTDIR $DEFAULT`
         }
         
-        to $DESTDIR
+        to "$DEFAULT/.$DESTDIR"
     }
 }
 
