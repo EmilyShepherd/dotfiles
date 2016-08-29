@@ -4,35 +4,35 @@
 # ---------------------------------------------------------------------
 
 # Me
-set from     = "emily@emilyshepherd.me"
+set from = "emily@emilyshepherd.me"
 set realname = "Emily Shepherd"
 alternates .*@emilyshepherd.me .*@union-southampton.org info@sweeb.net
 
 # Local Setup
-set my_conf  = ~/.mutt
-set my_priv  = ~/Private/conf
-set folder   = ~/Private/mail
-set record   = +Sent/
+set my_conf = ~/.mutt
+set my_priv = ~/Private/conf
+set folder = ~/Private/mail
+set record = +Sent/
 
 # SMTP
 set smtp_url = "smtp://emily@emilyshepherd.me:587/"
 
 # Don't wait for the user to press a key after executing an external
 # command
-set wait_key        = no
+set wait_key = no
 
 # This just looks better
-set text_flowed     = yes
+set text_flowed = yes
 
 # Don't ask me who to send replies to
-set fast_reply      = yes
+set fast_reply = yes
 
 # Let's have a nice signature
-set signature       = $my_conf/signature
+set signature = $my_conf/signature
 
 # General setup
-set editor          = /bin/vim
-set alias_file      = $my_priv/aliases
+set editor = /bin/vim
+set alias_file = $my_priv/aliases
 
 
 # Source extra files

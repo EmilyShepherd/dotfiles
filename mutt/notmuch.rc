@@ -1,25 +1,25 @@
 # vim: set syntax=muttrc:
 
-set nm_default_uri    = "notmuch:///home/emily/Private/mail"
+set nm_default_uri = "notmuch:///home/emily/Private/mail"
 set virtual_spoolfile = yes
-set nm_hidden_tags    = "inbox,unread,draft,flagged,passed,replied,attachment,signed"
+set nm_hidden_tags = "inbox,unread,draft,flagged,passed,replied,attachment,signed"
 
 # ------
 
 tag-transforms \
-    "inbox"         "i" \
+    "inbox" "i" \
     "to-closed-new" "" \
     "to-closed-bad" "" \
-    "to-closed"     "" \
-    "unread"        "" \
-    "replied"       "↻" \
-    "attachment"    "" \
-    "private"       ""
+    "to-closed" "" \
+    "unread" "" \
+    "replied" "↻" \
+    "attachment" "" \
+    "private" ""
 
 # ------
 
 tag-formats \
-    "unread"        "Gu" \
-    "replied"       "Gr" \
-    "attachment"    "Ga"
+    "unread" "Gu" \
+    "replied" "Gr" \
+    "attachment" "Ga"
 

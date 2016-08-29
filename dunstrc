@@ -4,56 +4,56 @@
 # ---------------------------------------------------------------------
 
     # Behavior
-    sort               = yes
-    indicate_hidden    = yes
+    sort = yes
+    indicate_hidden = yes
     show_age_threshold = 60
-    idle_threshold     = 120
+    idle_threshold = 120
 
     # Browser for opening urls in context menu.
-    browser            = chromium
+    browser = chromium
 
     # History
-    sticky_history     = yes
-    history_length     = 20
+    sticky_history = yes
+    history_length = 20
 
     # Monitor
-    monitor            = 0
-    follow             = mouse
+    monitor = 0
+    follow = mouse
 
 
 # Appearance
 # ---------------------------------------------------------------------
 
     # General
-    font               = "Font Awesome" 25
-    alignment          = left
-    icon_position      = left
-    word_wrap          = yes
-    line_height        = 0
+    font = "Font Awesome" 25
+    alignment = left
+    icon_position = left
+    word_wrap = yes
+    line_height = 0
     horizontal_padding = 20
-    transparency       = 0
+    transparency = 0
 
     # Markup Options
-    allow_markup       = yes
-    format             = "<b>%s</b>\n%b"
-    ignore_newline     = no
+    allow_markup = yes
+    format = "<b>%s</b>\n%b"
+    ignore_newline = no
 
     # Geometry
-    geometry           = "1325x20-30-80"
-    shrink             = no
+    geometry = "1325x20-30-80"
+    shrink = no
 
     # Display indicators for URLs (U) and actions (A).
-    show_indicators    = yes
+    show_indicators = yes
 
     # Separator
-    separator_height   = 2
-    separator_color    = frame
-    padding            = 20
+    separator_height = 2
+    separator_color = frame
+    padding = 20
 
     # Border
 [frame]
-    width              = 3
-    color              = "#aaaaaa"
+    width = 3
+    color = "#aaaaaa"
 
 
 # Key Bindings
@@ -61,35 +61,35 @@
 [shortcuts]
 
     # Close notification.
-    close              = ctrl+space
+    close = ctrl+space
     
     # Close all notifications.
-    close_all          = ctrl+shift+space
+    close_all = ctrl+shift+space
     
     # Redisplay last message(s).
-    history            = ctrl+grave
+    history = ctrl+grave
     
     # Context menu.
-    context            = ctrl+period
+    context = ctrl+period
 
 
 # Urgency Levels
 # ---------------------------------------------------------------------
 
 [urgency_low]
-    background        = "#222222"
-    foreground        = "#ffffff"
-    timeout           = 10
+    background = "#222222"
+    foreground = "#ffffff"
+    timeout = 10
 
 [urgency_normal]
-    background        = "#285577"
-    foreground        = "#ffffff"
-    timeout           = 10
+    background = "#285577"
+    foreground = "#ffffff"
+    timeout = 10
 
 [urgency_critical]
-    background        = "#900000"
-    foreground        = "#ffffff"
-    timeout           = 0
+    background = "#900000"
+    foreground = "#ffffff"
+    timeout = 0
 
 
 # App Settings
@@ -97,8 +97,8 @@
 
 # Volume
 [volume]
-    summary           = "Volume"
-    format            = "<b>%s</b>: %p %b"
-    urgency           = low
+    summary = "Volume"
+    format = "<b>%s</b>: %p %b"
+    urgency = low
 
 # vim: ft=cfg
