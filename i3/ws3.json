@@ -2,7 +2,7 @@
     "border": "normal",
     "floating": "auto_off",
     "layout": "tabbed",
-    "percent": 0.629166666666667,
+    "percent": 0.666666666666667,
     "type": "con",
     "nodes":
     [{
@@ -38,7 +38,7 @@
         "y": 124
     },
     "name": "Sub Window",
-    "percent": 0.370833333333333,
+    "percent": 0.333333333333333,
     "swallows":
     [
         {"class":"^Conky$"}
