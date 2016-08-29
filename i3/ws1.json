@@ -1,0 +1,41 @@
+{
+    "layout" : "splith",
+    "nodes" :
+    [
+        {
+            "percent": 0.333333333333333,
+            "swallows":
+            [
+                {"class": "^Xfce4\\-terminal$"}
+            ]
+        },
+        {
+            "percent": 0.333333333333333,
+            "swallows":
+            [
+                {"class": "^Xfce4\\-terminal$"}
+            ]
+        },
+        {
+            "layout": "splitv",
+            "percent": 0.333333333333333,
+            "nodes":
+            [
+                {
+                    "percent": 0.46,
+                    "swallows":
+                    [
+                        {"class": "^Xfce4\\-terminal$"}
+                    ]
+                },
+                {
+                    "percent": 0.54,
+                    "swallows":
+                    [
+                        {"class": "^Xfce4\\-terminal$"}
+                    ]
+                }
+            ]
+        }
+    ]
+}

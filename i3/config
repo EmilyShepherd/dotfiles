@@ -256,6 +256,13 @@ exec --no-startup-id syndaemon -t -K
 # Load the X server defaults
 exec --no-startup-id xrdb ~/.dotfiles/Xresources
 
+# Load of the tiles for the command line workspace
+exec "i3-msg 'workspace $ws1; append_layout ~/.i3/ws1.json'"
+exec i3-sensible-terminal
+exec i3-sensible-terminal
+exec i3-sensible-terminal
+exec i3-sensible-terminal
+
 # Load up the multi-tilded setup of the main workspace
 exec "i3-msg 'workspace $ws3; append_layout ~/.i3/ws3.json'"
 exec chromium
