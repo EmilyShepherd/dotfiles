@@ -1,5 +1,8 @@
 # vim: set syntax=muttrc:
 
+# Fix broken backspace key
+bind pager \177 previous-line
+
 # Sidebar
 bind pager,index <S-Up> sidebar-prev
 bind pager,index <S-Down> sidebar-next
