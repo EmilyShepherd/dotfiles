@@ -1,48 +1,24 @@
 {
-    "border": "normal",
-    "floating": "auto_off",
-    "layout": "tabbed",
-    "percent": 0.666666666666667,
-    "type": "con",
-    "nodes":
-    [{
-        "border": "normal",
-        "current_border_width": 4,
-        "floating": "auto_off",
-        "geometry":
-        {
-            "height": 2072,
-            "width": 3832,
-            "x": 4,
-            "y": 40
-        },
-        "name": "Main Window",
-        "percent": 1,
-        "swallows":
-        [
-            {"class": "^chromium$"}
-        ],
-        "type": "con"
-    }]
-}
-
-{
-    "border": "normal",
-    "current_border_width": 4,
-    "floating": "auto_off",
-    "geometry":
-    {
-        "height": 2072,
-        "width": 3832,
-        "x": 4,
-        "y": 124
-    },
-    "name": "Sub Window",
-    "percent": 0.333333333333333,
-    "swallows":
+    "layout" : "splith",
+    "nodes" :
     [
-        {"class":"^Conky$"}
-    ],
-    "type": "con"
+        {
+            "layout" : "tabbed",
+            "percent": 0.666666666666667,
+            "nodes":
+            [{
+                "swallows":
+                [
+                    {"class": "^chromium$"}
+                ]
+            }]
+        },
+        {
+            "percent": 0.333333333333333,
+            "swallows":
+            [
+                {"class":"^Conky$"}
+            ]
+        }
+    ]
 }
-
