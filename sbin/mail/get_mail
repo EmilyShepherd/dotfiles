@@ -15,7 +15,6 @@ do
         mv $temp $mail
     done
 done
-rm $temp
 
 # Run notmuch, ignoring error messages about mbsync's state files
 notmuch new 2>&1 | grep -vP '\.(uid|mbsync)' >&2
