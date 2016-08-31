@@ -12,7 +12,7 @@ notmuch tag -new +bounces -- tag:new folder:Bounces
 # Do not pop these up
 notmuch tag -new -- tag:new and \( folder:Junk or folder:Sent \)
 
-notmuch search --format=json tag:new | ~/.dotfiles/sbin/mail/new_popup
+~/.dotfiles/sbin/mail/new_popup
 notmuch tag -new +inbox -- tag:new
 
 # We're done, refresh the menubar

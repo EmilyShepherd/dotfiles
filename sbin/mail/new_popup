@@ -1,7 +1,7 @@
 #!/bin/php
 <?php
 
-foreach (json_decode(file_get_contents('php://stdin')) as $mail)
+foreach (json_decode(`notmuch search --format=json tag:new`) as $mail)
 {
     $subject = $mail->subject;
     $from    = trim(explode('|', $mail->authors)[0]);
