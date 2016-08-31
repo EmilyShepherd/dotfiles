@@ -19,3 +19,6 @@ mount /var/lib/connman
 sudo2 connmand
 
 xfce4-terminal -T Mutt -x mutt
+
+# Start the mail daemon
+~/.dotfiles/sbin/mail/get_mail
