@@ -29,3 +29,6 @@ xfce4-terminal -T Mutt -x mutt
 
 # Start the mail daemon
 ~/.dotfiles/sbin/mail/get_mail
+
+#Tell i3blocks that private has been mounted
+pkill -RTMIN+2 i3blocks
