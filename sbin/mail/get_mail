@@ -1,5 +1,8 @@
 #!/bin/sh
 
+temp=$(mktemp)
+trap 'test -e $temp && rm $temp; exit 0' INT
+
 while true;
 do
     # Get my mail!
@@ -7,7 +10,6 @@ do
 
     # Replace From lines with X-Envelope-From headers because notmuch
     # complains about them
-    temp=$(mktemp)
     for maildir in $(ls ~/Private/mail)
     do
         for mail in $(ls ~/Private/mail/$maildir/new)
