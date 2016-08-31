@@ -1,19 +1,37 @@
 #!/bin/sh
 
-# Get my mail!
-mbsync main
+while true;
+do
+    # Get my mail!
+    mbsync main
 
-# Run notmuch, ignoring error messages about mbsync's state files
-notmuch new 2>&1 | grep -vP '\.(uid|mbsync)' >&2
+    # Replace From lines with X-Envelope-From headers because notmuch
+    # complains about them
+    temp=$(mktemp)
+    for maildir in $(ls ~/Private/mail)
+    do
+        for mail in $(ls ~/Private/mail/$maildir/new)
+        do
+            mail=~/Private/mail/$maildir/new/$mail
+            sed -r 's/^From /X-Envelope-From: /' $mail > $temp
+            mv $temp $mail
+        done
+    done
 
-notmuch tag -new +private -- tag:new folder:Private
-notmuch tag -new +bounces -- tag:new folder:Bounces
+    # Run notmuch, ignoring error messages about mbsync's state files
+    notmuch new 2>&1 | grep -vP '\.(uid|mbsync)' >&2
 
-# Do not pop these up
-notmuch tag -new -- tag:new and \( folder:Junk or folder:Sent \)
+    notmuch tag -new +private -- tag:new folder:Private
+    notmuch tag -new +bounces -- tag:new folder:Bounces
 
-notmuch search --format=json tag:new | ~/.dotfiles/sbin/mail/new_popup
-notmuch tag -new +inbox -- tag:new
+    # Do not pop these up
+    notmuch tag -new -- tag:new and \( folder:Junk or folder:Sent \)
 
-# We're done, refresh the menubar
-pkill -RTMIN+1 i3blocks
+    ~/.dotfiles/sbin/mail/new_popup
+    notmuch tag -new +inbox -- tag:new
+
+    # We're done, refresh the menubar
+    pkill -RTMIN+1 i3blocks
+
+    sleep 10
+done
