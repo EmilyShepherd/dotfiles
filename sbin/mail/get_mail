@@ -3,6 +3,20 @@
 # Get my mail!
 mbsync main
 
+# Replace From lines with X-Envelope-From headers because notmuch
+# complains about them
+temp=$(mktemp)
+for maildir in $(ls ~/Private/mail)
+do
+    for mail in $(ls ~/Private/mail/$maildir/new)
+    do
+        mail=~/Private/mail/$maildir/new/$mail
+        sed -r 's/^From /X-Envelope-From: /' $mail > $temp
+        mv $temp $mail
+    done
+done
+rm $temp
+
 # Run notmuch, ignoring error messages about mbsync's state files
 notmuch new 2>&1 | grep -vP '\.(uid|mbsync)' >&2
 
