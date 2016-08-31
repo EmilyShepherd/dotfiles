@@ -5,6 +5,8 @@ trap 'test -e $temp && rm $temp; exit 0' INT
 
 while true;
 do
+    new=
+
     # Get my mail!
     mbsync main
 
@@ -14,26 +16,31 @@ do
     do
         for mail in $(ls ~/Private/mail/$maildir/new)
         do
+            new=yes
             mail=~/Private/mail/$maildir/new/$mail
             sed -r 's/^From /X-Envelope-From: /' $mail > $temp
             mv $temp $mail
         done
     done
 
-    # Run notmuch, ignoring error messages about mbsync's state files
-    notmuch new 2>&1 | grep -vP '\.(uid|mbsync)' >&2
+    if test "$new" == yes
+    then
+        # Run notmuch, ignoring error messages about mbsync's state
+        # files
+        notmuch new 2>&1 | grep -vP '\.(uid|mbsync)' >&2
 
-    notmuch tag -new +private -- tag:new folder:Private
-    notmuch tag -new +bounces -- tag:new folder:Bounces
+        notmuch tag -new +private -- tag:new folder:Private
+        notmuch tag -new +bounces -- tag:new folder:Bounces
 
-    # Do not pop these up
-    notmuch tag -new -- tag:new and \( folder:Junk or folder:Sent \)
+        # Do not pop these up
+        notmuch tag -new -- tag:new and \( folder:Junk or folder:Sent \)
 
-    ~/.dotfiles/sbin/mail/new_popup
-    notmuch tag -new +inbox -- tag:new
+        ~/.dotfiles/sbin/mail/new_popup
+        notmuch tag -new +inbox -- tag:new
 
-    # We're done, refresh the menubar
-    pkill -RTMIN+1 i3blocks
+        # We're done, refresh the menubar
+        pkill -RTMIN+1 i3blocks
+    fi
 
     sleep 10
 done
