@@ -39,7 +39,7 @@ export PATH="/bin:/bin/vendor_perl:/bin/core_perl"
 export TERMINAL="/bin/xfce4-terminal"
 
 # Vim stuff
-export EDITOR=/bin/vim
+export EDITOR=/usr/bin/vim
 
 # Less stuff
 export PAGER="less"
