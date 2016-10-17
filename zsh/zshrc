@@ -116,6 +116,10 @@ alias gh='git push github'
 alias pp='git push origin && git push github'
 alias p='ps aux | grep'
 alias l='ls -lah'
+alias r='less -z56'
+alias sl='ssh emily@lucy.sweeb.net'
+alias sb='ssh emily@betty.sweeb.net'
+alias gc='ssh git@lucy.sweeb.net'
 
 # Run commands with colours by default
 alias grep="grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}"
