@@ -14,8 +14,10 @@ password="$(printf "%s" "$output" | head -n 1)"
 username="$(printf "%s" "$output" | grep '^username: ' | cut -c 11-)"
 autotype="$(printf "%s" "$output" | grep '^autotype: ' | cut -c 11-)"
 email="$(printf "%s" "$output" | grep '^email: ' | cut -c 7-)"
-cmd="xdotool type --window $active_window_id"
-key="xdotool key --window $active_window_id"
+cmd="xdotool type"
+key="xdotool key"
+
+xdotool windowfocus "$active_window_id"
 
 if test -n "$autotype"
 then
@@ -59,4 +61,3 @@ then
     $cmd "$password"
 fi
 
-xdotool windowfocus "$active_window_id"
