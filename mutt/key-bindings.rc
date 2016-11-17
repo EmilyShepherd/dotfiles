@@ -13,12 +13,16 @@ bind index <S-Up> previous-entry
 bind index <S-Down> next-entry
 
 # Search
-macro pager,index S "<vfolder-from-query>not:tag:private and " "Search"
+macro pager,index q "<vfolder-from-query>not:tag:private and " "Search"
 
 # Archive
 macro index A "s=Archive\ny" \
     "Archive Email"
-macro pager A "qA" "Archive Mail"
+macro pager A "xA" "Archive Mail"
+
+# Spam
+macro index S "s=Junk\ny" "Mark Email as Spam"
+macro pager S "xS" "Mark Email as Spam"
 
 # View HTML in Chrome
 macro attach \cv "|cat >/tmp/mail.html && chromium /tmp/mail.html\n"
