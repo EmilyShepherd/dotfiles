@@ -1,0 +1,62 @@
+#!/bin/sh
+# From: https://gist.github.com/ivyl/7429582
+
+active_window_id="$(xdotool getactivewindow)"
+output="$(pass $@)"
+exit_code="$?"
+
+if [[ "$exit_code" -gt 0 ]]
+then
+    exit "$exit_code"
+fi
+
+password="$(printf "%s" "$output" | head -n 1)"
+username="$(printf "%s" "$output" | grep '^username: ' | cut -c 11-)"
+autotype="$(printf "%s" "$output" | grep '^autotype: ' | cut -c 11-)"
+email="$(printf "%s" "$output" | grep '^email: ' | cut -c 7-)"
+cmd="xdotool type --window $active_window_id"
+key="xdotool key --window $active_window_id"
+
+if test -n "$autotype"
+then
+    while test -n "$autotype"
+    do
+        token=$(printf "%s" "$autotype" | grep -o '^\{[^}]\+\}')
+
+        if test -n "$token"
+        then
+            case $token in
+                "{username}")
+                    $cmd "$username" ;;
+                "{password}")
+                    $cmd "$password" ;;
+                "{email}")
+                    $cmd "$email" ;;
+                "{tab}")
+                    $key Tab ;;
+                "{enter}")
+                    $key Return ;;
+            esac
+        else
+            token=$(printf "%s" "$autotype" | grep -o '^[^{]\+')
+            $cmd "$token"
+        fi
+
+        autotype=$(printf "%s" "$autotype" | cut -c $(expr ${#token} + 1)-)
+    done
+elif test -n "$password"
+then
+    if test -n "$username"
+    then
+        $cmd "$username"
+        $key "Tab"
+    elif test -n "$email"
+    then
+        $cmd "$email"
+        $key Tab
+    fi
+
+    $cmd "$password"
+fi
+
+xdotool windowfocus "$active_window_id"

@@ -99,7 +99,7 @@ bindsym $mod+Shift+q kill
 
 # The program and password menus (handled by rofi)
 bindsym $mod+p exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -show run -dmenu'
-bindsym $mod+o exec --no-startup-id passmenu
+bindsym $mod+o exec --no-startup-id ~/.dotfiles/sbin/pass/pass-autotype-dmenu
 
 
 # Window Management Key Bindings
