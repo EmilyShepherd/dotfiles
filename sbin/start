@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Set this to allow autotype to work correctly
+setxkbmap gb
+
 # Ask the user to mount the private directory
 xfce4-terminal --fullscreen -x "/home/emily/.dotfiles/sbin/ui_mount"
 
