@@ -1,0 +1,41 @@
+#!/bin/sh
+
+KEY=${BLOCK_INSTANCE:-gpg}
+
+if test -n "$BLOCK_BUTTON"
+then
+    case $KEY in
+        gpg)
+            gpg-connect-agent 'reloadagent' /bye ;;
+        ssh)
+            ssh-add -D ;;
+    esac
+fi
+
+case $KEY in
+    gpg)
+        keys=$(gpg --list-key --with-keygrip emily | 
+        grep 'Keygrip' | grep -o '[A-F0-9]\+' | 
+        sed 's/^/\|/' | tr -d '\n' | cut -c 2-)
+
+        echo -n "GPG "
+        gpg-connect-agent 'keyinfo --list' /bye | egrep -q "($keys) D - - 1"
+        ;;
+    ssh)
+        ssh=$(ssh-keygen -l -f ~/.ssh/id_rsa.pub  | cut -d' ' -f1,2)
+
+        echo -n " SSH "
+        ssh-add -l | grep -q "$ssh"
+        ;;
+esac
+
+if test $? -eq 0
+then
+    echo 
+    echo 
+    echo "#ff0000"
+else
+    echo 
+    echo 
+    echo "#00ff00"
+fi
