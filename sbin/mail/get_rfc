@@ -1,0 +1,12 @@
+#!/bin/sh
+
+cd ~/Archive/rfcs
+
+file=$(grep -m1 -o '[^ ]\+\.txt')
+
+if ! test -e "$file"
+then
+    wget https://www.ietf.org/archive/id/$file
+fi
+
+less -z56 $file
