@@ -1,0 +1,6 @@
+#!/bin/sh
+
+if ip route | grep -q '^default dev vpn0'
+then
+    echo VPN
+fi
