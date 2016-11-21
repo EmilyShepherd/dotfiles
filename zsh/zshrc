@@ -119,6 +119,7 @@ alias l='ls -lah'
 alias r='less -z56'
 alias sl='ssh emily@lucy.sweeb.net'
 alias sb='ssh emily@betty.sweeb.net'
+alias ss='ssh emily@10.8.0.1'
 alias gc='ssh git@lucy.sweeb.net'
 
 # Run commands with colours by default
