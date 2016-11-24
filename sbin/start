@@ -20,6 +20,7 @@ pkill -RTMIN+2 i3blocks
 # As these contain wifi passwords etc, these are stored in my encrypted
 # ~/Private/ directory rather than in plaintext.
 mount /var/lib/connman
+mount /var/lib/connman-vpn
 
 # Now that connman has its settings, its safe to the daemon
 sudo2 connmand
