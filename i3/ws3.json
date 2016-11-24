@@ -9,7 +9,7 @@
             [{
                 "swallows":
                 [
-                    {"class": "^chromium$"}
+                    {"class": "^Chromium$"}
                 ]
             }]
         },
