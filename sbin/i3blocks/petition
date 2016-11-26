@@ -1,11 +1,11 @@
 #!/bin/sh
 
-if test -z "$1"
+ID=${1:-$BLOCK_INSTANCE}
+
+if test -z "$ID"
 then
     echo "Usage: $0 <petition_id>"
     exit 1
-else
-    ID=$1
 fi
 
 URL=https://petition.parliament.uk/petitions/$ID/count.json
