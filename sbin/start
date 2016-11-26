@@ -16,14 +16,7 @@ fi
 #Tell i3blocks that private has been mounted
 pkill -RTMIN+2 i3blocks
 
-# Mount the connman settings
-# As these contain wifi passwords etc, these are stored in my encrypted
-# ~/Private/ directory rather than in plaintext.
-mount /var/lib/connman
-mount /var/lib/connman-vpn
-
-# Now that connman has its settings, its safe to the daemon
-sudo2 connmand
+sudo2 net-connect
 
 xfce4-terminal -T Mutt -x mutt
 
