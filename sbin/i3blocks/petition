@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if test -z "$1"
+then
+    echo "Usage: $0 <petition_id>"
+    exit 1
+else
+    ID=$1
+fi
+
+URL=https://petition.parliament.uk/petitions/$ID/count.json
+
+printf "%'d" $(wget -q -O- $URL | egrep -o "[0-9]+")
