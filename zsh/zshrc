@@ -26,7 +26,13 @@ fi
 
 
 # Annoying hack to Start X server because SystemD is a giant pain
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec xinit /bin/i3 -- /bin/X vt1
+if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]
+then
+    if ! test -e /tmp/noX
+    then
+        xinit /bin/i3 -- /bin/X vt1
+    fi
+fi
 
 
 # Exports
@@ -114,7 +120,7 @@ alias c='git commit -S -m'
 alias go='git push origin'
 alias gh='git push github'
 alias pp='git push origin && git push github'
-alias p='ps aux | grep'
+alias p='ps aux | grep -v grep | grep'
 alias l='ls -lah'
 alias r='less -z56'
 alias sl='ssh emily@lucy.sweeb.net'
