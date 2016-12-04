@@ -21,3 +21,4 @@ autocmd FileType html set tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType xml set tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType xml syntax spell toplevel
 autocmd FileType xslt set tabstop=2 softtabstop=2 shiftwidth=2
+autocmd BufRead /etc/bind/zones/* set filetype=bindzone
