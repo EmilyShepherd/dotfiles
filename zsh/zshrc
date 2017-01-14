@@ -124,7 +124,6 @@ alias p='ps aux | grep -v grep | grep'
 alias l='ls -lah'
 alias r='less -z56'
 alias sl='ssh emily@lucy.sweeb.net'
-alias sb='ssh emily@betty.sweeb.net'
 alias ss='ssh emily@10.8.0.1'
 alias gc='ssh git@lucy.sweeb.net'
 
