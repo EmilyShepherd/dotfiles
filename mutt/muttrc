@@ -15,7 +15,7 @@ set folder = ~/Private/mail
 set record = +Sent/
 
 # SMTP
-set smtp_url = "smtp://emily@emilyshepherd.me:587/"
+set smtp_url = "smtp://emily@mail.emilyshepherd.me:587/"
 
 # Don't wait for the user to press a key after executing an external
 # command

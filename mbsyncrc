@@ -1,6 +1,6 @@
 IMAPAccount linode
 # Address to connect to
-Host emilyshepherd.me
+Host mail.emilyshepherd.me
 User emily
 PassCmd "cat ~/Private/conf/email"
 # Use SSL
