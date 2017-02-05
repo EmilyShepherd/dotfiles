@@ -5,6 +5,11 @@ if (/^X-Spam-Flag: *YES$/)
     to $DEFAULT/.Junk/
 }
 
+if (/^From: developers@partnermarketing/)
+{
+    to $DEFAULT/pm-errors/
+}
+
 # Next handle bounces from Spa Staff (I get a bunch)
 if (hasaddr "no-reply@spastaff.com")
 {
