@@ -64,6 +64,6 @@ color header brightblue white "^Date:"
 
 # File Types
 set mailcap_path = $my_conf/mailcap.rc
-auto_view text/html
-alternative_order text/plain text/enriched text/html
+auto_view text/html text/calendar
+alternative_order text/plain text/enriched text/html text/calendar
 
