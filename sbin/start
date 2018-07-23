@@ -3,25 +3,13 @@
 # Set this to allow autotype to work correctly
 setxkbmap gb
 
-# Ask the user to mount the private directory
-xfce4-terminal --fullscreen -x "/home/emily/.dotfiles/sbin/ui_mount"
-
-# Check that the Private directory has been mounted before continuing
-_path=$(realpath ~)
-if ! mount | grep -q "^$_path/\.Private on $_path/Private type ecryptfs"
-then
-    exit 1
-fi
-
 #Tell i3blocks that private has been mounted
 pkill -RTMIN+2 i3blocks
-
-sudo2 net-connect
 
 xfce4-terminal -T Mutt -x mutt
 
 # Start the mail daemon
-~/.dotfiles/sbin/mail/get_mail
+#~/.dotfiles/sbin/mail/get_mail
 
 #Tell i3blocks that private has been mounted
 pkill -RTMIN+2 i3blocks
