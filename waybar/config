@@ -1,6 +1,6 @@
 {
     // "layer": "top", // Waybar at top layer
-    "height": 60, // Waybar height (to be removed for auto height)
+    "height": 30, // Waybar height (to be removed for auto height)
 
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "wlr/taskbar", "custom/media"],
@@ -8,11 +8,11 @@
     "modules-right": ["network", "cpu", "memory", "temperature", "backlight", "battery", "clock", "tray"],
 
     "tray": {
-        "icon-size": 30,
+        "icon-size": 15,
         "spacing": 10
     },
     "wlr/taskbar": {
-        "icon-size": 30
+        "icon-size": 15
     },
     "clock": {
 	"format": "{:%H:%M:%S}",
