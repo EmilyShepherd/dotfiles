@@ -14,10 +14,3 @@ set $term kitty
 # Most settings for sway
 include ~/.config/sway/config.d/*
 
-# Settings that are local to this machine only.
-#
-# While most of my config is common across most of my machines, some
-# config is very specific to the local machine.
-# Put things like screen identifiers, output-workspace mapping, DPI
-# fixes etc in here.
-include ~/.config/sway/config.local.d/*
