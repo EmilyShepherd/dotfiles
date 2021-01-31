@@ -3,6 +3,14 @@
 # Init
 # ---------------------------------------------------------------------
 
+export XDG_RUNTIME_DIR=/tmp/emily
+export XDG_CONFIG_HOME=~/.config
+
+if ! [ -d $XDG_RUNTIME_DIR ]
+then
+    mkdir $XDG_RUNTIME_DIR
+fi
+
 # Function to start the ssh agent and save the environment variables to
 # home
 function start_agent
@@ -25,12 +33,13 @@ else
 fi
 
 
-# Annoying hack to Start X server because SystemD is a giant pain
-if [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]]
+if [[ $TERM == "linux" && $(who am i | grep -o "tty[0-9]") == "tty1" ]]
 then
     if ! test -e /tmp/noX
     then
-        xinit /bin/i3 -- /bin/X vt1
+        export QT_QPA_PLATFORM=wayland-egl
+
+        exec dbus-run-session sway
     fi
 fi
 
