@@ -19,7 +19,7 @@ case $1 in
         ;;
     status)
         echo -n ' -%r- '                      # Mailbox flag
-        echo -n "$2 " | replace $3 'Search: ' # Mailbox name / Query
+        echo -n "$2 $3 Search: " # Mailbox name / Query
         echo -n '['
         echo -n 'Msgs:%?M?%M/?%m%?n? '
         echo -n 'New:%n?%?o? '
