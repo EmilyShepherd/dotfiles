@@ -38,7 +38,6 @@ set alias_file = $my_priv/aliases
 # Source extra files
 # ---------------------------------------------------------------------
 
-source $my_conf/notmuch.rc
 source $my_conf/key-bindings.rc
 source $my_conf/ui.rc
 source $my_conf/gpg.rc
