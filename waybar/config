@@ -24,9 +24,9 @@
     },
 
     "clock": {
-        "format": "{:%H:%M:%S}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format": "{:%A %d %b %H:%M:%S}",
+        "interval": 1,
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
 
     "battery": {
@@ -42,7 +42,7 @@
 
     "network": {
         "format-wifi": " {signalStrength}%",
-        "tooltip-format-wifi": "{essid}",
+        "tooltip-format-wifi": "Connected\nSSID: {essid}",
 
         "format-ethernet": "",
         "tooltip-format-ethernet": "{ifname} Connected",
