@@ -3,14 +3,6 @@
 # Init
 # ---------------------------------------------------------------------
 
-export XDG_RUNTIME_DIR=/tmp/emily
-export XDG_CONFIG_HOME=~/.config
-
-if ! [ -d $XDG_RUNTIME_DIR ]
-then
-    mkdir $XDG_RUNTIME_DIR
-fi
-
 # Function to start the ssh agent and save the environment variables to
 # home
 function start_agent
@@ -33,25 +25,8 @@ else
 fi
 
 
-if [[ $TERM == "linux" && $(who am i | grep -o "tty[0-9]") == "tty1" ]]
-then
-    if ! test -e /tmp/noX
-    then
-        export QT_QPA_PLATFORM=wayland-egl
-
-        exec dbus-run-session sway
-    fi
-fi
-
-
 # Exports
 # ---------------------------------------------------------------------
-
-# General Path
-export PATH="/bin:/bin/vendor_perl:/bin/core_perl"
-
-# Let i3-sensible-terminal know which emulator we prefer
-export TERMINAL="/bin/xfce4-terminal"
 
 # Vim stuff
 export EDITOR=/usr/bin/vim

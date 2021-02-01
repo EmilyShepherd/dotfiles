@@ -1,0 +1,6 @@
+#!/bin/sh
+
+export QT_QPA_PLATFORM=wayland-egl
+
+cd $HOME
+exec setsid dbus-run-session sway

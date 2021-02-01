@@ -1,0 +1,19 @@
+#!/bin/sh
+
+export USER=emily
+
+export HOME=$(eval echo ~$USER)
+export XDG_RUNTIME_DIR=/run/user/$USER
+export XDG_CONFIG_DIR=$HOME/.config
+export SVDIR=$HOME/.local/services
+
+if ! [ -d $XDG_RUNTIME_DIR ]
+then
+    mkdir -m 700 $XDG_RUNTIME_DIR
+    chown $USER:$USER $XDG_RUNTIME_DIR
+fi
+
+. /etc/profile.d/locale.sh
+
+cd $HOME
+exec su -c "runsvdir $SVDIR" emily
