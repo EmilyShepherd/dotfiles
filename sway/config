@@ -11,6 +11,8 @@ input "type:keyboard" {
 
 set $term kitty
 
+bindsym $mod+l exec swaylock
+
 # Most settings for sway
 include ~/.config/sway/config.d/*
 
