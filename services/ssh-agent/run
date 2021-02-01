@@ -1,0 +1,3 @@
+#!/bin/sh
+
+ssh-agent -a /run/user/emily/ssh.sock
