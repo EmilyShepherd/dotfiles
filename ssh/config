@@ -2,3 +2,4 @@
 Host *
     AddKeysToAgent yes
     VerifyHostKeyDNS yes
+    IdentityAgent "/run/user/emily/ssh.sock"
