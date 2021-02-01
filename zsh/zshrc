@@ -9,6 +9,7 @@ export EDITOR=/usr/bin/vim
 # Less stuff
 export PAGER="less"
 export LESS="-R"
+export LESSHISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/lesshst"
 
 
 # Using ZSH
@@ -66,7 +67,7 @@ setopt hist_verify
 setopt share_history
 
 # History variables
-HISTFILE=$HOME/.zsh_history
+HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zhistory"
 HISTSIZE=10000
 SAVEHIST=10000
 
@@ -100,4 +101,4 @@ source ~/.dotfiles/zsh/termsupport.zsh
 source ~/.dotfiles/zsh/prompt.zsh
 
 autoload -U compinit
-compinit -i
+compinit -i -d "${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump"
