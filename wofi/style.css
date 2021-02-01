@@ -1,0 +1,30 @@
+#window, #outer-box {
+    background: rgb(43, 48, 59);
+    font-family: 'FuraCode Nerd Font';
+    font-size: 14px;
+    color: #ddd;
+    padding: 4px;
+}
+
+#input, #scroll {
+    border: 1px solid #666;
+    background: none;
+    border-radius: 0;
+    outline: none;
+    color: #ddd;
+}
+
+#scroll {
+    margin-top: 4px;
+}
+
+#entry:selected {
+    background: none;
+    font-weight: bold;
+    outline: none;
+}
+
+#entry image {
+    margin-right: 14px;
+}
+
