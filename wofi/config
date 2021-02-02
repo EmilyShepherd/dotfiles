@@ -3,3 +3,4 @@ stylesheet=style.css
 prompt=Search
 mode=drun
 term=kitty
+no_actions=true
