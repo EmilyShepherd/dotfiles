@@ -75,6 +75,11 @@ SAVEHIST=10000
 # Aliases
 # ---------------------------------------------------------------------
 
+# This is required because kitty sends TERM=xterm-kitty which can
+# confuse systems that aren't aware of kitty (and realistically why
+# would we expect random boxes to?)
+alias ssh='TERM=xterm ssh'
+
 # Handy Shortcuts
 alias c='git commit -S -m'
 alias go='git push origin'
