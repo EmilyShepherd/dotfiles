@@ -26,22 +26,9 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushdminus
 
-# Dumb functions which zle apparently needs
-function zle-line-init()
-{
-	echoti smkx
-}
-
-function zle-line-finish()
-{
-	echoti rmkx
-}
-
 autoload -U up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-zle -N zle-line-init
-zle -N zle-line-finish
 
 # History that doesn't suck
 bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
@@ -101,6 +88,8 @@ alias root='sudo SSH_CLIENT=$SSH_CLIENT su'
 
 # Includes
 # ---------------------------------------------------------------------
+source ~/.dotfiles/zsh/console.zsh
+source ~/.dotfiles/zsh/glyphs.zsh
 source ~/.dotfiles/zsh/completion.zsh
 source ~/.dotfiles/zsh/termsupport.zsh
 source ~/.dotfiles/zsh/prompt.zsh
