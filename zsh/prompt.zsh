@@ -1,33 +1,41 @@
 
+_p() {
+    echo -n "$@ "
+}
+
 git_prompt ()
 {
 	local ref=$(git symbolic-ref HEAD 2> /dev/null || \
         git rev-parse --short HEAD 2> /dev/null) 
 
-	if test -n "$ref"
-	then
-		echo -n "%{$fg[white]%}on %{$fg[green]%}"
+	[ -z "$ref" ] && return
 
-        if git config -l | grep remote | grep -q gitlab
-        then
-            echo -n "$GITLAB "
-        fi
+    ref="${ref#refs/heads/}"
 
-        if git config -l | grep remote | grep -q github
-        then
-            echo -n "$GITHUB "
-        fi
+    echo -n "%{$fg[white]%}on %{$fg[green]%}"
 
-        echo -n "$GIT ${ref#refs/heads/} "
-	fi
+    (git config -l | grep remote | grep -q gitlab) && _p "$GITLAB"
 
-	if test -n "$(git status --porcelain --untracked-files=no 2> /dev/null)"
-	then
-		echo -n "%{$fg[red]%}$DIRTY "
-	elif test -n "$(git status --porcelain 2> /dev/null)"
-	then
-		echo -n "%{$fb[red]%}$NEW "
-	fi
+    (git config -l | grep remote | grep -q github) && _p "$GITHUB"
+
+    _p "$GIT $ref"
+
+    dirty=$(git status -s -uno | wc -l)
+    new=$(git status -s | grep '\?' | wc -l)
+
+    [ "$dirty" -gt 0 ] && _p "$DIRTY$dirty"
+    [ "$new" -gt 0 ] && _p "$NEW$new"
+
+    remote=$(git config branch.$ref.remote)
+    if [ -n "$remote" ]
+    then
+        up=$(git rev-list --count $remote/$ref..$ref)
+        down=$(git rev-list --count $ref..$remote/$ref)
+
+        [ "$up" -gt 0 ] && [ "$down" -gt 0 ] && echo -n "%{$fg[red]%}"
+        [ "$up" -gt 0 ] && _p "$UP$up"
+        [ "$down" -gt 0 ] && _p "$DOWN$down"
+    fi
 }
 
 folder_prompt() {
