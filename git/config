@@ -10,4 +10,4 @@
 
 #
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.config/git/excludes
