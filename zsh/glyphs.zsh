@@ -1,5 +1,5 @@
 
-if [ -n "$USE_UNICODE_GLYPHS" ]
+if [ "$USE_UNICODE_GLYPHS" = "y" ]
 then
     GIT="\ue725"
     GITHUB="\uf113 "
