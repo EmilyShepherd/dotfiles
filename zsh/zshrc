@@ -85,6 +85,10 @@ alias ls='ls --color=tty'
 # Shortcut to become root
 alias root='sudo SSH_CLIENT=$SSH_CLIENT su'
 
+# Docker
+DOCKER_CONFIG="${XDG_DATA_HOME:-$HOME/.local/share}/docker"
+alias docker="DOCKER_CONFIG=$DOCKER_CONFIG docker"
+
 
 # Includes
 # ---------------------------------------------------------------------
