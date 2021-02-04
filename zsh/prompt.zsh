@@ -70,7 +70,7 @@ bindkey "^M" reset_term
 autoload -U colors && colors
 setopt prompt_subst
 
-printf '\n%.0s' {1..100}
+test -z "$NO_CLEAR_CONSOLE" && printf '\n%.0s' {1..100}
 
 PROMPT='$(prompt)'
 RPROMPT='$(rprompt)'
