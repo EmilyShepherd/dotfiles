@@ -1,9 +1,7 @@
 IMAPAccount linode
-# Address to connect to
 Host mail.emilyshepherd.me
 User emily
-PassCmd "cat ~/Private/conf/email"
-# Use SSL
+PassCmd "cat ~/.local/share/email"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -11,14 +9,14 @@ IMAPStore personal
 Account linode
 
 MaildirStore local
-Path ~/Private/mail/
-Inbox ~/Private/mail/INBOX
+Path ~/.local/share/mail/
+Inbox ~/.local/share/mail/INBOX
 Flatten .
 
 Channel main
 Master :personal:
 Slave :local:
-Patterns % ML/*/* !ML
+Patterns *
 Create Both
 SyncState *
 Expunge Both
