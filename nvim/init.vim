@@ -1,6 +1,6 @@
 syntax enable
 set autoindent
-colorscheme desert
+colorscheme peachpuff
 set number
 filetype indent on
 set incsearch
