@@ -72,6 +72,8 @@ setopt prompt_subst
 
 test -z "$NO_CLEAR_CONSOLE" && printf '\n%.0s' {1..100}
 
+test -f /etc/motd && cat /etc/motd
+
 PROMPT='$(prompt)'
 RPROMPT='$(rprompt)'
 
