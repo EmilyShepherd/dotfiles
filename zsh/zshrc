@@ -88,11 +88,13 @@ alias root='sudo SSH_CLIENT=$SSH_CLIENT su'
 
 # Includes
 # ---------------------------------------------------------------------
-source ~/.dotfiles/zsh/console.zsh
-source ~/.dotfiles/zsh/glyphs.zsh
-source ~/.dotfiles/zsh/completion.zsh
-source ~/.dotfiles/zsh/termsupport.zsh
-source ~/.dotfiles/zsh/prompt.zsh
+
+ZSH_CONFIG=${ZSH_CONFIG:-${XDG_CONFIG_HOME:-$HOME/.config}/zsh}
+source $ZSH_CONFIG/console.zsh
+source $ZSH_CONFIG/glyphs.zsh
+source $ZSH_CONFIG/completion.zsh
+source $ZSH_CONFIG/termsupport.zsh
+source $ZSH_CONFIG/prompt.zsh
 
 autoload -U compinit
 compinit -i -d "${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump"
