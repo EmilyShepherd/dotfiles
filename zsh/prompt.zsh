@@ -46,13 +46,23 @@ prompt() {
     arrow
 }
 
+rprompt() {
+    if test -n "$PROMPT_HOST"
+    then
+        echo "$PROMPT_HOST"
+    fi
+}
+
 reset_term() {
     OLD_PROMPT="$PROMPT"
+    OLD_RPROMPT="$RPROMPT"
     PROMPT=$'
 $(arrow)'
+    RPROMPT=''
     zle accept-line
     zle reset-prompt
     PROMPT="$OLD_PROMPT"
+    RPROMPT="$OLD_RPROMPT"
 }
 zle -N reset_term
 bindkey "^M" reset_term
@@ -63,4 +73,5 @@ setopt prompt_subst
 printf '\n%.0s' {1..$(expr $LINES - 3)}
 
 PROMPT='$(prompt)'
+RPROMPT='$(rprompt)'
 
