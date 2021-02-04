@@ -4,6 +4,9 @@
 	name = Emily Shepherd
 	email = emily@emilyshepherd.me
 
+[init]
+    defaultBranch = main
+
 #
 [push]
 	default = simple
