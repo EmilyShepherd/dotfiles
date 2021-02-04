@@ -28,8 +28,3 @@ macro pager S "xS" "Mark Email as Spam"
 macro attach \cv "|cat >/tmp/mail.html && chromium /tmp/mail.html\n"
 macro pager \cv "v<search>text/html<enter>\cv"
 
-# Show the URL selection window
-macro index,pager \cb ":set pipe_decode=yes\n\
-|~/.dotfiles/sbin/mail/links\n\
-:unset pipe_decode\n" \
-    "View URLs"
