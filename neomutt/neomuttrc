@@ -9,9 +9,8 @@ set realname = "Emily Shepherd"
 alternates .*@emilyshepherd.me .*@union-southampton.org info@sweeb.net
 
 # Local Setup
-set my_conf = ~/.mutt
-set my_priv = ~/Private/conf
-set folder = ~/Private/mail
+set my_conf = ~/.config/neomutt
+set folder = ~/.local/share/mail
 set record = +Sent/
 
 # SMTP
@@ -32,7 +31,6 @@ set signature = $my_conf/signature
 
 # General setup
 set editor = /bin/vim
-set alias_file = $my_priv/aliases
 
 
 # Source extra files
@@ -41,8 +39,7 @@ set alias_file = $my_priv/aliases
 source $my_conf/key-bindings.rc
 source $my_conf/ui.rc
 source $my_conf/gpg.rc
-source $my_priv/imap
-source $my_priv/encrypt_list.rc
-source $my_priv/sidebar_list.rc
-source $alias_file
+
+mailboxes =INBOX =Foot
+set spoolfile = "=INBOX"
 
