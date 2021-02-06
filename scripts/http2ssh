@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+# Small script that converts the git remote urls from http(s) to ssh
+#
+# I find this useful because sometimes I initially clone a repo with
+# https to review / inspect, but if and when I decide to make a change
+# which needs pushing back, it may need to be converted to ssh.
+#
+# This assumes that the ssh path is the same as the https path and that
+# the username is git, which is a common trend amongst git servers.
+
+process() {
+    git config -l | \
+        grep "remote\.$1\.url" | \
+        sed 's#https\?://#git@#;s#/#:#;s#=# #' | \
+        while read line
+        do
+            git config $line
+        done
+}
+
+if [ $# -eq 0 ]
+then
+    process "[a-zA-Z0-9_]\+"
+else
+    while [ -n "$1" ]
+    do
+        process $1
+        shift
+    done
+fi
