@@ -20,11 +20,14 @@ git_prompt ()
 
     _p "$GIT $ref"
 
-    dirty=$(git status -s -uno | wc -l)
-    new=$(git status -s | grep '\?' | wc -l)
+    if ! [ "$(git config core.bare)" = "true" ]
+    then
+        dirty=$(git status -s -uno | wc -l)
+        new=$(git status -s | grep '\?' | wc -l)
 
-    [ "$dirty" -gt 0 ] && _p "$DIRTY$dirty"
-    [ "$new" -gt 0 ] && _p "$NEW$new"
+        [ "$dirty" -gt 0 ] && _p "$DIRTY$dirty"
+        [ "$new" -gt 0 ] && _p "$NEW$new"
+    fi
 
     remote=$(git config branch.$ref.remote)
     if [ -n "$remote" ]
