@@ -23,9 +23,8 @@ color tree default default
 
 # Index Text Colors
 color index brightdefault default ~N
-color index cyan default ~D
+color index black default ~D
 color index default cyan  ~T
-color index_author brightdefault default "~f @"
 color indicator default blue
 
 # Side Bar Colors
