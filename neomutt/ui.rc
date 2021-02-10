@@ -9,9 +9,15 @@ set sort_aux = last-date
 set strict_threads = yes
 set sidebar_visible = yes
 set sidebar_width = 25
-set to_chars = "?"
+set to_chars = "? "
 set status_format = "/home/emily/.dotfiles/sbin/mail/formats status '%f' '$nm_default_uri?query='|"
-set index_format = "%-30.30F    %T %s%* %<[y?%<[d?%[%H:%M]&%[%m/%d]>&%[%y.%m]>"
+set index_format = "%T  %-10@date@  %-40.40F  %s"
+index-format-hook date "~d<1d" "%[%H:%M]"
+index-format-hook date "~d<2d" "Yesterday"
+index-format-hook date "~d<1w" "%[%A]"
+index-format-hook date "~d<1m" "%[%a %d]"
+index-format-hook date "~d<1y" "%[%d %b]"
+index-format-hook date "~A" "%[%d %b %y]
 
 # General Text Colours
 color normal default default
