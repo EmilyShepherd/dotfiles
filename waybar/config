@@ -3,7 +3,7 @@
 
     "modules-left": ["sway/workspaces"],
     "modules-center": ["sway/window"],
-    "modules-right": ["network", "battery", "clock", "tray"],
+    "modules-right": ["custom/covid#local", "custom/covid#area", "network", "battery", "clock", "tray"],
 
     "tray": {
         "icon-size": 15,
@@ -55,5 +55,19 @@
         "tooltip-format-disconnected": "Disconnected",
 
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    }
+    },
+
+    "custom/covid#local": {
+        "exec": "~/.dotfiles/lib/covid-checker/covid-checker $(head -n1 ~/.local/share/codes)",
+        "return-type": "json",
+        "format": "{icon} {}",
+        "format-icons": ["", ""]
+    },
+
+    "custom/covid#area": {
+        "exec": "~/.dotfiles/lib/covid-checker/covid-checker $(tail -n1 ~/.local/share/codes)",
+        "return-type": "json",
+        "format": "{icon} {}",
+        "format-icons": ["", ""]
+    },
 }

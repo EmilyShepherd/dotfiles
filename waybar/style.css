@@ -94,3 +94,11 @@ label:focus {
     background-color: #2980b9;
 }
 
+#custom-covid.DOWN {
+    color: #77dd77;
+}
+
+#custom-covid.UP {
+    color: #ff6961;
+}
+
