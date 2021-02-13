@@ -45,7 +45,7 @@
         "format-wifi": " {signalStrength}%",
         "tooltip-format-wifi": "Connected\nSSID: {essid}",
 
-        "format-ethernet": "",
+        "format-ethernet": "",
         "tooltip-format-ethernet": "{ifname} Connected",
 
         "format-linked": "⚠",
