@@ -14,3 +14,8 @@
 #
 [core]
 	excludesfile = ~/.config/git/excludes
+
+# I don't want git auto merging or auto rebasing without me looking at
+# what's what
+[pull]
+	ff = only
