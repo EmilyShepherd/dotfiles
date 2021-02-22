@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+windows=$(efibootmgr | grep Windows | grep -Eo '[0-9]{4}' | head -n1)
+
+efibootmgr -n $windows
+
+sudo reboot
