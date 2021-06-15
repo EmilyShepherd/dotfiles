@@ -104,3 +104,4 @@ source $ZSH_CONFIG/prompt.zsh
 
 autoload -U compinit
 compinit -i -d "${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump"
+source <(kubectl completion zsh)
