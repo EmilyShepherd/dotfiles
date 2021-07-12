@@ -101,6 +101,7 @@ source $ZSH_CONFIG/glyphs.zsh
 source $ZSH_CONFIG/completion.zsh
 source $ZSH_CONFIG/termsupport.zsh
 source $ZSH_CONFIG/prompt.zsh
+source $ZSH_CONFIG/aws-vault.zsh
 
 autoload -U compinit
 compinit -i -d "${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump"
