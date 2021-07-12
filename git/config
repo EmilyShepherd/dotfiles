@@ -2,7 +2,7 @@
 # Hi, I'm Emily
 [user]
 	name = Emily Shepherd
-	email = emily@emilyshepherd.me
+	email = emily@redcoat.dev
 
 [init]
     defaultBranch = main
