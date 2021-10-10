@@ -45,6 +45,13 @@ folder_prompt() {
     echo -n "%{$fg[blue]%}$FOLDER %~ "
 }
 
+aws_vault_prompt() {
+    if [ -n "$AWS_VAULT" ]
+    then
+        echo -n "%{$fg[red]%}$AWS $AWS_VAULT "
+    fi
+}
+
 arrow() {
     echo -n "%{$fg_bold[green]%}$ARROW %{$reset_color%}"
 }
@@ -53,6 +60,7 @@ prompt() {
     echo
     folder_prompt
     git_prompt
+    aws_vault_prompt
     echo
     arrow
 }

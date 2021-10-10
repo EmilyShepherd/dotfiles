@@ -13,6 +13,8 @@ then
 
     FOLDER="\uf07c "
 
+    AWS="\uf0c2 "
+
     ERROR="\uf46e"
 
     ARROW=">"
@@ -28,6 +30,8 @@ else
     DOWN="v"
 
     FOLDER=""
+
+    AWS="aws"
 
     ERROR="!"
 
