@@ -1,0 +1,30 @@
+
+preferences {
+  font_family = "'Firacode Nerd Font'"
+  font_size = 16
+
+  background_color = "#222233"
+  foreground_color = "#dddddd"
+
+  color_palette_overrides = [
+    "#111111",
+    "#ff6961",
+    "#77dd77",
+    "#fdfd96",
+    "#779ecb",
+    "#f49ac2",
+    "#dcfffb",
+    "#dddddd",
+    "#666666",
+    "#ff6961",
+    "#00ff00",
+    "#ffff00",
+    "#779ecb",
+    "#ff00ff",
+    "#00ffff",
+    "#ffffff"
+  ]
+
+  cursor_color = "#dddddd"
+  cursor_blink = true
+}
