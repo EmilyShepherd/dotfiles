@@ -78,7 +78,6 @@ alias ssh='TERM=xterm ssh'
 
 # Handy Shortcuts
 alias c='git commit -S -m'
-alias go='git push origin'
 alias gh='git push github'
 alias pp='git push origin && git push github'
 alias p='ps aux | grep -v grep | grep'
