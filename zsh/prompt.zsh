@@ -23,7 +23,7 @@ git_prompt ()
     if ! [ "$(git config core.bare)" = "true" ]
     then
         dirty=$(git status -s -uno | wc -l)
-        new=$(git status -s | grep '\?' | wc -l)
+        new=$(git status -s | grep '?' | wc -l)
 
         [ "$dirty" -gt 0 ] && _p "$DIRTY$dirty"
         [ "$new" -gt 0 ] && _p "$NEW$new"
