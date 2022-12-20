@@ -1,6 +1,7 @@
 syntax enable
 set autoindent
-colorscheme peachpuff
+colorscheme slate
+highlight normal ctermbg=none
 set number
 filetype indent on
 set incsearch
