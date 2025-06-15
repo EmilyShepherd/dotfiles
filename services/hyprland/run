@@ -1,0 +1,11 @@
+#!/bin/sh
+
+export QT_QPA_PLATFORM=wayland-egl
+export XDG_RUNTIME_DIR=/tmp/run
+
+mkdir -p ${XDG_RUNTIME_DIR}
+
+sudo plymouth hide-splash
+
+cd $HOME
+exec setsid dbus-run-session hyprland

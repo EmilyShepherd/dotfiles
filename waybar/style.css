@@ -1,59 +1,79 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: 'FuraCode Nerd Font';
-    font-size: 12px;
+    font-family: 'Firacode Nerd Font';
+    font-size: 14px;
 }
 
-window#waybar {
-    background-color: rgba(43, 48, 59, 0.5);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-    color: #ddd;
-    transition-property: background-color;
-    transition-duration: .5s;
+window {
+  background: none;
 }
+
+
+/* WORKPLACES */
 
 #workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    color: #ddd;
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
+    color: grey;
+    background: none;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-#workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
-    box-shadow: inset 0 -3px #ffffff;
+button:hover {
+  box-shadow: none; /* Remove predefined box-shadow */
+  text-shadow: none; /* Remove predefined text-shadow */
+  background: none; /* Remove predefined background color (white) */
+  transition: none; /* Disable predefined animations */
 }
 
-#workspaces button.focused {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
+#workspaces button.special {
+  margin-left: 40px;
+}
+
+#workspaces button.active {
+  color: white;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+  border-radius: 5px;
+  animation-name: urgent-blink;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
+
+@keyframes urgent-blink {
+    to {
+        background: orange;
+    }
+}
+
+/* ZONES */
+
+.modules-center {
+  background: none;
+  border: none;
+  font-weight: bold;
+}
+
+.modules-center, .modules-right {
+  padding: 0;
+  margin: 10px;
+  color: white;
+}
+
+.modules-right, .modules-left {
+  border: 1px solid #595959;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  background: rgba(17, 17, 17, 0.7);
+  box-shadow: 1px 1px 5px black;
+}
+
+/* RIGHT */
 
 .modules-right > * > * {
-    padding: 0 6px;
-    border-left: 1px solid #666;
-}
-
-#window,
-#workspaces {
-    margin: 0 4px;
-}
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
+  margin: 5px;
 }
 
 #battery.charging {
@@ -62,23 +82,17 @@ window#waybar {
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #000000;
+        color: red;
     }
 }
 
-#battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
+#battery.warning:not(.charging) {
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-}
-
-label:focus {
-    background-color: #000000;
+    background: none;
 }
 
 #network {
@@ -89,16 +103,3 @@ label:focus {
     background-color: #f53c3c;
     color: yellow;
 }
-
-#tray {
-    background-color: #2980b9;
-}
-
-#custom-covid.DOWN {
-    color: #77dd77;
-}
-
-#custom-covid.UP {
-    color: #ff6961;
-}
-

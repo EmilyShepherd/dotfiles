@@ -1,8 +1,0 @@
-#!/bin/sh
-
-export QT_QPA_PLATFORM=wayland-egl
-
-sudo plymouth hide-splash
-
-cd $HOME
-exec setsid dbus-run-session sway

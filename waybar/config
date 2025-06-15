@@ -1,17 +1,18 @@
 {
     "height": 30,
 
-    "modules-left": ["sway/workspaces"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["custom/covid#local", "custom/covid#area", "network", "battery", "clock", "tray"],
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["network", "battery", "clock#local", "tray"],
 
     "tray": {
         "icon-size": 15,
         "spacing": 10
     },
 
-    "sway/workspaces": {
+    "hyprland/workspaces": {
         "format": "{icon}",
+        "show-special": false,
         "format-icons": {
             "1": "",
             "2": "",
@@ -20,11 +21,15 @@
         }
     },
 
-    "sway/window": {
-        "tooltip": false
+    "hyprland/window": {
+        "tooltip": false,
+        "rewrite": {
+          "(.*) — Mozilla Firefox": "🌎 $1",
+          "^~$": "New Terminal"
+        }
     },
 
-    "clock": {
+    "clock#local": {
         "format": "{:%A %d %b %H:%M:%S}",
         "interval": 1,
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
@@ -35,14 +40,14 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
+        "format": "{icon}  {capacity}%",
         "format-charging": " {capacity}%",
         "format-alt": "{time} {icon}",
         "format-icons": ["", "", "", "", ""]
     },
 
     "network": {
-        "format-wifi": " {signalStrength}%",
+        "format-wifi": "  {signalStrength}%",
         "tooltip-format-wifi": "Connected\nSSID: {essid}",
 
         "format-ethernet": "",
@@ -55,19 +60,5 @@
         "tooltip-format-disconnected": "Disconnected",
 
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
-
-    "custom/covid#local": {
-        "exec": "~/.dotfiles/lib/covid-checker/covid-checker $(head -n1 ~/.local/share/codes)",
-        "return-type": "json",
-        "format": "{icon} {}",
-        "format-icons": ["", ""]
-    },
-
-    "custom/covid#area": {
-        "exec": "~/.dotfiles/lib/covid-checker/covid-checker $(tail -n1 ~/.local/share/codes)",
-        "return-type": "json",
-        "format": "{icon} {}",
-        "format-icons": ["", ""]
     },
 }
