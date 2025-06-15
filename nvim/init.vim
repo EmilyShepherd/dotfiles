@@ -11,7 +11,6 @@ set softtabstop=2
 set shiftwidth=2
 set shiftround
 set expandtab
-set colorcolumn=73
 set spelllang=en
 
 let use_mutt_sidebar=1
