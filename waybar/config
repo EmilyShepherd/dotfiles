@@ -25,6 +25,7 @@
         "tooltip": false,
         "rewrite": {
           "(.*) — Mozilla Firefox": "🌎 $1",
+          "(.*) — Zen Browser": "🌎 $1",
           "^~$": "New Terminal"
         }
     },
