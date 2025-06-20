@@ -91,7 +91,19 @@ setopt prompt_subst
 
 test -z "$NO_CLEAR_CONSOLE" && printf '\n%.0s' {1..100}
 
-test -f /etc/motd && cat /etc/motd
+# If we are running in a hyprland session and we are in a terminal in the leftmost window,
+# output a nice opening session fastfetch before the prompt.
+if test "${XDG_SESSION_DESKTOP}" = "hyprland"
+then
+  if hyprctl activewindow -j | jq -e ".at[0] < 100 and .at[1] < 100 and .pid == $KITTY_PID" >/dev/null
+  then
+    tput cup 4
+    fastfetch
+  fi
+elif test -f /etc/motd
+then
+  cat /etc/motd
+fi
 
 PROMPT='$(prompt)'
 RPROMPT='$(rprompt)'
