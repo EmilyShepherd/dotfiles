@@ -4,7 +4,11 @@
 # ---------------------------------------------------------------------
 
 # Vim stuff
-export EDITOR=/usr/bin/vim
+export EDITOR=$(which nvim)
+if ! which vim >/dev/null 2>&1
+then
+  alias vim=$EDITOR
+fi
 
 # Less stuff
 export PAGER="less"
