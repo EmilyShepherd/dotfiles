@@ -97,6 +97,12 @@ alias ls='ls --color=tty'
 # Shortcut to become root
 alias root='sudo SSH_CLIENT=$SSH_CLIENT su'
 
+# Cat an image
+# Aligning centre is the default which looks nicer, however it becomes
+# misaligned if the terminal size changes (which it can at any point in
+# a dynamic tiling setup) so it is better to go with left by default.
+alias icat="kitten icat --align=left"
+
 
 # Includes
 # ---------------------------------------------------------------------
