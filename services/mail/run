@@ -1,7 +1,0 @@
-#!/bin/sh
-
-while true
-do
-    mbsync -ac ~/.config/isync/mbsyncrc
-    sleep 30
-done
