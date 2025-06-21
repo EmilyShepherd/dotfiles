@@ -93,7 +93,7 @@ test -z "$NO_CLEAR_CONSOLE" && printf '\n%.0s' {1..100}
 
 # If we are running in a hyprland session and we are in a terminal in the leftmost window,
 # output a nice opening session fastfetch before the prompt.
-if test "${XDG_SESSION_DESKTOP}" = "hyprland"
+if test "${XDG_SESSION_DESKTOP}" = "hyprland" || test "${XDG_CURRENT_DESKTOP}" = "Hyprland"
 then
   if hyprctl activewindow -j | jq -e ".at[0] < 100 and .at[1] < 100 and .pid == $KITTY_PID" >/dev/null
   then
