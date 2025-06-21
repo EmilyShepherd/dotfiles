@@ -1,3 +1,0 @@
-[submodule "lib/covid-checker"]
-	path = lib/covid-checker
-	url = https://gitlab.com/EmilyShepherd/covid-checker.git
