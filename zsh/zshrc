@@ -103,6 +103,9 @@ alias root='sudo SSH_CLIENT=$SSH_CLIENT su'
 # a dynamic tiling setup) so it is better to go with left by default.
 alias icat="kitten icat --align=left"
 
+# Also reset zsh when a terminal reset is called
+alias reset="reset; exec zsh"
+
 
 # Includes
 # ---------------------------------------------------------------------
