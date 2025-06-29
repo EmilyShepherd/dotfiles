@@ -4,10 +4,12 @@
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
+        "source": "~/.config/fastfetch/arch.png",
         "padding": {
-          "left": 4
+          "left": 4,
+          "top": 2
         },
-        "width": 28
+        "width": 32
     },
     "display": {
         "separator": "  ",
@@ -28,8 +30,10 @@
         "host",
         "cpu",
         "gpu",
+        "board",
         "disk",
         "memory",
+        "tpm",
         "display",
         "gamepad",
         {
@@ -44,10 +48,12 @@
         },
         "os",
         "kernel",
+        "initsystem",
         "wm",
         "shell",
         "terminal",
         "terminalfont",
+        "editor",
         "theme",
         "icons",
         "wallpaper",
