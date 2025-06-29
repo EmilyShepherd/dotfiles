@@ -95,7 +95,7 @@ test -z "$NO_CLEAR_CONSOLE" && printf '\n%.0s' {1..100}
 # output a nice opening session fastfetch before the prompt.
 if test "${XDG_SESSION_DESKTOP}" = "hyprland" || test "${XDG_CURRENT_DESKTOP}" = "Hyprland"
 then
-  if hyprctl activewindow -j | jq -e ".at[0] < 100 and .at[1] < 100 and .pid == $KITTY_PID" >/dev/null
+  if hyprctl clients -j | ~/.config/scripts/is_first_window.jq kitty $KITTY_PID >/dev/null
   then
     tput cup 4
     fastfetch
