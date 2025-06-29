@@ -1,9 +1,7 @@
 7zip
-alsa-firmware
 alsa-utils
 base
 base-devel
-brightnessctl
 dhcpcd
 discord
 efibootmgr
@@ -14,13 +12,11 @@ hyprland
 hyprlock
 hyprpaper
 imagemagick
-intel-ucode
 jq
 kitty
 kubectl
 less
 linux
-linux-firmware
 mako
 man-pages
 mandoc
@@ -33,7 +29,6 @@ pipewire
 pipewire-pulse
 plymouth
 rtkit
-sof-firmware
 steam
 sudo
 swww
@@ -41,6 +36,5 @@ ttf-firacode-nerd
 waybar
 wl-clipboard
 wofi
-wpa_supplicant
 xdg-desktop-portal-hyprland
 zsh
