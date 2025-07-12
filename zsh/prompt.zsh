@@ -18,15 +18,15 @@ git_prompt ()
 
     (git config -l | grep remote | grep -q github) && _p "$GITHUB"
 
-    _p "$GIT $ref"
+    _p "$GIT $ref "
 
     if ! [ "$(git config core.bare)" = "true" ]
     then
         dirty=$(git status -s -uno | wc -l)
         new=$(git status -s | grep '?' | wc -l)
 
-        [ "$dirty" -gt 0 ] && _p "$DIRTY$dirty"
-        [ "$new" -gt 0 ] && _p "$NEW$new"
+        [ "$dirty" -gt 0 ] && _p "$DIRTY$dirty "
+        [ "$new" -gt 0 ] && _p "$NEW$new "
     fi
 
     remote=$(git config branch.$ref.remote)

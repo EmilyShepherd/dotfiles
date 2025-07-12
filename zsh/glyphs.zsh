@@ -5,11 +5,11 @@ then
     GITHUB="\uf113 "
     GITLAB="\uf296 "
 
-    DIRTY="!"
-    NEW="?"
+    DIRTY="\Uf11e8 "
+    NEW="\uea7f "
 
-    UP="\uf63e"
-    DOWN="\uf63b"
+    UP="\u219f"
+    DOWN="\u21a1"
 
     FOLDER="\uf07c "
 
@@ -24,7 +24,7 @@ else
     GITLAB="GL"
 
     DIRTY="!"
-    NEW="?"
+    NEW="+"
 
     UP="^"
     DOWN="v"
