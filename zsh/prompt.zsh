@@ -65,13 +65,6 @@ prompt() {
     arrow
 }
 
-rprompt() {
-    if test -n "$PROMPT_HOST"
-    then
-        echo "$PROMPT_HOST"
-    fi
-}
-
 reset_term() {
     OLD_PROMPT="$PROMPT"
     OLD_RPROMPT="$RPROMPT"
@@ -106,5 +99,4 @@ then
 fi
 
 PROMPT='$(prompt)'
-RPROMPT='$(rprompt)'
 
