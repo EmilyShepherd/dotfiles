@@ -52,6 +52,10 @@ aws_vault_prompt() {
     fi
 }
 
+k8s_prompt() {
+    echo -n "%{$fg[yellow]%}$(kubectl config current-context)%{$reset_color%} "
+}
+
 arrow() {
     echo -n "%{$fg_bold[green]%}$ARROW %{$reset_color%}"
 }
@@ -60,6 +64,7 @@ prompt() {
     echo
     folder_prompt
     git_prompt
+    k8s_prompt
     aws_vault_prompt
     echo
     arrow
