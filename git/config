@@ -5,7 +5,7 @@
 	email = emily@redcoat.dev
 
 [init]
-    defaultBranch = main
+	defaultBranch = main
 
 #
 [push]
