@@ -6,7 +6,7 @@
 -- See https://wiki.hyprland.org/Configuring/Monitors/
 hl.monitor({
   output = "",
-  mode = "5120x1440",
+  mode = "highres",
   position = "auto",
   scale = "auto",
 })
