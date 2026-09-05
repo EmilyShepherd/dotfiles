@@ -257,34 +257,53 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
-------------------------------
---- WINDOWS AND WORKSPACES ---
-------------------------------
+--------------------------------
+--- Picture In Picture Popup ---
+--------------------------------
 
--- Pip
+local pip = "Picture-in-Picture"
+local pip_keymap = {
+  -- "Plus" is normally accessed by SHIFT + EQUAL key, but we'll just map it without
+  -- the shift to make it less combersome, and to match the minus, so we use the EQUAL
+  -- key for increasing size.
+  ["EQUAL"] =  20,
+  ["MINUS"] = -20,
+}
+local default_size = { 600, 388 }
+
 hl.window_rule({
   name = "pip",
   match = {
-    title = "Picture-in-Picture"
+    title = pip
   },
 
   float = true,
   pin = true,
-  size = { 600, 388 },
-  move = "20 monitor_h-window_h-20",
+  size = default_size,
+  move = {20, "monitor_h-window_h - 20"},
 })
 
-local pip = "title:Picture-in-Picture"
+for key, by in pairs(pip_keymap) do
+  local match = "title:" .. pip
+  hl.bind(mainMod .. " + " .. key, function()
+    hl.dispatch(hl.dsp.window.resize({
+      window = match,
+      x = by,
+      y = by,
+      relative = true
+    }))
+    hl.dispatch(hl.dsp.window.move({
+      window = match,
+      x = by / 2,
+      y = by / -2,
+      relative = true
+    }))
+  end)
+end
 
-hl.bind(mainMod .. " + EQUAL", function()
-  hl.dispatch(hl.dsp.window.resize({pip, 20, 20, true }))
-  hl.dispatch(hl.dis.move({pip, 20, 20, false }))
-end)
-
-hl.bind(mainMod .. " + MINUS", function()
-  hl.dispatch(hl.dsp.window.resize({pip, -20, -20, true }))
-  hl.dispatch(hl.dis.move({pip, 20, 20, false }))
-end)
+------------------------------
+--- WINDOWS AND WORKSPACES ---
+------------------------------
 
 -- Make the GIMP file selector show up as floating
 hl.window_rule({
